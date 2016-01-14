@@ -23,10 +23,10 @@ Partial Class Main
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ListViewGroup1 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("QA", System.Windows.Forms.HorizontalAlignment.Center)
-        Dim ListViewGroup2 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("UAT", System.Windows.Forms.HorizontalAlignment.Center)
-        Dim ListViewGroup3 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("PROD", System.Windows.Forms.HorizontalAlignment.Center)
-        Dim ListViewGroup4 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("DEV", System.Windows.Forms.HorizontalAlignment.Center)
+        Dim ListViewGroup5 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("QA", System.Windows.Forms.HorizontalAlignment.Center)
+        Dim ListViewGroup6 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("UAT", System.Windows.Forms.HorizontalAlignment.Center)
+        Dim ListViewGroup7 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("PROD", System.Windows.Forms.HorizontalAlignment.Center)
+        Dim ListViewGroup8 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("DEV", System.Windows.Forms.HorizontalAlignment.Center)
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.MetroRadioButton4 = New MetroFramework.Controls.MetroRadioButton()
@@ -36,10 +36,6 @@ Partial Class Main
         Me.status = New System.Windows.Forms.GroupBox()
         Me.MetroLabel8 = New System.Windows.Forms.LinkLabel()
         Me.MetroLabel7 = New System.Windows.Forms.LinkLabel()
-        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.MetroButton2 = New MetroFramework.Controls.MetroButton()
         Me.ccd = New MetroFramework.Controls.MetroProgressSpinner()
         Me.MetroLabel16 = New MetroFramework.Controls.MetroLabel()
@@ -82,7 +78,6 @@ Partial Class Main
         Me.MatrixToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RefreshDBToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.metro = New System.Windows.Forms.PictureBox()
         Me.LinkLabel1 = New MetroFramework.Controls.MetroLink()
         Me.folderlist = New System.Windows.Forms.ListView()
         Me.operators = New System.Windows.Forms.GroupBox()
@@ -130,23 +125,21 @@ Partial Class Main
         Me.CreateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RefreshToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MetroLabel18 = New MetroFramework.Controls.MetroLabel()
+        Me.folder = New System.Windows.Forms.GroupBox()
+        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
-        Me.MetroTabControl1 = New MetroFramework.Controls.MetroTabControl()
-        Me.MetroTabPage1 = New MetroFramework.Controls.MetroTabPage()
-        Me.MetroTabPage2 = New MetroFramework.Controls.MetroTabPage()
-        Me.tillfolderlist = New System.Windows.Forms.ListView()
+        Me.metro = New System.Windows.Forms.PictureBox()
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.GroupBox1.SuspendLayout()
         Me.status.SuspendLayout()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip3.SuspendLayout()
         Me.tills.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
-        CType(Me.metro, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.operators.SuspendLayout()
         Me.ContextMenuStrip2.SuspendLayout()
         Me.ContextMenuStrip4.SuspendLayout()
@@ -154,12 +147,16 @@ Partial Class Main
         CType(Me.MetroStyleManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip7.SuspendLayout()
         Me.ContextMenuStrip6.SuspendLayout()
+        Me.folder.SuspendLayout()
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.MetroTabControl1.SuspendLayout()
-        Me.MetroTabPage1.SuspendLayout()
-        Me.MetroTabPage2.SuspendLayout()
+        CType(Me.metro, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -279,38 +276,6 @@ Partial Class Main
         Me.MetroLabel7.TabIndex = 31
         Me.MetroLabel7.TabStop = True
         Me.MetroLabel7.Text = "..."
-        '
-        'PictureBox4
-        '
-        Me.PictureBox4.Location = New System.Drawing.Point(429, 77)
-        Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(37, 25)
-        Me.PictureBox4.TabIndex = 18
-        Me.PictureBox4.TabStop = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Location = New System.Drawing.Point(429, 35)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(37, 35)
-        Me.PictureBox1.TabIndex = 17
-        Me.PictureBox1.TabStop = False
-        '
-        'PictureBox3
-        '
-        Me.PictureBox3.Location = New System.Drawing.Point(429, 76)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(37, 26)
-        Me.PictureBox3.TabIndex = 16
-        Me.PictureBox3.TabStop = False
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.Location = New System.Drawing.Point(429, 35)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(37, 35)
-        Me.PictureBox2.TabIndex = 15
-        Me.PictureBox2.TabStop = False
         '
         'MetroButton2
         '
@@ -627,32 +592,24 @@ Partial Class Main
         Me.RefreshDBToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.RefreshDBToolStripMenuItem.Text = "Refresh DB"
         '
-        'metro
-        '
-        Me.metro.Location = New System.Drawing.Point(391, 57)
-        Me.metro.Name = "metro"
-        Me.metro.Size = New System.Drawing.Size(178, 50)
-        Me.metro.TabIndex = 15
-        Me.metro.TabStop = False
-        Me.metro.Visible = False
-        '
         'LinkLabel1
         '
-        Me.LinkLabel1.Location = New System.Drawing.Point(3, 209)
+        Me.LinkLabel1.Location = New System.Drawing.Point(11, 252)
         Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(153, 19)
+        Me.LinkLabel1.Size = New System.Drawing.Size(143, 19)
         Me.LinkLabel1.TabIndex = 1
         Me.LinkLabel1.Text = "Metro.MPOS.Router.xml"
         Me.LinkLabel1.UseSelectable = True
         '
         'folderlist
         '
-        Me.folderlist.Location = New System.Drawing.Point(0, 2)
+        Me.folderlist.Location = New System.Drawing.Point(6, 22)
         Me.folderlist.Name = "folderlist"
-        Me.folderlist.Size = New System.Drawing.Size(158, 228)
+        Me.folderlist.Size = New System.Drawing.Size(154, 249)
         Me.folderlist.TabIndex = 0
         Me.folderlist.UseCompatibleStateImageBehavior = False
         Me.folderlist.View = System.Windows.Forms.View.List
+        Me.folderlist.Visible = False
         '
         'operators
         '
@@ -739,19 +696,19 @@ Partial Class Main
         Me.serverlist.Font = New System.Drawing.Font("Arial Narrow", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.serverlist.FullRowSelect = True
         Me.serverlist.GridLines = True
-        ListViewGroup1.Header = "QA"
-        ListViewGroup1.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
-        ListViewGroup1.Name = "ListViewGroup1"
-        ListViewGroup2.Header = "UAT"
-        ListViewGroup2.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
-        ListViewGroup2.Name = "ListViewGroup2"
-        ListViewGroup3.Header = "PROD"
-        ListViewGroup3.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
-        ListViewGroup3.Name = "ListViewGroup3"
-        ListViewGroup4.Header = "DEV"
-        ListViewGroup4.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
-        ListViewGroup4.Name = "ListViewGroup4"
-        Me.serverlist.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {ListViewGroup1, ListViewGroup2, ListViewGroup3, ListViewGroup4})
+        ListViewGroup5.Header = "QA"
+        ListViewGroup5.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
+        ListViewGroup5.Name = "ListViewGroup1"
+        ListViewGroup6.Header = "UAT"
+        ListViewGroup6.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
+        ListViewGroup6.Name = "ListViewGroup2"
+        ListViewGroup7.Header = "PROD"
+        ListViewGroup7.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
+        ListViewGroup7.Name = "ListViewGroup3"
+        ListViewGroup8.Header = "DEV"
+        ListViewGroup8.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
+        ListViewGroup8.Name = "ListViewGroup4"
+        Me.serverlist.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {ListViewGroup5, ListViewGroup6, ListViewGroup7, ListViewGroup8})
         Me.serverlist.HideSelection = False
         Me.serverlist.LabelWrap = False
         Me.serverlist.Location = New System.Drawing.Point(24, 116)
@@ -855,6 +812,7 @@ Partial Class Main
         'MetroContextMenu1
         '
         Me.MetroContextMenu1.AccessibleRole = System.Windows.Forms.AccessibleRole.Window
+        Me.MetroContextMenu1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.MetroContextMenu1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DBQueriesToolStripMenuItem, Me.BarcodeGeneratorToolStripMenuItem, Me.DiscountExtractToolStripMenuItem, Me.RegistryExtractToolStripMenuItem, Me.ToolStripSeparator1, Me.ToolStripMenuItem1})
         Me.MetroContextMenu1.Name = "MetroContextMenu1"
         Me.MetroContextMenu1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
@@ -1014,6 +972,28 @@ Partial Class Main
         Me.MetroLabel18.UseStyleColors = True
         Me.MetroLabel18.Visible = False
         '
+        'folder
+        '
+        Me.folder.Controls.Add(Me.LinkLabel1)
+        Me.folder.Controls.Add(Me.folderlist)
+        Me.folder.Location = New System.Drawing.Point(1011, 73)
+        Me.folder.Name = "folder"
+        Me.folder.Size = New System.Drawing.Size(166, 277)
+        Me.folder.TabIndex = 34
+        Me.folder.TabStop = False
+        Me.folder.Text = "Folder"
+        Me.folder.Visible = False
+        '
+        'PictureBox6
+        '
+        Me.PictureBox6.Image = Global.MPOS.My.Resources.Resources.M_icon
+        Me.PictureBox6.Location = New System.Drawing.Point(203, 8)
+        Me.PictureBox6.Name = "PictureBox6"
+        Me.PictureBox6.Size = New System.Drawing.Size(60, 44)
+        Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox6.TabIndex = 35
+        Me.PictureBox6.TabStop = False
+        '
         'PictureBox8
         '
         Me.PictureBox8.Image = Global.MPOS.My.Resources.Resources.minimize
@@ -1047,57 +1027,46 @@ Partial Class Main
         Me.PictureBox5.TabIndex = 20
         Me.PictureBox5.TabStop = False
         '
-        'MetroTabControl1
+        'metro
         '
-        Me.MetroTabControl1.Controls.Add(Me.MetroTabPage1)
-        Me.MetroTabControl1.Controls.Add(Me.MetroTabPage2)
-        Me.MetroTabControl1.Location = New System.Drawing.Point(1011, 75)
-        Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 0
-        Me.MetroTabControl1.Size = New System.Drawing.Size(166, 275)
-        Me.MetroTabControl1.TabIndex = 33
-        Me.MetroTabControl1.UseSelectable = True
-        Me.MetroTabControl1.Visible = False
+        Me.metro.Location = New System.Drawing.Point(391, 57)
+        Me.metro.Name = "metro"
+        Me.metro.Size = New System.Drawing.Size(178, 50)
+        Me.metro.TabIndex = 15
+        Me.metro.TabStop = False
+        Me.metro.Visible = False
         '
-        'MetroTabPage1
+        'PictureBox4
         '
-        Me.MetroTabPage1.Controls.Add(Me.LinkLabel1)
-        Me.MetroTabPage1.Controls.Add(Me.folderlist)
-        Me.MetroTabPage1.HorizontalScrollbarBarColor = True
-        Me.MetroTabPage1.HorizontalScrollbarHighlightOnWheel = False
-        Me.MetroTabPage1.HorizontalScrollbarSize = 10
-        Me.MetroTabPage1.Location = New System.Drawing.Point(4, 38)
-        Me.MetroTabPage1.Name = "MetroTabPage1"
-        Me.MetroTabPage1.Size = New System.Drawing.Size(158, 233)
-        Me.MetroTabPage1.TabIndex = 0
-        Me.MetroTabPage1.Text = "Server"
-        Me.MetroTabPage1.VerticalScrollbarBarColor = True
-        Me.MetroTabPage1.VerticalScrollbarHighlightOnWheel = False
-        Me.MetroTabPage1.VerticalScrollbarSize = 10
+        Me.PictureBox4.Location = New System.Drawing.Point(429, 77)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(37, 25)
+        Me.PictureBox4.TabIndex = 18
+        Me.PictureBox4.TabStop = False
         '
-        'MetroTabPage2
+        'PictureBox1
         '
-        Me.MetroTabPage2.Controls.Add(Me.tillfolderlist)
-        Me.MetroTabPage2.HorizontalScrollbarBarColor = True
-        Me.MetroTabPage2.HorizontalScrollbarHighlightOnWheel = False
-        Me.MetroTabPage2.HorizontalScrollbarSize = 10
-        Me.MetroTabPage2.Location = New System.Drawing.Point(4, 38)
-        Me.MetroTabPage2.Name = "MetroTabPage2"
-        Me.MetroTabPage2.Size = New System.Drawing.Size(158, 233)
-        Me.MetroTabPage2.TabIndex = 1
-        Me.MetroTabPage2.Text = "Tills"
-        Me.MetroTabPage2.VerticalScrollbarBarColor = True
-        Me.MetroTabPage2.VerticalScrollbarHighlightOnWheel = False
-        Me.MetroTabPage2.VerticalScrollbarSize = 10
+        Me.PictureBox1.Location = New System.Drawing.Point(429, 35)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(37, 35)
+        Me.PictureBox1.TabIndex = 17
+        Me.PictureBox1.TabStop = False
         '
-        'tillfolderlist
+        'PictureBox3
         '
-        Me.tillfolderlist.Location = New System.Drawing.Point(0, 2)
-        Me.tillfolderlist.Name = "tillfolderlist"
-        Me.tillfolderlist.Size = New System.Drawing.Size(158, 228)
-        Me.tillfolderlist.TabIndex = 2
-        Me.tillfolderlist.UseCompatibleStateImageBehavior = False
-        Me.tillfolderlist.View = System.Windows.Forms.View.List
+        Me.PictureBox3.Location = New System.Drawing.Point(429, 76)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(37, 26)
+        Me.PictureBox3.TabIndex = 16
+        Me.PictureBox3.TabStop = False
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Location = New System.Drawing.Point(429, 35)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(37, 35)
+        Me.PictureBox2.TabIndex = 15
+        Me.PictureBox2.TabStop = False
         '
         'Main
         '
@@ -1106,7 +1075,8 @@ Partial Class Main
         Me.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
         Me.ClientSize = New System.Drawing.Size(1200, 659)
         Me.ControlBox = False
-        Me.Controls.Add(Me.MetroTabControl1)
+        Me.Controls.Add(Me.PictureBox6)
+        Me.Controls.Add(Me.folder)
         Me.Controls.Add(Me.MetroLabel18)
         Me.Controls.Add(Me.PictureBox8)
         Me.Controls.Add(Me.PictureBox7)
@@ -1135,14 +1105,9 @@ Partial Class Main
         Me.GroupBox1.PerformLayout()
         Me.status.ResumeLayout(False)
         Me.status.PerformLayout()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStrip3.ResumeLayout(False)
         Me.tills.ResumeLayout(False)
         Me.ContextMenuStrip1.ResumeLayout(False)
-        CType(Me.metro, System.ComponentModel.ISupportInitialize).EndInit()
         Me.operators.ResumeLayout(False)
         Me.ContextMenuStrip2.ResumeLayout(False)
         Me.ContextMenuStrip4.ResumeLayout(False)
@@ -1150,16 +1115,20 @@ Partial Class Main
         CType(Me.MetroStyleManager1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStrip7.ResumeLayout(False)
         Me.ContextMenuStrip6.ResumeLayout(False)
+        Me.folder.ResumeLayout(False)
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.MetroTabControl1.ResumeLayout(False)
-        Me.MetroTabPage1.ResumeLayout(False)
-        Me.MetroTabPage2.ResumeLayout(False)
+        CType(Me.metro, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout
+        Me.PerformLayout()
 
-End Sub
+    End Sub
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents status As System.Windows.Forms.GroupBox
     Friend WithEvents tills As System.Windows.Forms.GroupBox
@@ -1265,9 +1234,7 @@ End Sub
     Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DiscountTableToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents InputTableToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents MetroTabControl1 As MetroFramework.Controls.MetroTabControl
-    Friend WithEvents MetroTabPage1 As MetroFramework.Controls.MetroTabPage
-    Friend WithEvents MetroTabPage2 As MetroFramework.Controls.MetroTabPage
-    Friend WithEvents tillfolderlist As System.Windows.Forms.ListView
+    Friend WithEvents folder As System.Windows.Forms.GroupBox
+    Friend WithEvents PictureBox6 As System.Windows.Forms.PictureBox
 
 End Class

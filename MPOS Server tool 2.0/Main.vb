@@ -213,43 +213,6 @@ Public Class Main
             Logger.WriteToErrorLog(e.Message, e.StackTrace, "error")
         End Try
     End Sub
-    Private Sub readtillfolderlist(link)
-        Dim readfolder As XmlTextReader = New XmlTextReader(ffl)
-        Dim i As Integer = 0
-        Dim env As String = ""
-
-        If link = "QA" Then
-            env = "TillPath"
-        ElseIf link = "UAT" Then
-            env = "TillUATPath"
-        ElseIf link = "PROD" Then
-            env = "TillUATPath"
-        ElseIf link = "DEV" Then
-            env = "TillPath"
-        End If
-        Try
-            tillfolderlist.Items.Clear()
-            Do While (readfolder.Read())
-                Select Case readfolder.NodeType
-                    Case XmlNodeType.Element
-                        Select Case readfolder.Name
-                            Case "Name"
-                                readfolder.Read()
-                                tillfolderlist.Items.Add(readfolder.Value)
-                            Case env
-                                readfolder.Read()
-                                tillfolderlist.Items(i).SubItems.Add("\\" + MetroLabel8.Text + readfolder.Value)
-                                i = i + 1
-
-                        End Select
-                End Select
-            Loop
-            readfolder.Dispose()
-        Catch e As Exception
-            miniTool.balon(e.Message)
-            Logger.WriteToErrorLog(e.Message, e.StackTrace, "error")
-        End Try
-    End Sub
     Private Sub readservicelist()
         Dim readservice As XmlTextReader = New XmlTextReader(srl)
         Dim i As Integer = 0
@@ -292,13 +255,10 @@ Public Class Main
         For Each item As ListViewItem In serverlist.SelectedItems
             If item.Group.Name = "ListViewGroup1" Then
                 readfolderlist("QA")
-                readtillfolderlist("QA")
             ElseIf item.Group.Name = "ListViewGroup4" Then
                 readfolderlist("DEV")
-                readtillfolderlist("DEV")
             Else
                 readfolderlist("UAT")
-                readtillfolderlist("UAT")
             End If
         Next
         ' Set the initial sorting type for the ListView. 
@@ -335,9 +295,9 @@ Public Class Main
     Private Sub viewserver()
         metro.Visible = False
         ' title.Visible = False
+        folderlist.Visible = True
         status.Visible = True
-        'folders.Visible = True
-        MetroTabControl1.Visible = True
+        folder.Visible = True
         tills.Visible = True
         operators.Visible = True
         For Each item As ListViewItem In serverlist.Items
