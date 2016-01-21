@@ -264,10 +264,7 @@ Public Class Main
         ' Set the initial sorting type for the ListView. 
         Me.tilllist.Sorting = System.Windows.Forms.SortOrder.None
         ' Disable automatic sorting to enable manual sorting. 
-        'Me.tilllist.View = View.Details
-        'Me.tilllist.ListViewItemSorter = New ListViewItemComparer(0, System.Windows.Forms.SortOrder.Ascending)
         AddHandler tilllist.ColumnClick, AddressOf Me.tilllist_ColumnClick
-        ' readfolderlist()
         loaddatabase()
         ' taskservice()
         loadcounts()
@@ -275,15 +272,13 @@ Public Class Main
     Private Sub statusserver()
         Try
             If My.Computer.Network.Ping(MetroLabel8.Text) Then
-                PictureBox2.Visible = False
-                PictureBox1.Visible = True
                 MetroLabel15.Text = "ONLINE"
                 MetroLabel15.ForeColor = Color.Green
+                MetroLabel15.Style = MetroColorStyle.Green
             Else
-                PictureBox2.Visible = True
-                PictureBox1.Visible = False
                 MetroLabel15.Text = "OFFLINE"
                 MetroLabel15.ForeColor = Color.Red
+                MetroLabel15.Style = MetroColorStyle.Red
                 tpb.Visible = False
                 '  tlb.Visible = False
             End If
@@ -382,23 +377,20 @@ Public Class Main
                 con.Close()
                 MetroLabel16.Text = "DB is ONLINE"
                 MetroLabel16.ForeColor = Color.Green
-                PictureBox3.Visible = False
-                PictureBox4.Visible = True
+                MetroLabel16.Style = MetroColorStyle.Green
                 tasktills()
                 taskoperators()
             Else
                 MetroLabel16.Text = "DB is OFFLINE"
                 MetroLabel16.ForeColor = Color.Red
-                PictureBox3.Visible = True
-                PictureBox4.Visible = False
+                MetroLabel16.Style = MetroColorStyle.Red
                 tpb.Visible = False
                 '  tlb.Visible = False
             End If
         Else
             MetroLabel16.Text = "DB is OFF"
             MetroLabel16.ForeColor = Color.Red
-            PictureBox3.Visible = True
-            PictureBox4.Visible = False
+            MetroLabel16.Style = MetroColorStyle.Red
             tpb.Visible = False
             '   tlb.Visible = False
         End If
@@ -985,7 +977,11 @@ Public Class Main
         Try
             For Each item As ListViewItem In tilllist.Items
                 If item.Selected = True Then
-                    Process.Start("C:\Program Files\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(5).Text)
+                    If Environment.Is64BitOperatingSystem = False Then
+                        Process.Start("C:\Program Files\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(5).Text)
+                    Else                   
+                        Process.Start("C:\Program Files(x86)\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(5).Text)
+                    End If
                     Exit For
                 End If
             Next
@@ -1002,7 +998,11 @@ Public Class Main
         Try
             For Each item As ListViewItem In serverlist.Items
                 If item.Selected = True Then
-                    Process.Start("C:\Program Files\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(2).Text)
+                    If Environment.Is64BitOperatingSystem = False Then
+                        Process.Start("C:\Program Files\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(5).Text)
+                    Else
+                        Process.Start("C:\Program Files(x86)\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(5).Text)
+                    End If
                     Exit For
                 End If
             Next
@@ -1385,5 +1385,13 @@ Public Class Main
         Catch ex As Exception
             Logger.WriteToErrorLog(ex.Message, ex.StackTrace, "error")
         End Try
+    End Sub
+
+    Private Sub MetroLabel12_MouseMove(sender As Object, e As MouseEventArgs) Handles MetroLabel12.MouseMove
+        MetroToolTip1.Show(cnt, MetroLabel12)
+    End Sub
+
+    Private Sub HotfixesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HotfixesToolStripMenuItem.Click
+        hotfix.ShowDialog()
     End Sub
 End Class

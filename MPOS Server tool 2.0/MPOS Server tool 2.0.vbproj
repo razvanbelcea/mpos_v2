@@ -125,6 +125,12 @@
     <Compile Include="DBQueries.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="hotfix.Designer.vb">
+      <DependentUpon>hotfix.vb</DependentUpon>
+    </Compile>
+    <Compile Include="hotfix.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="input.Designer.vb">
       <DependentUpon>input.vb</DependentUpon>
     </Compile>
@@ -177,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DBQueries.resx">
       <DependentUpon>DBQueries.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="hotfix.resx">
+      <DependentUpon>hotfix.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="input.resx">
       <DependentUpon>input.vb</DependentUpon>

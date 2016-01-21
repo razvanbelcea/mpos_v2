@@ -108,6 +108,8 @@ Partial Class Main
         Me.DiscountExtractToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DiscountTableToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InputTableToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HotfixesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FavLinksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RegistryExtractToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -126,15 +128,12 @@ Partial Class Main
         Me.RefreshToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MetroLabel18 = New MetroFramework.Controls.MetroLabel()
         Me.folder = New System.Windows.Forms.GroupBox()
-        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
+        Me.MetroLabel12 = New MetroFramework.Controls.MetroLabel()
+        Me.MetroToolTip1 = New MetroFramework.Components.MetroToolTip()
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.metro = New System.Windows.Forms.PictureBox()
-        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.GroupBox1.SuspendLayout()
         Me.status.SuspendLayout()
         Me.ContextMenuStrip3.SuspendLayout()
@@ -148,15 +147,10 @@ Partial Class Main
         Me.ContextMenuStrip7.SuspendLayout()
         Me.ContextMenuStrip6.SuspendLayout()
         Me.folder.SuspendLayout()
-        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.metro, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -223,12 +217,9 @@ Partial Class Main
         '
         'status
         '
+        Me.status.Controls.Add(Me.MetroLabel12)
         Me.status.Controls.Add(Me.MetroLabel8)
         Me.status.Controls.Add(Me.MetroLabel7)
-        Me.status.Controls.Add(Me.PictureBox4)
-        Me.status.Controls.Add(Me.PictureBox1)
-        Me.status.Controls.Add(Me.PictureBox3)
-        Me.status.Controls.Add(Me.PictureBox2)
         Me.status.Controls.Add(Me.MetroButton2)
         Me.status.Controls.Add(Me.ccd)
         Me.status.Controls.Add(Me.MetroLabel16)
@@ -301,22 +292,24 @@ Partial Class Main
         'MetroLabel16
         '
         Me.MetroLabel16.AutoSize = True
-        Me.MetroLabel16.Location = New System.Drawing.Point(320, 83)
+        Me.MetroLabel16.Location = New System.Drawing.Point(320, 64)
         Me.MetroLabel16.Name = "MetroLabel16"
         Me.MetroLabel16.Size = New System.Drawing.Size(93, 19)
         Me.MetroLabel16.TabIndex = 12
         Me.MetroLabel16.Text = "DB is OFFLINE"
+        Me.MetroLabel16.UseStyleColors = True
         '
         'MetroLabel15
         '
         Me.MetroLabel15.AutoSize = True
         Me.MetroLabel15.FontSize = MetroFramework.MetroLabelSize.Tall
         Me.MetroLabel15.FontWeight = MetroFramework.MetroLabelWeight.Bold
-        Me.MetroLabel15.Location = New System.Drawing.Point(320, 45)
+        Me.MetroLabel15.Location = New System.Drawing.Point(320, 31)
         Me.MetroLabel15.Name = "MetroLabel15"
         Me.MetroLabel15.Size = New System.Drawing.Size(83, 25)
         Me.MetroLabel15.TabIndex = 11
         Me.MetroLabel15.Text = "OFFLINE"
+        Me.MetroLabel15.UseStyleColors = True
         '
         'servicelist
         '
@@ -603,6 +596,7 @@ Partial Class Main
         '
         'folderlist
         '
+        Me.folderlist.Cursor = System.Windows.Forms.Cursors.Hand
         Me.folderlist.Location = New System.Drawing.Point(6, 22)
         Me.folderlist.Name = "folderlist"
         Me.folderlist.Size = New System.Drawing.Size(154, 249)
@@ -678,7 +672,7 @@ Partial Class Main
         'MetroLabel1
         '
         Me.MetroLabel1.AutoSize = True
-        Me.MetroLabel1.Location = New System.Drawing.Point(24, 603)
+        Me.MetroLabel1.Location = New System.Drawing.Point(24, 573)
         Me.MetroLabel1.Name = "MetroLabel1"
         Me.MetroLabel1.Size = New System.Drawing.Size(100, 19)
         Me.MetroLabel1.TabIndex = 7
@@ -785,7 +779,7 @@ Partial Class Main
         Me.MetroLabel13.FontSize = MetroFramework.MetroLabelSize.Small
         Me.MetroLabel13.FontWeight = MetroFramework.MetroLabelWeight.Regular
         Me.MetroLabel13.ForeColor = System.Drawing.Color.Orange
-        Me.MetroLabel13.Location = New System.Drawing.Point(1035, 46)
+        Me.MetroLabel13.Location = New System.Drawing.Point(1035, 52)
         Me.MetroLabel13.Name = "MetroLabel13"
         Me.MetroLabel13.Size = New System.Drawing.Size(49, 15)
         Me.MetroLabel13.Style = MetroFramework.MetroColorStyle.Green
@@ -800,7 +794,7 @@ Partial Class Main
         Me.MetroLabel14.FontSize = MetroFramework.MetroLabelSize.Small
         Me.MetroLabel14.FontWeight = MetroFramework.MetroLabelWeight.Regular
         Me.MetroLabel14.ForeColor = System.Drawing.Color.Orange
-        Me.MetroLabel14.Location = New System.Drawing.Point(1141, 47)
+        Me.MetroLabel14.Location = New System.Drawing.Point(1141, 52)
         Me.MetroLabel14.Name = "MetroLabel14"
         Me.MetroLabel14.Size = New System.Drawing.Size(30, 15)
         Me.MetroLabel14.Style = MetroFramework.MetroColorStyle.Red
@@ -813,10 +807,10 @@ Partial Class Main
         '
         Me.MetroContextMenu1.AccessibleRole = System.Windows.Forms.AccessibleRole.Window
         Me.MetroContextMenu1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.MetroContextMenu1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DBQueriesToolStripMenuItem, Me.BarcodeGeneratorToolStripMenuItem, Me.DiscountExtractToolStripMenuItem, Me.RegistryExtractToolStripMenuItem, Me.ToolStripSeparator1, Me.ToolStripMenuItem1})
+        Me.MetroContextMenu1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DBQueriesToolStripMenuItem, Me.BarcodeGeneratorToolStripMenuItem, Me.DiscountExtractToolStripMenuItem, Me.HotfixesToolStripMenuItem, Me.FavLinksToolStripMenuItem, Me.RegistryExtractToolStripMenuItem, Me.ToolStripSeparator1, Me.ToolStripMenuItem1})
         Me.MetroContextMenu1.Name = "MetroContextMenu1"
         Me.MetroContextMenu1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.MetroContextMenu1.Size = New System.Drawing.Size(173, 120)
+        Me.MetroContextMenu1.Size = New System.Drawing.Size(173, 164)
         Me.MetroContextMenu1.Style = MetroFramework.MetroColorStyle.Orange
         Me.MetroContextMenu1.Theme = MetroFramework.MetroThemeStyle.Light
         Me.MetroContextMenu1.UseStyleColors = True
@@ -852,6 +846,18 @@ Partial Class Main
         Me.InputTableToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
         Me.InputTableToolStripMenuItem.Text = "Select table"
         '
+        'HotfixesToolStripMenuItem
+        '
+        Me.HotfixesToolStripMenuItem.Name = "HotfixesToolStripMenuItem"
+        Me.HotfixesToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
+        Me.HotfixesToolStripMenuItem.Text = "Hotfixes"
+        '
+        'FavLinksToolStripMenuItem
+        '
+        Me.FavLinksToolStripMenuItem.Name = "FavLinksToolStripMenuItem"
+        Me.FavLinksToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
+        Me.FavLinksToolStripMenuItem.Text = "Fav Links"
+        '
         'RegistryExtractToolStripMenuItem
         '
         Me.RegistryExtractToolStripMenuItem.Name = "RegistryExtractToolStripMenuItem"
@@ -872,7 +878,7 @@ Partial Class Main
         'MetroButton1
         '
         Me.MetroButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.MetroButton1.Location = New System.Drawing.Point(24, 11)
+        Me.MetroButton1.Location = New System.Drawing.Point(79, 17)
         Me.MetroButton1.Name = "MetroButton1"
         Me.MetroButton1.Size = New System.Drawing.Size(173, 36)
         Me.MetroButton1.Style = MetroFramework.MetroColorStyle.Orange
@@ -918,7 +924,7 @@ Partial Class Main
         'MetroLabel17
         '
         Me.MetroLabel17.AutoSize = True
-        Me.MetroLabel17.Location = New System.Drawing.Point(1011, 628)
+        Me.MetroLabel17.Location = New System.Drawing.Point(1011, 598)
         Me.MetroLabel17.Name = "MetroLabel17"
         Me.MetroLabel17.Size = New System.Drawing.Size(90, 19)
         Me.MetroLabel17.TabIndex = 19
@@ -963,7 +969,7 @@ Partial Class Main
         Me.MetroLabel18.FontSize = MetroFramework.MetroLabelSize.Small
         Me.MetroLabel18.FontWeight = MetroFramework.MetroLabelWeight.Regular
         Me.MetroLabel18.ForeColor = System.Drawing.Color.Orange
-        Me.MetroLabel18.Location = New System.Drawing.Point(1083, 47)
+        Me.MetroLabel18.Location = New System.Drawing.Point(1081, 52)
         Me.MetroLabel18.Name = "MetroLabel18"
         Me.MetroLabel18.Size = New System.Drawing.Size(56, 15)
         Me.MetroLabel18.Style = MetroFramework.MetroColorStyle.Yellow
@@ -984,20 +990,25 @@ Partial Class Main
         Me.folder.Text = "Folder"
         Me.folder.Visible = False
         '
-        'PictureBox6
+        'MetroLabel12
         '
-        Me.PictureBox6.Image = Global.MPOS.My.Resources.Resources.M_icon
-        Me.PictureBox6.Location = New System.Drawing.Point(203, 8)
-        Me.PictureBox6.Name = "PictureBox6"
-        Me.PictureBox6.Size = New System.Drawing.Size(60, 44)
-        Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox6.TabIndex = 35
-        Me.PictureBox6.TabStop = False
+        Me.MetroLabel12.AutoSize = True
+        Me.MetroLabel12.Location = New System.Drawing.Point(320, 93)
+        Me.MetroLabel12.Name = "MetroLabel12"
+        Me.MetroLabel12.Size = New System.Drawing.Size(89, 19)
+        Me.MetroLabel12.TabIndex = 33
+        Me.MetroLabel12.Text = "Database info"
+        '
+        'MetroToolTip1
+        '
+        Me.MetroToolTip1.Style = MetroFramework.MetroColorStyle.Blue
+        Me.MetroToolTip1.StyleManager = Nothing
+        Me.MetroToolTip1.Theme = MetroFramework.MetroThemeStyle.Light
         '
         'PictureBox8
         '
         Me.PictureBox8.Image = Global.MPOS.My.Resources.Resources.minimize
-        Me.PictureBox8.Location = New System.Drawing.Point(1084, 8)
+        Me.PictureBox8.Location = New System.Drawing.Point(1083, 12)
         Me.PictureBox8.Margin = New System.Windows.Forms.Padding(0)
         Me.PictureBox8.Name = "PictureBox8"
         Me.PictureBox8.Size = New System.Drawing.Size(48, 36)
@@ -1008,7 +1019,7 @@ Partial Class Main
         'PictureBox7
         '
         Me.PictureBox7.Image = Global.MPOS.My.Resources.Resources.quit
-        Me.PictureBox7.Location = New System.Drawing.Point(1132, 8)
+        Me.PictureBox7.Location = New System.Drawing.Point(1131, 12)
         Me.PictureBox7.Margin = New System.Windows.Forms.Padding(0)
         Me.PictureBox7.Name = "PictureBox7"
         Me.PictureBox7.Size = New System.Drawing.Size(48, 36)
@@ -1019,7 +1030,7 @@ Partial Class Main
         'PictureBox5
         '
         Me.PictureBox5.Image = Global.MPOS.My.Resources.Resources.settings
-        Me.PictureBox5.Location = New System.Drawing.Point(1036, 8)
+        Me.PictureBox5.Location = New System.Drawing.Point(1036, 12)
         Me.PictureBox5.Margin = New System.Windows.Forms.Padding(0)
         Me.PictureBox5.Name = "PictureBox5"
         Me.PictureBox5.Size = New System.Drawing.Size(48, 36)
@@ -1036,38 +1047,6 @@ Partial Class Main
         Me.metro.TabStop = False
         Me.metro.Visible = False
         '
-        'PictureBox4
-        '
-        Me.PictureBox4.Location = New System.Drawing.Point(429, 77)
-        Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(37, 25)
-        Me.PictureBox4.TabIndex = 18
-        Me.PictureBox4.TabStop = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Location = New System.Drawing.Point(429, 35)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(37, 35)
-        Me.PictureBox1.TabIndex = 17
-        Me.PictureBox1.TabStop = False
-        '
-        'PictureBox3
-        '
-        Me.PictureBox3.Location = New System.Drawing.Point(429, 76)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(37, 26)
-        Me.PictureBox3.TabIndex = 16
-        Me.PictureBox3.TabStop = False
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.Location = New System.Drawing.Point(429, 35)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(37, 35)
-        Me.PictureBox2.TabIndex = 15
-        Me.PictureBox2.TabStop = False
-        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1075,7 +1054,6 @@ Partial Class Main
         Me.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
         Me.ClientSize = New System.Drawing.Size(1200, 659)
         Me.ControlBox = False
-        Me.Controls.Add(Me.PictureBox6)
         Me.Controls.Add(Me.folder)
         Me.Controls.Add(Me.MetroLabel18)
         Me.Controls.Add(Me.PictureBox8)
@@ -1092,11 +1070,13 @@ Partial Class Main
         Me.Controls.Add(Me.tills)
         Me.Controls.Add(Me.status)
         Me.Controls.Add(Me.GroupBox1)
+        Me.DisplayHeader = False
         Me.DoubleBuffered = False
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Main"
+        Me.Padding = New System.Windows.Forms.Padding(20, 30, 20, 20)
         Me.Resizable = False
         Me.ShadowType = MetroFramework.Forms.MetroFormShadowType.AeroShadow
         Me.Style = MetroFramework.MetroColorStyle.Orange
@@ -1116,15 +1096,10 @@ Partial Class Main
         Me.ContextMenuStrip7.ResumeLayout(False)
         Me.ContextMenuStrip6.ResumeLayout(False)
         Me.folder.ResumeLayout(False)
-        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.metro, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1189,11 +1164,7 @@ Partial Class Main
     Friend WithEvents ccd As MetroFramework.Controls.MetroProgressSpinner
     Friend WithEvents tpb As MetroFramework.Controls.MetroProgressSpinner
     Friend WithEvents MetroButton2 As MetroFramework.Controls.MetroButton
-    Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
-    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents metro As System.Windows.Forms.PictureBox
-    Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents ContextMenuStrip1 As MetroFramework.Controls.MetroContextMenu
     Friend WithEvents OpenInSCCMToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MstscToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
@@ -1235,6 +1206,9 @@ Partial Class Main
     Friend WithEvents DiscountTableToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents InputTableToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents folder As System.Windows.Forms.GroupBox
-    Friend WithEvents PictureBox6 As System.Windows.Forms.PictureBox
+    Friend WithEvents HotfixesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents FavLinksToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MetroLabel12 As MetroFramework.Controls.MetroLabel
+    Friend WithEvents MetroToolTip1 As MetroFramework.Components.MetroToolTip
 
 End Class

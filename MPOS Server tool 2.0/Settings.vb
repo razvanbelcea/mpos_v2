@@ -25,6 +25,7 @@ Public Class Settings
         ToolTip1.SetToolTip(MetroToggle5, "Leave this unchecked to improve the till loading time!")
         'Button2.Enabled = False
         CheckSettings()
+        changeTheme()
     End Sub
 
     Private Sub MetroToggle1_CheckedChanged(sender As Object, e As EventArgs) Handles MetroToggle1.CheckedChanged
@@ -227,6 +228,16 @@ Public Class Settings
         Else
             Main.printeron = False
             Button2.Enabled = True
+        End If
+    End Sub
+
+    Private Sub changeTheme()
+        If MetroRadioButton1.Checked Then
+            Main.Theme = MetroFramework.MetroThemeStyle.Light
+            Me.Theme = MetroFramework.MetroThemeStyle.Light
+        ElseIf MetroRadioButton2.Checked Then
+            Main.Theme = MetroFramework.MetroThemeStyle.Dark
+            Me.Theme = MetroFramework.MetroThemeStyle.Dark
         End If
     End Sub
 End Class
