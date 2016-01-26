@@ -20,11 +20,12 @@ Public Class DBQueries
 
     Private Sub PictureBox6_MouseLeave(sender As Object, e As EventArgs) Handles PictureBox6.MouseLeave
         PictureBox6.Image = My.Resources.back
-        MetroLabel1.Visible = True
+        MetroLabel1.Visible = False
     End Sub
 
     Private Sub PictureBox6_Click(sender As Object, e As EventArgs) Handles PictureBox6.Click
         Me.Close()
+        Me.Dispose()
     End Sub
     '------------
 

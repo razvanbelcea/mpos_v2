@@ -206,6 +206,7 @@ Partial Class DBQueries
         Me.DataGridView2.Location = New System.Drawing.Point(170, 4)
         Me.DataGridView2.MultiSelect = False
         Me.DataGridView2.Name = "DataGridView2"
+        Me.DataGridView2.ReadOnly = True
         Me.DataGridView2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
@@ -228,6 +229,7 @@ Partial Class DBQueries
         Me.DataGridViewCheckBoxColumn1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.DataGridViewCheckBoxColumn1.HeaderText = ""
         Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
+        Me.DataGridViewCheckBoxColumn1.ReadOnly = True
         Me.DataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.DataGridViewCheckBoxColumn1.TrueValue = "1"
@@ -238,6 +240,7 @@ Partial Class DBQueries
         Me.DataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
         Me.DataGridViewTextBoxColumn1.HeaderText = "CUS id"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
         Me.DataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewTextBoxColumn1.Width = 5
         '
@@ -246,6 +249,7 @@ Partial Class DBQueries
         Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
         Me.DataGridViewTextBoxColumn4.HeaderText = "ST"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
         Me.DataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewTextBoxColumn4.Width = 5
         '
@@ -254,6 +258,7 @@ Partial Class DBQueries
         Me.CH.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
         Me.CH.HeaderText = "CH"
         Me.CH.Name = "CH"
+        Me.CH.ReadOnly = True
         Me.CH.Width = 5
         '
         'version
@@ -261,6 +266,7 @@ Partial Class DBQueries
         Me.version.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
         Me.version.HeaderText = "CV"
         Me.version.Name = "version"
+        Me.version.ReadOnly = True
         Me.version.Width = 5
         '
         'Salesline
@@ -268,6 +274,7 @@ Partial Class DBQueries
         Me.Salesline.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
         Me.Salesline.HeaderText = "SL"
         Me.Salesline.Name = "Salesline"
+        Me.Salesline.ReadOnly = True
         Me.Salesline.Width = 5
         '
         'country
@@ -275,6 +282,7 @@ Partial Class DBQueries
         Me.country.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
         Me.country.HeaderText = "CC"
         Me.country.Name = "country"
+        Me.country.ReadOnly = True
         Me.country.Width = 5
         '
         'Column9
@@ -282,6 +290,7 @@ Partial Class DBQueries
         Me.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
         Me.Column9.HeaderText = "BC"
         Me.Column9.Name = "Column9"
+        Me.Column9.ReadOnly = True
         Me.Column9.Width = 5
         '
         'DataGridViewTextBoxColumn2
@@ -289,6 +298,7 @@ Partial Class DBQueries
         Me.DataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
         Me.DataGridViewTextBoxColumn2.HeaderText = "Barcode"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
         Me.DataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.DataGridViewTextBoxColumn2.Width = 5
         '
@@ -297,6 +307,7 @@ Partial Class DBQueries
         Me.DataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
         Me.DataGridViewTextBoxColumn3.HeaderText = "Type"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
         Me.DataGridViewTextBoxColumn3.Width = 5
         '
         'DataGridViewTextBoxColumn5
@@ -304,6 +315,7 @@ Partial Class DBQueries
         Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
         Me.DataGridViewTextBoxColumn5.HeaderText = "CC"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
         Me.DataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewTextBoxColumn5.Width = 5
         '
@@ -312,6 +324,7 @@ Partial Class DBQueries
         Me.DataGridViewImageColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
         Me.DataGridViewImageColumn2.HeaderText = "Scan"
         Me.DataGridViewImageColumn2.Name = "DataGridViewImageColumn2"
+        Me.DataGridViewImageColumn2.ReadOnly = True
         Me.DataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewImageColumn2.Width = 5
         '
@@ -425,6 +438,7 @@ Partial Class DBQueries
         Me.DataGridView4.Location = New System.Drawing.Point(176, 3)
         Me.DataGridView4.MultiSelect = False
         Me.DataGridView4.Name = "DataGridView4"
+        Me.DataGridView4.ReadOnly = True
         Me.DataGridView4.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
@@ -568,6 +582,7 @@ Partial Class DBQueries
         Me.DataGridView5.Location = New System.Drawing.Point(169, 3)
         Me.DataGridView5.MultiSelect = False
         Me.DataGridView5.Name = "DataGridView5"
+        Me.DataGridView5.ReadOnly = True
         Me.DataGridView5.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
@@ -592,6 +607,7 @@ Partial Class DBQueries
         Me.Column11.HeaderText = "Scan"
         Me.Column11.Image = Global.MPOS.My.Resources.Resources.att1
         Me.Column11.Name = "Column11"
+        Me.Column11.ReadOnly = True
         Me.Column11.Width = 35
         '
         'Column8
@@ -599,6 +615,7 @@ Partial Class DBQueries
         Me.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.Column8.HeaderText = "Next Barcode"
         Me.Column8.Name = "Column8"
+        Me.Column8.ReadOnly = True
         Me.Column8.Width = 79
         '
         'Button8
@@ -740,6 +757,7 @@ Partial Class DBQueries
         Me.DataGridView1.Location = New System.Drawing.Point(170, 4)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
@@ -762,6 +780,7 @@ Partial Class DBQueries
         Me.Column6.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Column6.HeaderText = ""
         Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
         Me.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.Column6.TrueValue = "1"
@@ -772,6 +791,7 @@ Partial Class DBQueries
         Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.Column1.HeaderText = "ART id"
         Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
         Me.Column1.Width = 62
         '
         'Column5
@@ -779,6 +799,7 @@ Partial Class DBQueries
         Me.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.Column5.HeaderText = "Barcode"
         Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
         Me.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.Column5.Width = 72
         '
@@ -787,6 +808,7 @@ Partial Class DBQueries
         Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.Column2.HeaderText = "Type"
         Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
         Me.Column2.Width = 53
         '
         'Column3
@@ -794,6 +816,7 @@ Partial Class DBQueries
         Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.Column3.HeaderText = "Store"
         Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
         Me.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.Column3.Width = 57
         '
@@ -802,6 +825,7 @@ Partial Class DBQueries
         Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.Column4.HeaderText = "Country"
         Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
         Me.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.Column4.Width = 71
         '
@@ -810,6 +834,7 @@ Partial Class DBQueries
         Me.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.Column7.HeaderText = "Scan"
         Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
         Me.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.Column7.Width = 35
         '
@@ -923,6 +948,7 @@ Partial Class DBQueries
         Me.DataGridView3.Location = New System.Drawing.Point(180, 4)
         Me.DataGridView3.MultiSelect = False
         Me.DataGridView3.Name = "DataGridView3"
+        Me.DataGridView3.ReadOnly = True
         Me.DataGridView3.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))

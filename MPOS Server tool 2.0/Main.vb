@@ -980,7 +980,7 @@ Public Class Main
                     If Environment.Is64BitOperatingSystem = False Then
                         Process.Start("C:\Program Files\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(5).Text)
                     Else                   
-                        Process.Start("C:\Program Files(x86)\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(5).Text)
+                        Process.Start("C:\Program Files (x86)\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(5).Text)
                     End If
                     Exit For
                 End If
@@ -1001,7 +1001,7 @@ Public Class Main
                     If Environment.Is64BitOperatingSystem = False Then
                         Process.Start("C:\Program Files\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(5).Text)
                     Else
-                        Process.Start("C:\Program Files(x86)\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(5).Text)
+                        Process.Start("C:\Program Files (x86)\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(5).Text)
                     End If
                     Exit For
                 End If

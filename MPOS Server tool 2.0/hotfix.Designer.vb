@@ -42,7 +42,6 @@ Partial Class hotfix
         '
         Me.MetroComboBox1.FormattingEnabled = True
         Me.MetroComboBox1.ItemHeight = 23
-        Me.MetroComboBox1.Items.AddRange(New Object() {"MPOS 15.0.041", "MPOS 15.0.050", "MPOS 15.0.060", "MPOS 15.0.070", "MPOS 15.0.090", "MPOS 15.2.100", "MPOS 15.2.290"})
         Me.MetroComboBox1.Location = New System.Drawing.Point(25, 255)
         Me.MetroComboBox1.Name = "MetroComboBox1"
         Me.MetroComboBox1.Size = New System.Drawing.Size(156, 29)
@@ -51,6 +50,8 @@ Partial Class hotfix
         '
         'MetroGrid1
         '
+        Me.MetroGrid1.AllowUserToAddRows = False
+        Me.MetroGrid1.AllowUserToDeleteRows = False
         Me.MetroGrid1.AllowUserToResizeRows = False
         Me.MetroGrid1.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.MetroGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None
@@ -79,6 +80,7 @@ Partial Class hotfix
         Me.MetroGrid1.GridColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.MetroGrid1.Location = New System.Drawing.Point(187, 63)
         Me.MetroGrid1.Name = "MetroGrid1"
+        Me.MetroGrid1.ReadOnly = True
         Me.MetroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
@@ -142,7 +144,7 @@ Partial Class hotfix
         Me.MetroLabel1.Location = New System.Drawing.Point(698, 45)
         Me.MetroLabel1.Name = "MetroLabel1"
         Me.MetroLabel1.Size = New System.Drawing.Size(32, 15)
-        Me.MetroLabel1.Style = MetroFramework.MetroColorStyle.Teal
+        Me.MetroLabel1.Style = MetroFramework.MetroColorStyle.Blue
         Me.MetroLabel1.TabIndex = 23
         Me.MetroLabel1.Text = "Back"
         Me.MetroLabel1.UseStyleColors = True
@@ -152,6 +154,7 @@ Partial Class hotfix
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle
         Me.ClientSize = New System.Drawing.Size(746, 509)
         Me.ControlBox = False
         Me.Controls.Add(Me.PictureBox6)
@@ -159,6 +162,7 @@ Partial Class hotfix
         Me.Controls.Add(Me.MetroGrid1)
         Me.Controls.Add(Me.MetroComboBox1)
         Me.Name = "hotfix"
+        Me.Resizable = False
         Me.ShowInTaskbar = False
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.Text = "Hotfix details"
