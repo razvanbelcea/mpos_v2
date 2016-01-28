@@ -7,6 +7,7 @@ Public Class barcodeG
     Public tempdh As String = "temp\CHN"
 
     Private Sub Form8_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim x = 1
         loadcombo()
         LinkLabel1.Hide()
         Label13.Hide()
