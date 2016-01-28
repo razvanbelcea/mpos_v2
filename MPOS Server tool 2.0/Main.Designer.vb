@@ -23,10 +23,10 @@ Partial Class Main
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ListViewGroup1 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("QA", System.Windows.Forms.HorizontalAlignment.Center)
-        Dim ListViewGroup2 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("UAT", System.Windows.Forms.HorizontalAlignment.Center)
-        Dim ListViewGroup3 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("PROD", System.Windows.Forms.HorizontalAlignment.Center)
-        Dim ListViewGroup4 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("DEV", System.Windows.Forms.HorizontalAlignment.Center)
+        Dim ListViewGroup5 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("QA", System.Windows.Forms.HorizontalAlignment.Center)
+        Dim ListViewGroup6 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("UAT", System.Windows.Forms.HorizontalAlignment.Center)
+        Dim ListViewGroup7 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("PROD", System.Windows.Forms.HorizontalAlignment.Center)
+        Dim ListViewGroup8 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("DEV", System.Windows.Forms.HorizontalAlignment.Center)
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.MetroRadioButton4 = New MetroFramework.Controls.MetroRadioButton()
@@ -689,19 +689,19 @@ Partial Class Main
         Me.serverlist.Font = New System.Drawing.Font("Arial Narrow", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.serverlist.FullRowSelect = True
         Me.serverlist.GridLines = True
-        ListViewGroup1.Header = "QA"
-        ListViewGroup1.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
-        ListViewGroup1.Name = "ListViewGroup1"
-        ListViewGroup2.Header = "UAT"
-        ListViewGroup2.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
-        ListViewGroup2.Name = "ListViewGroup2"
-        ListViewGroup3.Header = "PROD"
-        ListViewGroup3.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
-        ListViewGroup3.Name = "ListViewGroup3"
-        ListViewGroup4.Header = "DEV"
-        ListViewGroup4.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
-        ListViewGroup4.Name = "ListViewGroup4"
-        Me.serverlist.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {ListViewGroup1, ListViewGroup2, ListViewGroup3, ListViewGroup4})
+        ListViewGroup5.Header = "QA"
+        ListViewGroup5.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
+        ListViewGroup5.Name = "ListViewGroup1"
+        ListViewGroup6.Header = "UAT"
+        ListViewGroup6.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
+        ListViewGroup6.Name = "ListViewGroup2"
+        ListViewGroup7.Header = "PROD"
+        ListViewGroup7.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
+        ListViewGroup7.Name = "ListViewGroup3"
+        ListViewGroup8.Header = "DEV"
+        ListViewGroup8.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
+        ListViewGroup8.Name = "ListViewGroup4"
+        Me.serverlist.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {ListViewGroup5, ListViewGroup6, ListViewGroup7, ListViewGroup8})
         Me.serverlist.HideSelection = False
         Me.serverlist.LabelWrap = False
         Me.serverlist.Location = New System.Drawing.Point(24, 116)
@@ -997,6 +997,8 @@ Partial Class Main
         Me.MetroToolTip1.Style = MetroFramework.MetroColorStyle.Blue
         Me.MetroToolTip1.StyleManager = Nothing
         Me.MetroToolTip1.Theme = MetroFramework.MetroThemeStyle.Light
+        Me.MetroToolTip1.UseAnimation = False
+        Me.MetroToolTip1.UseFading = False
         '
         'PictureBox8
         '

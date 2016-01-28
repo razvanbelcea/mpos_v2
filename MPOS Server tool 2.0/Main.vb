@@ -1125,6 +1125,9 @@ Public Class Main
                 If My.Computer.FileSystem.FileExists(Application.StartupPath + "/MPOS Server Tool V" & smallArr(0) + ".exe") Then
                     My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/MPOS Server Tool V" & smallArr(0) + ".exe")
                     My.Computer.FileSystem.DeleteFile("oldversion.txt")
+                ElseIf My.Computer.FileSystem.FileExists(Application.StartupPath + "/MPOS Server tool 2.0.exe") Then
+                    My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/MPOS Server tool 2.0.exe")
+                    My.Computer.FileSystem.DeleteFile("oldversion.txt")
                 Else
                     MsgBox("bad bad bad")
                 End If
