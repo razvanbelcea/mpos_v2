@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Main
     Inherits MetroFramework.Forms.MetroForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,13 +20,13 @@ Partial Class Main
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ListViewGroup5 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("QA", System.Windows.Forms.HorizontalAlignment.Center)
-        Dim ListViewGroup6 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("UAT", System.Windows.Forms.HorizontalAlignment.Center)
-        Dim ListViewGroup7 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("PROD", System.Windows.Forms.HorizontalAlignment.Center)
-        Dim ListViewGroup8 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("DEV", System.Windows.Forms.HorizontalAlignment.Center)
+        Dim ListViewGroup1 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("QA", System.Windows.Forms.HorizontalAlignment.Center)
+        Dim ListViewGroup2 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("UAT", System.Windows.Forms.HorizontalAlignment.Center)
+        Dim ListViewGroup3 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("PROD", System.Windows.Forms.HorizontalAlignment.Center)
+        Dim ListViewGroup4 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("DEV", System.Windows.Forms.HorizontalAlignment.Center)
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.MetroRadioButton4 = New MetroFramework.Controls.MetroRadioButton()
@@ -34,6 +34,7 @@ Partial Class Main
         Me.MetroRadioButton2 = New MetroFramework.Controls.MetroRadioButton()
         Me.MetroRadioButton1 = New MetroFramework.Controls.MetroRadioButton()
         Me.status = New System.Windows.Forms.GroupBox()
+        Me.MetroLabel12 = New MetroFramework.Controls.MetroLabel()
         Me.MetroLabel8 = New System.Windows.Forms.LinkLabel()
         Me.MetroLabel7 = New System.Windows.Forms.LinkLabel()
         Me.MetroButton2 = New MetroFramework.Controls.MetroButton()
@@ -78,6 +79,7 @@ Partial Class Main
         Me.MatrixToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RefreshDBToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.metro = New System.Windows.Forms.PictureBox()
         Me.LinkLabel1 = New MetroFramework.Controls.MetroLink()
         Me.folderlist = New System.Windows.Forms.ListView()
         Me.operators = New System.Windows.Forms.GroupBox()
@@ -127,17 +129,16 @@ Partial Class Main
         Me.RefreshToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MetroLabel18 = New MetroFramework.Controls.MetroLabel()
         Me.folder = New System.Windows.Forms.GroupBox()
-        Me.MetroLabel12 = New MetroFramework.Controls.MetroLabel()
         Me.MetroToolTip1 = New MetroFramework.Components.MetroToolTip()
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
-        Me.metro = New System.Windows.Forms.PictureBox()
         Me.GroupBox1.SuspendLayout()
         Me.status.SuspendLayout()
         Me.ContextMenuStrip3.SuspendLayout()
         Me.tills.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
+        CType(Me.metro, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.operators.SuspendLayout()
         Me.ContextMenuStrip2.SuspendLayout()
         Me.ContextMenuStrip4.SuspendLayout()
@@ -149,7 +150,6 @@ Partial Class Main
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.metro, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -240,6 +240,15 @@ Partial Class Main
         Me.status.TabStop = False
         Me.status.Text = "Server/Service Status"
         Me.status.Visible = False
+        '
+        'MetroLabel12
+        '
+        Me.MetroLabel12.AutoSize = True
+        Me.MetroLabel12.Location = New System.Drawing.Point(320, 93)
+        Me.MetroLabel12.Name = "MetroLabel12"
+        Me.MetroLabel12.Size = New System.Drawing.Size(89, 19)
+        Me.MetroLabel12.TabIndex = 33
+        Me.MetroLabel12.Text = "Database info"
         '
         'MetroLabel8
         '
@@ -584,6 +593,15 @@ Partial Class Main
         Me.RefreshDBToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.RefreshDBToolStripMenuItem.Text = "Refresh DB"
         '
+        'metro
+        '
+        Me.metro.Location = New System.Drawing.Point(391, 57)
+        Me.metro.Name = "metro"
+        Me.metro.Size = New System.Drawing.Size(178, 50)
+        Me.metro.TabIndex = 15
+        Me.metro.TabStop = False
+        Me.metro.Visible = False
+        '
         'LinkLabel1
         '
         Me.LinkLabel1.Location = New System.Drawing.Point(11, 252)
@@ -689,19 +707,19 @@ Partial Class Main
         Me.serverlist.Font = New System.Drawing.Font("Arial Narrow", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.serverlist.FullRowSelect = True
         Me.serverlist.GridLines = True
-        ListViewGroup5.Header = "QA"
-        ListViewGroup5.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
-        ListViewGroup5.Name = "ListViewGroup1"
-        ListViewGroup6.Header = "UAT"
-        ListViewGroup6.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
-        ListViewGroup6.Name = "ListViewGroup2"
-        ListViewGroup7.Header = "PROD"
-        ListViewGroup7.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
-        ListViewGroup7.Name = "ListViewGroup3"
-        ListViewGroup8.Header = "DEV"
-        ListViewGroup8.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
-        ListViewGroup8.Name = "ListViewGroup4"
-        Me.serverlist.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {ListViewGroup5, ListViewGroup6, ListViewGroup7, ListViewGroup8})
+        ListViewGroup1.Header = "QA"
+        ListViewGroup1.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
+        ListViewGroup1.Name = "ListViewGroup1"
+        ListViewGroup2.Header = "UAT"
+        ListViewGroup2.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
+        ListViewGroup2.Name = "ListViewGroup2"
+        ListViewGroup3.Header = "PROD"
+        ListViewGroup3.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
+        ListViewGroup3.Name = "ListViewGroup3"
+        ListViewGroup4.Header = "DEV"
+        ListViewGroup4.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
+        ListViewGroup4.Name = "ListViewGroup4"
+        Me.serverlist.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {ListViewGroup1, ListViewGroup2, ListViewGroup3, ListViewGroup4})
         Me.serverlist.HideSelection = False
         Me.serverlist.LabelWrap = False
         Me.serverlist.Location = New System.Drawing.Point(24, 116)
@@ -740,6 +758,7 @@ Partial Class Main
         '
         'ContextMenuStrip4
         '
+        Me.ContextMenuStrip4.AllowMerge = False
         Me.ContextMenuStrip4.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
         Me.ContextMenuStrip4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.ContextMenuStrip4.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenInSCCMToolStripMenuItem, Me.MstscToolStripMenuItem, Me.GetServerLogsToolStripMenuItem, Me.RefreshStatusToolStripMenuItem})
@@ -983,15 +1002,6 @@ Partial Class Main
         Me.folder.Text = "Folder"
         Me.folder.Visible = False
         '
-        'MetroLabel12
-        '
-        Me.MetroLabel12.AutoSize = True
-        Me.MetroLabel12.Location = New System.Drawing.Point(320, 93)
-        Me.MetroLabel12.Name = "MetroLabel12"
-        Me.MetroLabel12.Size = New System.Drawing.Size(89, 19)
-        Me.MetroLabel12.TabIndex = 33
-        Me.MetroLabel12.Text = "Database info"
-        '
         'MetroToolTip1
         '
         Me.MetroToolTip1.Style = MetroFramework.MetroColorStyle.Blue
@@ -1032,15 +1042,6 @@ Partial Class Main
         Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.PictureBox5.TabIndex = 20
         Me.PictureBox5.TabStop = False
-        '
-        'metro
-        '
-        Me.metro.Location = New System.Drawing.Point(391, 57)
-        Me.metro.Name = "metro"
-        Me.metro.Size = New System.Drawing.Size(178, 50)
-        Me.metro.TabIndex = 15
-        Me.metro.TabStop = False
-        Me.metro.Visible = False
         '
         'Main
         '
@@ -1083,6 +1084,7 @@ Partial Class Main
         Me.ContextMenuStrip3.ResumeLayout(False)
         Me.tills.ResumeLayout(False)
         Me.ContextMenuStrip1.ResumeLayout(False)
+        CType(Me.metro, System.ComponentModel.ISupportInitialize).EndInit()
         Me.operators.ResumeLayout(False)
         Me.ContextMenuStrip2.ResumeLayout(False)
         Me.ContextMenuStrip4.ResumeLayout(False)
@@ -1094,7 +1096,6 @@ Partial Class Main
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.metro, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1204,5 +1205,4 @@ Partial Class Main
     Friend WithEvents FavLinksToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MetroLabel12 As MetroFramework.Controls.MetroLabel
     Friend WithEvents MetroToolTip1 As MetroFramework.Components.MetroToolTip
-
 End Class

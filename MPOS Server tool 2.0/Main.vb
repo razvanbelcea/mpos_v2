@@ -17,14 +17,6 @@ Imports MetroFramework
 
 Public Class Main
 
-    Protected Overrides Sub OnPaintBackground(ByVal e As PaintEventArgs)
-        MyBase.OnPaintBackground(e)
-
-        Dim rect As New Rectangle(0, 0, Me.ClientSize.Width - 1, Me.ClientSize.Height - 1)
-
-        e.Graphics.DrawRectangle(Pens.Red, rect)
-    End Sub
-
     Private Sub MetroButton1_Click(sender As Object, e As EventArgs) Handles MetroButton1.Click
         MetroContextMenu1.Show(MetroButton1, 0, MetroButton1.Height)
     End Sub
@@ -979,7 +971,7 @@ Public Class Main
                 If item.Selected = True Then
                     If Environment.Is64BitOperatingSystem = False Then
                         Process.Start("C:\Program Files\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(5).Text)
-                    Else                   
+                    Else
                         Process.Start("C:\Program Files (x86)\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(5).Text)
                     End If
                     Exit For
@@ -1225,8 +1217,8 @@ Public Class Main
                 If My.Computer.FileSystem.FileExists(ttr) Then
                     My.Computer.FileSystem.DeleteFile(ttr)
                 End If
-                My.Computer.Network.DownloadFile(link, _
-                                                ttr, _
+                My.Computer.Network.DownloadFile(link,
+                                                ttr,
                                                 "", "", False, 500, True)
             Catch ex As Exception
                 miniTool.balon(ex.Message + " Error Downloading update.")
@@ -1300,7 +1292,7 @@ Public Class Main
         tilllist.Sort()
         ' Set the ListViewItemSorter property to a new ListViewItemComparer
         ' object.
-        tilllist.ListViewItemSorter = New ListViewItemComparer(e.Column, _
+        tilllist.ListViewItemSorter = New ListViewItemComparer(e.Column,
                                                          tilllist.Sorting)
     End Sub
 
@@ -1323,8 +1315,8 @@ Public Class Main
         Public Function Compare(x As Object, y As Object) As Integer _
                             Implements System.Collections.IComparer.Compare
             Dim returnVal As Integer = -1
-            returnVal = [String].Compare(CType(x,  _
-                            ListViewItem).SubItems(col).Text, _
+            returnVal = [String].Compare(CType(x,
+                            ListViewItem).SubItems(col).Text,
                             CType(y, ListViewItem).SubItems(col).Text)
             ' Determine whether the sort order is descending.
             If order = System.Windows.Forms.SortOrder.Descending Then

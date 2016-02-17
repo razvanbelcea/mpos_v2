@@ -10,6 +10,7 @@
     Partial Friend Class MyApplication
 
         Private Sub MyApplication_Startup(sender As Object, e As ApplicationServices.StartupEventArgs) Handles Me.Startup
+
             Try
                 Dim WbReq As New Net.WebClient
                 WbReq.Proxy.Credentials = System.Net.CredentialCache.DefaultCredentials
@@ -18,7 +19,7 @@
                 Dim request As System.Net.HttpWebRequest = System.Net.HttpWebRequest.Create("http://my-collaboration.metrogroup-networking.com/personal/r4_razvan_belcea/Shared%20Documents/Update.txt")
                 request.Credentials = System.Net.CredentialCache.DefaultCredentials
                 Dim response As System.Net.HttpWebResponse = request.GetResponse()
-                Dim sr As System.IO.StreamReader = New System.IO.StreamReader(response.GetResponseStream())
+                Dim sr As IO.StreamReader = New System.IO.StreamReader(response.GetResponseStream())
                 Dim exenewestversion As String = sr.ReadToEnd()
                 Dim execurrentversion As String = System.Windows.Forms.Application.ProductVersion
                 If execurrentversion < exenewestversion Then

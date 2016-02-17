@@ -26,13 +26,6 @@ Partial Class DBQueries
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -40,6 +33,13 @@ Partial Class DBQueries
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.MetroTabControl1 = New MetroFramework.Controls.MetroTabControl()
         Me.MetroTabPage1 = New MetroFramework.Controls.MetroTabPage()
         Me.DataGridView2 = New MetroFramework.Controls.MetroGrid()
@@ -59,25 +59,6 @@ Partial Class DBQueries
         Me.Button5 = New MetroFramework.Controls.MetroButton()
         Me.Button3 = New MetroFramework.Controls.MetroButton()
         Me.cuslist = New System.Windows.Forms.ListView()
-        Me.MetroTabPage4 = New MetroFramework.Controls.MetroTabPage()
-        Me.DataGridView4 = New MetroFramework.Controls.MetroGrid()
-        Me.Button6 = New MetroFramework.Controls.MetroButton()
-        Me.RadioButton8 = New MetroFramework.Controls.MetroRadioButton()
-        Me.RadioButton7 = New MetroFramework.Controls.MetroRadioButton()
-        Me.RadioButton9 = New MetroFramework.Controls.MetroRadioButton()
-        Me.RadioButton11 = New MetroFramework.Controls.MetroRadioButton()
-        Me.DateTimePicker2 = New MetroFramework.Controls.MetroDateTime()
-        Me.MetroTabPage5 = New MetroFramework.Controls.MetroTabPage()
-        Me.DataGridView5 = New MetroFramework.Controls.MetroGrid()
-        Me.Column11 = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewLinkColumn()
-        Me.Button8 = New MetroFramework.Controls.MetroButton()
-        Me.Button7 = New MetroFramework.Controls.MetroButton()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.ComboBox1 = New MetroFramework.Controls.MetroComboBox()
-        Me.RadioButton3 = New MetroFramework.Controls.MetroRadioButton()
-        Me.RadioButton1 = New MetroFramework.Controls.MetroRadioButton()
-        Me.RadioButton2 = New MetroFramework.Controls.MetroRadioButton()
         Me.MetroTabPage2 = New MetroFramework.Controls.MetroTabPage()
         Me.DataGridView1 = New MetroFramework.Controls.MetroGrid()
         Me.Column6 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
@@ -99,6 +80,25 @@ Partial Class DBQueries
         Me.RadioButton4 = New MetroFramework.Controls.MetroRadioButton()
         Me.RadioButton10 = New MetroFramework.Controls.MetroRadioButton()
         Me.DateTimePicker1 = New MetroFramework.Controls.MetroDateTime()
+        Me.MetroTabPage4 = New MetroFramework.Controls.MetroTabPage()
+        Me.DataGridView4 = New MetroFramework.Controls.MetroGrid()
+        Me.Button6 = New MetroFramework.Controls.MetroButton()
+        Me.RadioButton8 = New MetroFramework.Controls.MetroRadioButton()
+        Me.RadioButton7 = New MetroFramework.Controls.MetroRadioButton()
+        Me.RadioButton9 = New MetroFramework.Controls.MetroRadioButton()
+        Me.RadioButton11 = New MetroFramework.Controls.MetroRadioButton()
+        Me.DateTimePicker2 = New MetroFramework.Controls.MetroDateTime()
+        Me.MetroTabPage5 = New MetroFramework.Controls.MetroTabPage()
+        Me.DataGridView5 = New MetroFramework.Controls.MetroGrid()
+        Me.Column11 = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewLinkColumn()
+        Me.Button8 = New MetroFramework.Controls.MetroButton()
+        Me.Button7 = New MetroFramework.Controls.MetroButton()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ComboBox1 = New MetroFramework.Controls.MetroComboBox()
+        Me.RadioButton3 = New MetroFramework.Controls.MetroRadioButton()
+        Me.RadioButton1 = New MetroFramework.Controls.MetroRadioButton()
+        Me.RadioButton2 = New MetroFramework.Controls.MetroRadioButton()
         Me.MetroTabPage6 = New MetroFramework.Controls.MetroTabPage()
         Me.MetroLabel1 = New MetroFramework.Controls.MetroLabel()
         Me.ContextMenuStrip1 = New MetroFramework.Controls.MetroContextMenu(Me.components)
@@ -116,15 +116,15 @@ Partial Class DBQueries
         Me.MetroTabControl1.SuspendLayout()
         Me.MetroTabPage1.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MetroTabPage2.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MetroTabPage3.SuspendLayout()
+        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MetroTabPage4.SuspendLayout()
         CType(Me.DataGridView4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MetroTabPage5.SuspendLayout()
         CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
-        Me.MetroTabPage2.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.MetroTabPage3.SuspendLayout()
-        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Form8BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -141,7 +141,7 @@ Partial Class DBQueries
         Me.MetroTabControl1.FontSize = MetroFramework.MetroTabControlSize.Tall
         Me.MetroTabControl1.Location = New System.Drawing.Point(24, 64)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 0
+        Me.MetroTabControl1.SelectedIndex = 1
         Me.MetroTabControl1.Size = New System.Drawing.Size(896, 387)
         Me.MetroTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Blue
@@ -379,6 +379,342 @@ Partial Class DBQueries
         Me.cuslist.UseCompatibleStateImageBehavior = False
         Me.cuslist.View = System.Windows.Forms.View.SmallIcon
         '
+        'MetroTabPage2
+        '
+        Me.MetroTabPage2.Controls.Add(Me.DataGridView1)
+        Me.MetroTabPage2.Controls.Add(Me.MetroLabel3)
+        Me.MetroTabPage2.Controls.Add(Me.Button2)
+        Me.MetroTabPage2.Controls.Add(Me.Button1)
+        Me.MetroTabPage2.Controls.Add(Me.artlist)
+        Me.MetroTabPage2.HorizontalScrollbarBarColor = True
+        Me.MetroTabPage2.HorizontalScrollbarHighlightOnWheel = False
+        Me.MetroTabPage2.HorizontalScrollbarSize = 10
+        Me.MetroTabPage2.Location = New System.Drawing.Point(4, 44)
+        Me.MetroTabPage2.Name = "MetroTabPage2"
+        Me.MetroTabPage2.Size = New System.Drawing.Size(888, 339)
+        Me.MetroTabPage2.TabIndex = 1
+        Me.MetroTabPage2.Text = "Articles"
+        Me.MetroTabPage2.VerticalScrollbarBarColor = True
+        Me.MetroTabPage2.VerticalScrollbarHighlightOnWheel = False
+        Me.MetroTabPage2.VerticalScrollbarSize = 10
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.AllowUserToResizeColumns = False
+        Me.DataGridView1.AllowUserToResizeRows = False
+        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCellsExceptHeader
+        Me.DataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.DataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.DataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText
+        Me.DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column6, Me.Column1, Me.Column5, Me.Column2, Me.Column3, Me.Column4, Me.Column7})
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle5
+        Me.DataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
+        Me.DataGridView1.EnableHeadersVisualStyles = False
+        Me.DataGridView1.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.DataGridView1.GridColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DataGridView1.Location = New System.Drawing.Point(170, 4)
+        Me.DataGridView1.MultiSelect = False
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        Me.DataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridView1.ShowRowErrors = False
+        Me.DataGridView1.Size = New System.Drawing.Size(718, 321)
+        Me.DataGridView1.TabIndex = 8
+        '
+        'Column6
+        '
+        Me.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column6.FalseValue = "0"
+        Me.Column6.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Column6.HeaderText = ""
+        Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
+        Me.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Column6.TrueValue = "1"
+        Me.Column6.Width = 17
+        '
+        'Column1
+        '
+        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column1.HeaderText = "ART id"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 62
+        '
+        'Column5
+        '
+        Me.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column5.HeaderText = "Barcode"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        Me.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Column5.Width = 72
+        '
+        'Column2
+        '
+        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column2.HeaderText = "Type"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        Me.Column2.Width = 53
+        '
+        'Column3
+        '
+        Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column3.HeaderText = "Store"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        Me.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Column3.Width = 57
+        '
+        'Column4
+        '
+        Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column4.HeaderText = "Country"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        Me.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Column4.Width = 71
+        '
+        'Column7
+        '
+        Me.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column7.HeaderText = "Scan"
+        Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
+        Me.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Column7.Width = 35
+        '
+        'MetroLabel3
+        '
+        Me.MetroLabel3.AutoSize = True
+        Me.MetroLabel3.FontSize = MetroFramework.MetroLabelSize.Small
+        Me.MetroLabel3.Location = New System.Drawing.Point(2, 249)
+        Me.MetroLabel3.Name = "MetroLabel3"
+        Me.MetroLabel3.Size = New System.Drawing.Size(121, 15)
+        Me.MetroLabel3.TabIndex = 7
+        Me.MetroLabel3.Text = "*Only EAN13 encoding"
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(0, 302)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(163, 23)
+        Me.Button2.Style = MetroFramework.MetroColorStyle.Blue
+        Me.Button2.TabIndex = 6
+        Me.Button2.Text = "Create PDF"
+        Me.Button2.UseSelectable = True
+        Me.Button2.UseStyleColors = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(0, 273)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(163, 23)
+        Me.Button1.Style = MetroFramework.MetroColorStyle.Blue
+        Me.Button1.TabIndex = 5
+        Me.Button1.Text = "Generate Articles"
+        Me.Button1.UseSelectable = True
+        Me.Button1.UseStyleColors = True
+        '
+        'artlist
+        '
+        Me.artlist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.artlist.CheckBoxes = True
+        Me.artlist.Font = New System.Drawing.Font("Segoe UI Light", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.artlist.FullRowSelect = True
+        Me.artlist.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
+        Me.artlist.LabelWrap = False
+        Me.artlist.Location = New System.Drawing.Point(0, 3)
+        Me.artlist.MultiSelect = False
+        Me.artlist.Name = "artlist"
+        Me.artlist.ShowGroups = False
+        Me.artlist.ShowItemToolTips = True
+        Me.artlist.Size = New System.Drawing.Size(163, 243)
+        Me.artlist.TabIndex = 3
+        Me.artlist.TileSize = New System.Drawing.Size(2, 2)
+        Me.artlist.UseCompatibleStateImageBehavior = False
+        Me.artlist.View = System.Windows.Forms.View.SmallIcon
+        '
+        'MetroTabPage3
+        '
+        Me.MetroTabPage3.Controls.Add(Me.DataGridView3)
+        Me.MetroTabPage3.Controls.Add(Me.Button4)
+        Me.MetroTabPage3.Controls.Add(Me.RadioButton5)
+        Me.MetroTabPage3.Controls.Add(Me.RadioButton6)
+        Me.MetroTabPage3.Controls.Add(Me.RadioButton4)
+        Me.MetroTabPage3.Controls.Add(Me.RadioButton10)
+        Me.MetroTabPage3.Controls.Add(Me.DateTimePicker1)
+        Me.MetroTabPage3.HorizontalScrollbarBarColor = True
+        Me.MetroTabPage3.HorizontalScrollbarHighlightOnWheel = False
+        Me.MetroTabPage3.HorizontalScrollbarSize = 10
+        Me.MetroTabPage3.Location = New System.Drawing.Point(4, 44)
+        Me.MetroTabPage3.Name = "MetroTabPage3"
+        Me.MetroTabPage3.Size = New System.Drawing.Size(888, 339)
+        Me.MetroTabPage3.TabIndex = 2
+        Me.MetroTabPage3.Text = "COD"
+        Me.MetroTabPage3.VerticalScrollbarBarColor = True
+        Me.MetroTabPage3.VerticalScrollbarHighlightOnWheel = False
+        Me.MetroTabPage3.VerticalScrollbarSize = 10
+        '
+        'DataGridView3
+        '
+        Me.DataGridView3.AllowUserToAddRows = False
+        Me.DataGridView3.AllowUserToDeleteRows = False
+        Me.DataGridView3.AllowUserToResizeColumns = False
+        Me.DataGridView3.AllowUserToResizeRows = False
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.LightGreen
+        Me.DataGridView3.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
+        Me.DataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
+        Me.DataGridView3.BackgroundColor = System.Drawing.Color.White
+        Me.DataGridView3.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.DataGridView3.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.DataGridView3.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText
+        Me.DataGridView3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView3.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView3.DefaultCellStyle = DataGridViewCellStyle9
+        Me.DataGridView3.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
+        Me.DataGridView3.EnableHeadersVisualStyles = False
+        Me.DataGridView3.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.DataGridView3.GridColor = System.Drawing.Color.White
+        Me.DataGridView3.Location = New System.Drawing.Point(180, 4)
+        Me.DataGridView3.MultiSelect = False
+        Me.DataGridView3.Name = "DataGridView3"
+        Me.DataGridView3.ReadOnly = True
+        Me.DataGridView3.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView3.RowHeadersDefaultCellStyle = DataGridViewCellStyle10
+        Me.DataGridView3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        Me.DataGridView3.RowTemplate.Height = 25
+        Me.DataGridView3.RowTemplate.ReadOnly = True
+        Me.DataGridView3.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridView3.ShowRowErrors = False
+        Me.DataGridView3.Size = New System.Drawing.Size(708, 325)
+        Me.DataGridView3.TabIndex = 11
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(0, 306)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(170, 23)
+        Me.Button4.Style = MetroFramework.MetroColorStyle.Blue
+        Me.Button4.TabIndex = 7
+        Me.Button4.Text = "Search COD"
+        Me.Button4.UseSelectable = True
+        Me.Button4.UseStyleColors = True
+        '
+        'RadioButton5
+        '
+        Me.RadioButton5.AutoSize = True
+        Me.RadioButton5.Location = New System.Drawing.Point(0, 103)
+        Me.RadioButton5.Name = "RadioButton5"
+        Me.RadioButton5.Size = New System.Drawing.Size(79, 15)
+        Me.RadioButton5.Style = MetroFramework.MetroColorStyle.Blue
+        Me.RadioButton5.TabIndex = 6
+        Me.RadioButton5.Text = "All records"
+        Me.RadioButton5.UseSelectable = True
+        Me.RadioButton5.UseStyleColors = True
+        '
+        'RadioButton6
+        '
+        Me.RadioButton6.AutoSize = True
+        Me.RadioButton6.Location = New System.Drawing.Point(0, 82)
+        Me.RadioButton6.Name = "RadioButton6"
+        Me.RadioButton6.Size = New System.Drawing.Size(59, 15)
+        Me.RadioButton6.Style = MetroFramework.MetroColorStyle.Blue
+        Me.RadioButton6.TabIndex = 5
+        Me.RadioButton6.Text = "Top 10"
+        Me.RadioButton6.UseSelectable = True
+        Me.RadioButton6.UseStyleColors = True
+        '
+        'RadioButton4
+        '
+        Me.RadioButton4.AutoSize = True
+        Me.RadioButton4.Location = New System.Drawing.Point(0, 61)
+        Me.RadioButton4.Name = "RadioButton4"
+        Me.RadioButton4.Size = New System.Drawing.Size(56, 15)
+        Me.RadioButton4.Style = MetroFramework.MetroColorStyle.Blue
+        Me.RadioButton4.TabIndex = 4
+        Me.RadioButton4.Text = "Today"
+        Me.RadioButton4.UseSelectable = True
+        Me.RadioButton4.UseStyleColors = True
+        '
+        'RadioButton10
+        '
+        Me.RadioButton10.AutoSize = True
+        Me.RadioButton10.Location = New System.Drawing.Point(0, 40)
+        Me.RadioButton10.Name = "RadioButton10"
+        Me.RadioButton10.Size = New System.Drawing.Size(76, 15)
+        Me.RadioButton10.Style = MetroFramework.MetroColorStyle.Blue
+        Me.RadioButton10.TabIndex = 3
+        Me.RadioButton10.Text = "Select day"
+        Me.RadioButton10.UseSelectable = True
+        Me.RadioButton10.UseStyleColors = True
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.FontSize = MetroFramework.MetroDateTimeSize.Small
+        Me.DateTimePicker1.Location = New System.Drawing.Point(0, 4)
+        Me.DateTimePicker1.MinimumSize = New System.Drawing.Size(4, 25)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(170, 25)
+        Me.DateTimePicker1.Style = MetroFramework.MetroColorStyle.Blue
+        Me.DateTimePicker1.TabIndex = 2
+        Me.DateTimePicker1.UseStyleColors = True
+        '
         'MetroTabPage4
         '
         Me.MetroTabPage4.Controls.Add(Me.DataGridView4)
@@ -520,7 +856,7 @@ Partial Class DBQueries
         '
         Me.DateTimePicker2.FontSize = MetroFramework.MetroDateTimeSize.Small
         Me.DateTimePicker2.Location = New System.Drawing.Point(0, 3)
-        Me.DateTimePicker2.MinimumSize = New System.Drawing.Size(0, 25)
+        Me.DateTimePicker2.MinimumSize = New System.Drawing.Size(4, 25)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(170, 25)
         Me.DateTimePicker2.Style = MetroFramework.MetroColorStyle.Blue
@@ -701,342 +1037,6 @@ Partial Class DBQueries
         Me.RadioButton2.UseSelectable = True
         Me.RadioButton2.UseStyleColors = True
         '
-        'MetroTabPage2
-        '
-        Me.MetroTabPage2.Controls.Add(Me.DataGridView1)
-        Me.MetroTabPage2.Controls.Add(Me.MetroLabel3)
-        Me.MetroTabPage2.Controls.Add(Me.Button2)
-        Me.MetroTabPage2.Controls.Add(Me.Button1)
-        Me.MetroTabPage2.Controls.Add(Me.artlist)
-        Me.MetroTabPage2.HorizontalScrollbarBarColor = True
-        Me.MetroTabPage2.HorizontalScrollbarHighlightOnWheel = False
-        Me.MetroTabPage2.HorizontalScrollbarSize = 10
-        Me.MetroTabPage2.Location = New System.Drawing.Point(4, 44)
-        Me.MetroTabPage2.Name = "MetroTabPage2"
-        Me.MetroTabPage2.Size = New System.Drawing.Size(888, 339)
-        Me.MetroTabPage2.TabIndex = 1
-        Me.MetroTabPage2.Text = "Articles"
-        Me.MetroTabPage2.VerticalScrollbarBarColor = True
-        Me.MetroTabPage2.VerticalScrollbarHighlightOnWheel = False
-        Me.MetroTabPage2.VerticalScrollbarSize = 10
-        '
-        'DataGridView1
-        '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.AllowUserToResizeColumns = False
-        Me.DataGridView1.AllowUserToResizeRows = False
-        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCellsExceptHeader
-        Me.DataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.DataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText
-        Me.DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column6, Me.Column1, Me.Column5, Me.Column2, Me.Column3, Me.Column4, Me.Column7})
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle5
-        Me.DataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
-        Me.DataGridView1.EnableHeadersVisualStyles = False
-        Me.DataGridView1.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.DataGridView1.GridColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DataGridView1.Location = New System.Drawing.Point(170, 4)
-        Me.DataGridView1.MultiSelect = False
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
-        Me.DataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.ShowRowErrors = False
-        Me.DataGridView1.Size = New System.Drawing.Size(718, 321)
-        Me.DataGridView1.TabIndex = 8
-        '
-        'Column6
-        '
-        Me.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column6.FalseValue = "0"
-        Me.Column6.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Column6.HeaderText = ""
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
-        Me.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Column6.TrueValue = "1"
-        Me.Column6.Width = 17
-        '
-        'Column1
-        '
-        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column1.HeaderText = "ART id"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 62
-        '
-        'Column5
-        '
-        Me.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column5.HeaderText = "Barcode"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        Me.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Column5.Width = 72
-        '
-        'Column2
-        '
-        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column2.HeaderText = "Type"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        Me.Column2.Width = 53
-        '
-        'Column3
-        '
-        Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column3.HeaderText = "Store"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        Me.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Column3.Width = 57
-        '
-        'Column4
-        '
-        Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column4.HeaderText = "Country"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        Me.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Column4.Width = 71
-        '
-        'Column7
-        '
-        Me.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column7.HeaderText = "Scan"
-        Me.Column7.Name = "Column7"
-        Me.Column7.ReadOnly = True
-        Me.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Column7.Width = 35
-        '
-        'MetroLabel3
-        '
-        Me.MetroLabel3.AutoSize = True
-        Me.MetroLabel3.FontSize = MetroFramework.MetroLabelSize.Small
-        Me.MetroLabel3.Location = New System.Drawing.Point(2, 249)
-        Me.MetroLabel3.Name = "MetroLabel3"
-        Me.MetroLabel3.Size = New System.Drawing.Size(121, 15)
-        Me.MetroLabel3.TabIndex = 7
-        Me.MetroLabel3.Text = "*Only EAN13 encoding"
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(0, 302)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(163, 23)
-        Me.Button2.Style = MetroFramework.MetroColorStyle.Blue
-        Me.Button2.TabIndex = 6
-        Me.Button2.Text = "Create PDF"
-        Me.Button2.UseSelectable = True
-        Me.Button2.UseStyleColors = True
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(0, 273)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(163, 23)
-        Me.Button1.Style = MetroFramework.MetroColorStyle.Blue
-        Me.Button1.TabIndex = 5
-        Me.Button1.Text = "Generate Customers"
-        Me.Button1.UseSelectable = True
-        Me.Button1.UseStyleColors = True
-        '
-        'artlist
-        '
-        Me.artlist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.artlist.CheckBoxes = True
-        Me.artlist.Font = New System.Drawing.Font("Segoe UI Light", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.artlist.FullRowSelect = True
-        Me.artlist.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
-        Me.artlist.LabelWrap = False
-        Me.artlist.Location = New System.Drawing.Point(0, 3)
-        Me.artlist.MultiSelect = False
-        Me.artlist.Name = "artlist"
-        Me.artlist.ShowGroups = False
-        Me.artlist.ShowItemToolTips = True
-        Me.artlist.Size = New System.Drawing.Size(163, 243)
-        Me.artlist.TabIndex = 3
-        Me.artlist.TileSize = New System.Drawing.Size(2, 2)
-        Me.artlist.UseCompatibleStateImageBehavior = False
-        Me.artlist.View = System.Windows.Forms.View.SmallIcon
-        '
-        'MetroTabPage3
-        '
-        Me.MetroTabPage3.Controls.Add(Me.DataGridView3)
-        Me.MetroTabPage3.Controls.Add(Me.Button4)
-        Me.MetroTabPage3.Controls.Add(Me.RadioButton5)
-        Me.MetroTabPage3.Controls.Add(Me.RadioButton6)
-        Me.MetroTabPage3.Controls.Add(Me.RadioButton4)
-        Me.MetroTabPage3.Controls.Add(Me.RadioButton10)
-        Me.MetroTabPage3.Controls.Add(Me.DateTimePicker1)
-        Me.MetroTabPage3.HorizontalScrollbarBarColor = True
-        Me.MetroTabPage3.HorizontalScrollbarHighlightOnWheel = False
-        Me.MetroTabPage3.HorizontalScrollbarSize = 10
-        Me.MetroTabPage3.Location = New System.Drawing.Point(4, 44)
-        Me.MetroTabPage3.Name = "MetroTabPage3"
-        Me.MetroTabPage3.Size = New System.Drawing.Size(888, 339)
-        Me.MetroTabPage3.TabIndex = 2
-        Me.MetroTabPage3.Text = "COD"
-        Me.MetroTabPage3.VerticalScrollbarBarColor = True
-        Me.MetroTabPage3.VerticalScrollbarHighlightOnWheel = False
-        Me.MetroTabPage3.VerticalScrollbarSize = 10
-        '
-        'DataGridView3
-        '
-        Me.DataGridView3.AllowUserToAddRows = False
-        Me.DataGridView3.AllowUserToDeleteRows = False
-        Me.DataGridView3.AllowUserToResizeColumns = False
-        Me.DataGridView3.AllowUserToResizeRows = False
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.LightGreen
-        Me.DataGridView3.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
-        Me.DataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
-        Me.DataGridView3.BackgroundColor = System.Drawing.Color.White
-        Me.DataGridView3.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridView3.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.DataGridView3.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText
-        Me.DataGridView3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView3.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
-        Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView3.DefaultCellStyle = DataGridViewCellStyle9
-        Me.DataGridView3.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
-        Me.DataGridView3.EnableHeadersVisualStyles = False
-        Me.DataGridView3.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.DataGridView3.GridColor = System.Drawing.Color.White
-        Me.DataGridView3.Location = New System.Drawing.Point(180, 4)
-        Me.DataGridView3.MultiSelect = False
-        Me.DataGridView3.Name = "DataGridView3"
-        Me.DataGridView3.ReadOnly = True
-        Me.DataGridView3.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView3.RowHeadersDefaultCellStyle = DataGridViewCellStyle10
-        Me.DataGridView3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        Me.DataGridView3.RowTemplate.Height = 25
-        Me.DataGridView3.RowTemplate.ReadOnly = True
-        Me.DataGridView3.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView3.ShowRowErrors = False
-        Me.DataGridView3.Size = New System.Drawing.Size(708, 325)
-        Me.DataGridView3.TabIndex = 11
-        '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(0, 306)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(170, 23)
-        Me.Button4.Style = MetroFramework.MetroColorStyle.Blue
-        Me.Button4.TabIndex = 7
-        Me.Button4.Text = "Search COD"
-        Me.Button4.UseSelectable = True
-        Me.Button4.UseStyleColors = True
-        '
-        'RadioButton5
-        '
-        Me.RadioButton5.AutoSize = True
-        Me.RadioButton5.Location = New System.Drawing.Point(0, 103)
-        Me.RadioButton5.Name = "RadioButton5"
-        Me.RadioButton5.Size = New System.Drawing.Size(79, 15)
-        Me.RadioButton5.Style = MetroFramework.MetroColorStyle.Blue
-        Me.RadioButton5.TabIndex = 6
-        Me.RadioButton5.Text = "All records"
-        Me.RadioButton5.UseSelectable = True
-        Me.RadioButton5.UseStyleColors = True
-        '
-        'RadioButton6
-        '
-        Me.RadioButton6.AutoSize = True
-        Me.RadioButton6.Location = New System.Drawing.Point(0, 82)
-        Me.RadioButton6.Name = "RadioButton6"
-        Me.RadioButton6.Size = New System.Drawing.Size(59, 15)
-        Me.RadioButton6.Style = MetroFramework.MetroColorStyle.Blue
-        Me.RadioButton6.TabIndex = 5
-        Me.RadioButton6.Text = "Top 10"
-        Me.RadioButton6.UseSelectable = True
-        Me.RadioButton6.UseStyleColors = True
-        '
-        'RadioButton4
-        '
-        Me.RadioButton4.AutoSize = True
-        Me.RadioButton4.Location = New System.Drawing.Point(0, 61)
-        Me.RadioButton4.Name = "RadioButton4"
-        Me.RadioButton4.Size = New System.Drawing.Size(56, 15)
-        Me.RadioButton4.Style = MetroFramework.MetroColorStyle.Blue
-        Me.RadioButton4.TabIndex = 4
-        Me.RadioButton4.Text = "Today"
-        Me.RadioButton4.UseSelectable = True
-        Me.RadioButton4.UseStyleColors = True
-        '
-        'RadioButton10
-        '
-        Me.RadioButton10.AutoSize = True
-        Me.RadioButton10.Location = New System.Drawing.Point(0, 40)
-        Me.RadioButton10.Name = "RadioButton10"
-        Me.RadioButton10.Size = New System.Drawing.Size(76, 15)
-        Me.RadioButton10.Style = MetroFramework.MetroColorStyle.Blue
-        Me.RadioButton10.TabIndex = 3
-        Me.RadioButton10.Text = "Select day"
-        Me.RadioButton10.UseSelectable = True
-        Me.RadioButton10.UseStyleColors = True
-        '
-        'DateTimePicker1
-        '
-        Me.DateTimePicker1.FontSize = MetroFramework.MetroDateTimeSize.Small
-        Me.DateTimePicker1.Location = New System.Drawing.Point(0, 4)
-        Me.DateTimePicker1.MinimumSize = New System.Drawing.Size(0, 25)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(170, 25)
-        Me.DateTimePicker1.Style = MetroFramework.MetroColorStyle.Blue
-        Me.DateTimePicker1.TabIndex = 2
-        Me.DateTimePicker1.UseStyleColors = True
-        '
         'MetroTabPage6
         '
         Me.MetroTabPage6.HorizontalScrollbarBarColor = True
@@ -1158,6 +1158,12 @@ Partial Class DBQueries
         Me.MetroTabPage1.ResumeLayout(False)
         Me.MetroTabPage1.PerformLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MetroTabPage2.ResumeLayout(False)
+        Me.MetroTabPage2.PerformLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MetroTabPage3.ResumeLayout(False)
+        Me.MetroTabPage3.PerformLayout()
+        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MetroTabPage4.ResumeLayout(False)
         Me.MetroTabPage4.PerformLayout()
         CType(Me.DataGridView4, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1165,12 +1171,6 @@ Partial Class DBQueries
         CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        Me.MetroTabPage2.ResumeLayout(False)
-        Me.MetroTabPage2.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.MetroTabPage3.ResumeLayout(False)
-        Me.MetroTabPage3.PerformLayout()
-        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStrip1.ResumeLayout(False)
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Form8BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
