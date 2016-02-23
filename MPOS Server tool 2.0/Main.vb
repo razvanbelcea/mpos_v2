@@ -120,6 +120,7 @@ Public Class Main
 
         'taskserver()
         cleanshortc("desktop")
+        checkforupdate()
     End Sub
     '-----------------------------------------------------------------------------------------------------------------------------------------END form load/unload
     '-----------------------------------------------------------------------------------------------------------------------------------------BEGIN read xml files
@@ -137,8 +138,6 @@ Public Class Main
         Settings.ShowDialog()
         Settings.Dispose()
     End Sub
-
-
 
     Private Sub PictureBox7_MouseMove(sender As Object, e As MouseEventArgs) Handles PictureBox7.MouseMove
         PictureBox7.Image = My.Resources.quit_b
@@ -195,7 +194,6 @@ Public Class Main
                                 readfolder.Read()
                                 folderlist.Items(i).SubItems.Add("\\" + MetroLabel8.Text + readfolder.Value)
                                 i = i + 1
-
                         End Select
                 End Select
             Loop
@@ -258,7 +256,6 @@ Public Class Main
         ' Disable automatic sorting to enable manual sorting. 
         AddHandler tilllist.ColumnClick, AddressOf Me.tilllist_ColumnClick
         loaddatabase()
-        ' taskservice()
         loadcounts()
     End Sub
     Private Sub statusserver()
@@ -409,7 +406,7 @@ Public Class Main
             dat1.Close()
             con1.Close()
         Catch e As Exception
-            Logger.WriteToErrorLog(e.Message, e.StackTrace, "error")
+            'Logger.WriteToErrorLog(e.Message, e.StackTrace, "error")
         End Try
     End Sub
     Private Sub loadtills(tokentills As CancellationToken)
@@ -426,8 +423,7 @@ Public Class Main
             cmd.CommandText = "select szWorkstationID,lWorkstationNmbr, szWorkstationGroupID,lOperatorID from workstation left join operator on lLoggedOnWorkstationNmbr=lWorkstationNmbr where bisthickpos<>0"
             con.Open()
             dat = cmd.ExecuteReader()
-            tpb.Visible = True
-            ' tlb.Visible = True
+            ' tpb.Visible = True === causes application to freeze/ fix needed 
             While dat.Read()
                 arr = {"-", "-", "-", "-", "-", "-", "-"}
                 If tokentills.IsCancellationRequested Then
@@ -451,7 +447,7 @@ Public Class Main
                         arr(5) = "OFF"
                     End If
                 Catch e As Exception
-                    Logger.WriteToErrorLog(e.Message, e.StackTrace, "error")
+                    ' Logger.WriteToErrorLog(e.Message, e.StackTrace, "error")
                 End Try
                 If printeron = True Then
                     Try
@@ -500,10 +496,9 @@ Public Class Main
             tilllist.HeaderStyle = ColumnHeaderStyle.Clickable
         Catch e As Exception
             'Form7.balon(e.Message)
-            Logger.WriteToErrorLog(e.Message, e.StackTrace, "error")
+            ' Logger.WriteToErrorLog(e.Message, e.StackTrace, "error")
         End Try
-        tpb.Visible = False
-        '   tlb.Visible = False
+        ' tpb.Visible = False === causes application to freeze/ fix needed 
     End Sub
     Private Sub loadcounts()
         Dim readcounts As XmlTextReader = New XmlTextReader(cfl)
@@ -1103,7 +1098,7 @@ Public Class Main
         MetroLabel17.Text = "Version : " & cversion.ToString
         'Label1.Text = "MPOS Server Tool V" + cversion.ToString
     End Sub
-    Public Sub DeleteOldVersion()
+    Shared Sub DeleteOldVersion()
         Dim smallArr As New ArrayList()
         Dim path As String = "oldversion.txt"
         Dim execurrentversion As String = Application.ProductVersion
@@ -1121,7 +1116,7 @@ Public Class Main
                     My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/MPOS Server tool 2.0.exe")
                     My.Computer.FileSystem.DeleteFile("oldversion.txt")
                 Else
-                    MsgBox("bad bad bad")
+                    'MsgBox("bad bad bad")
                 End If
             End If
         End If
@@ -1388,5 +1383,28 @@ Public Class Main
 
     Private Sub HotfixesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HotfixesToolStripMenuItem.Click
         hotfix.ShowDialog()
+    End Sub
+
+    Private Sub checkforupdate()
+        Try
+            Dim WbReq As New Net.WebClient
+            WbReq.Proxy.Credentials = System.Net.CredentialCache.DefaultCredentials
+            WbReq.Dispose()
+
+            Dim request As System.Net.HttpWebRequest = System.Net.HttpWebRequest.Create("http://my-collaboration.metrogroup-networking.com/personal/r4_razvan_belcea/Shared%20Documents/Update.txt")
+            request.Credentials = System.Net.CredentialCache.DefaultCredentials
+            Dim response As System.Net.HttpWebResponse = request.GetResponse()
+            Dim sr As IO.StreamReader = New System.IO.StreamReader(response.GetResponseStream())
+            Dim exenewestversion As String = sr.ReadToEnd()
+            Dim execurrentversion As String = System.Windows.Forms.Application.ProductVersion
+            If execurrentversion < exenewestversion Then
+                updateapp.app()
+            Else
+                ActualVersion()
+            End If
+            sr.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 End Class

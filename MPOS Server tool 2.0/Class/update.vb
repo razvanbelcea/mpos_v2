@@ -2,7 +2,7 @@
 Imports System.IO
 
 
-Public Class update
+Public Class updateapp
     Shared Sub app()
         Dim WbReq As New Net.WebClient
         WbReq.Proxy.Credentials = System.Net.CredentialCache.DefaultCredentials
@@ -23,17 +23,22 @@ Public Class update
                 My.Computer.Network.DownloadFile(source, Application.StartupPath + "/MPOS Server Tool V" & newestversion + ".exe", credentials, True, 60000I, False)
                 If My.Computer.FileSystem.FileExists(Application.StartupPath + "/MPOS Server Tool V" & newestversion + ".exe") Then
                     Dim path As String = "oldversion.txt"
-
                     If Not File.Exists(path) Then
                         Using sw As StreamWriter = File.CreateText(path)
                             sw.WriteLine(currentversion)
                         End Using
                     End If
-
+                    MetroMessageBox.Show(MPOS.Main, "By pressing OK current session of MPOS Tool will be closed and the new version will be automatically started. This will delete the old version.", "Update Successful!!!", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Main.x = True
                     MPOS.Main.Close()
                     System.Threading.Thread.Sleep(3000)
-                    Process.Start(Application.StartupPath + "/MPOS Server Tool V" & newestversion + ".exe")
+                    ' Main.DeleteOldVersion()
+                    Try
+                        Process.Start(Application.StartupPath + "\MPOS Server Tool V" & newestversion + ".exe")
+                    Catch ex As Exception
+                        MsgBox(ex.Message)
+                    End Try
+
                 End If
             Catch ex As Exception
                 miniTool.balon(ex.Message + " Error Downloading update.")

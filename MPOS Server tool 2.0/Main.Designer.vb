@@ -460,6 +460,7 @@ Partial Class Main
         '
         'tpb
         '
+        Me.tpb.Enabled = False
         Me.tpb.Location = New System.Drawing.Point(464, 193)
         Me.tpb.Maximum = 100
         Me.tpb.Name = "tpb"
