@@ -69,6 +69,7 @@ Public Class hotfix
                     End If
                 End If
             Next
+            releases.Sort()
             MetroComboBox1.DataSource = releases
         Catch el As Exception
         End Try

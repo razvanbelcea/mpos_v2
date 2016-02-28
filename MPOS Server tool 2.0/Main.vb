@@ -301,7 +301,7 @@ Public Class Main
                     conex1 = New SqlConnection("Data Source=" & item.SubItems(2).Text & ";Database=TPCentralDB;" & cred & ";")
                     cmd = conex1.CreateCommand
                     cmd1 = conex1.CreateCommand
-                    cmd.CommandText = "select top 1 szDatabaseVersionID from MGIDatabaseVersionUpdate order by szDatabaseInstallDate desc"
+                    cmd.CommandText = "select top 1 szDatabaseVersionID from MGIDatabaseVersionUpdate order by szDatabaseVersionID desc"
                     cmd1.CommandText = "select * from (select top 1 szPackageName from EUSoftwareVersion where szResult = 'Success' and szState = 'Finished' and szPackageName like 'Hotfix%' and szWorkstationID in (select top 10 szworkstationid from workstation order by lWorkstationNmbr desc)order by szTimestamp desc) a union select 'Hotfix_00'where (select COUNT(*) from EUSoftwareVersion where szResult = 'Success' and szState = 'Finished' and szPackageName like 'Hotfix%' and szWorkstationID in (select top 10 szworkstationid from workstation order by lWorkstationNmbr desc))=0"
                     conex1.Open()
                     If conex1.State = ConnectionState.Open Then

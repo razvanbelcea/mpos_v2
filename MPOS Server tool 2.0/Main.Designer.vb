@@ -605,7 +605,7 @@ Partial Class Main
         '
         'LinkLabel1
         '
-        Me.LinkLabel1.Location = New System.Drawing.Point(11, 252)
+        Me.LinkLabel1.Location = New System.Drawing.Point(11, 250)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(143, 19)
         Me.LinkLabel1.TabIndex = 1
