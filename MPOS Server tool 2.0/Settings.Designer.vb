@@ -37,11 +37,11 @@ Partial Class Settings
         Me.MetroLabel2 = New MetroFramework.Controls.MetroLabel()
         Me.MetroToggle1 = New MetroFramework.Controls.MetroToggle()
         Me.MetroTabPage2 = New MetroFramework.Controls.MetroTabPage()
+        Me.MetroRadioButton2 = New MetroFramework.Controls.MetroRadioButton()
+        Me.MetroRadioButton1 = New MetroFramework.Controls.MetroRadioButton()
+        Me.MetroLabel7 = New MetroFramework.Controls.MetroLabel()
         Me.ToolTip1 = New MetroFramework.Components.MetroToolTip()
         Me.PictureBox6 = New System.Windows.Forms.PictureBox()
-        Me.MetroLabel7 = New MetroFramework.Controls.MetroLabel()
-        Me.MetroRadioButton1 = New MetroFramework.Controls.MetroRadioButton()
-        Me.MetroRadioButton2 = New MetroFramework.Controls.MetroRadioButton()
         Me.MetroTabControl1.SuspendLayout()
         Me.MetroTabPage1.SuspendLayout()
         Me.MetroTabPage2.SuspendLayout()
@@ -69,7 +69,7 @@ Partial Class Settings
         Me.MetroTabControl1.Controls.Add(Me.MetroTabPage2)
         Me.MetroTabControl1.Location = New System.Drawing.Point(24, 61)
         Me.MetroTabControl1.Name = "MetroTabControl1"
-        Me.MetroTabControl1.SelectedIndex = 1
+        Me.MetroTabControl1.SelectedIndex = 0
         Me.MetroTabControl1.Size = New System.Drawing.Size(464, 228)
         Me.MetroTabControl1.Style = MetroFramework.MetroColorStyle.Green
         Me.MetroTabControl1.TabIndex = 19
@@ -163,7 +163,7 @@ Partial Class Settings
         Me.MetroLabel6.AutoSize = True
         Me.MetroLabel6.Location = New System.Drawing.Point(3, 86)
         Me.MetroLabel6.Name = "MetroLabel6"
-        Me.MetroLabel6.Size = New System.Drawing.Size(99, 19)
+        Me.MetroLabel6.Size = New System.Drawing.Size(100, 19)
         Me.MetroLabel6.TabIndex = 7
         Me.MetroLabel6.Text = "Service module"
         '
@@ -181,7 +181,7 @@ Partial Class Settings
         Me.MetroLabel4.AutoSize = True
         Me.MetroLabel4.Location = New System.Drawing.Point(240, 24)
         Me.MetroLabel4.Name = "MetroLabel4"
-        Me.MetroLabel4.Size = New System.Drawing.Size(90, 19)
+        Me.MetroLabel4.Size = New System.Drawing.Size(91, 19)
         Me.MetroLabel4.TabIndex = 5
         Me.MetroLabel4.Text = "Run at startup"
         '
@@ -232,6 +232,35 @@ Partial Class Settings
         Me.MetroTabPage2.VerticalScrollbarHighlightOnWheel = False
         Me.MetroTabPage2.VerticalScrollbarSize = 10
         '
+        'MetroRadioButton2
+        '
+        Me.MetroRadioButton2.AutoSize = True
+        Me.MetroRadioButton2.Location = New System.Drawing.Point(4, 96)
+        Me.MetroRadioButton2.Name = "MetroRadioButton2"
+        Me.MetroRadioButton2.Size = New System.Drawing.Size(84, 15)
+        Me.MetroRadioButton2.TabIndex = 4
+        Me.MetroRadioButton2.Text = "Dark theme"
+        Me.MetroRadioButton2.UseSelectable = True
+        '
+        'MetroRadioButton1
+        '
+        Me.MetroRadioButton1.AutoSize = True
+        Me.MetroRadioButton1.Location = New System.Drawing.Point(4, 61)
+        Me.MetroRadioButton1.Name = "MetroRadioButton1"
+        Me.MetroRadioButton1.Size = New System.Drawing.Size(87, 15)
+        Me.MetroRadioButton1.TabIndex = 3
+        Me.MetroRadioButton1.Text = "Light theme"
+        Me.MetroRadioButton1.UseSelectable = True
+        '
+        'MetroLabel7
+        '
+        Me.MetroLabel7.AutoSize = True
+        Me.MetroLabel7.Location = New System.Drawing.Point(0, 13)
+        Me.MetroLabel7.Name = "MetroLabel7"
+        Me.MetroLabel7.Size = New System.Drawing.Size(111, 19)
+        Me.MetroLabel7.TabIndex = 2
+        Me.MetroLabel7.Text = "Available themes:"
+        '
         'ToolTip1
         '
         Me.ToolTip1.Style = MetroFramework.MetroColorStyle.Blue
@@ -247,35 +276,6 @@ Partial Class Settings
         Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.PictureBox6.TabIndex = 22
         Me.PictureBox6.TabStop = False
-        '
-        'MetroLabel7
-        '
-        Me.MetroLabel7.AutoSize = True
-        Me.MetroLabel7.Location = New System.Drawing.Point(0, 13)
-        Me.MetroLabel7.Name = "MetroLabel7"
-        Me.MetroLabel7.Size = New System.Drawing.Size(111, 19)
-        Me.MetroLabel7.TabIndex = 2
-        Me.MetroLabel7.Text = "Available themes:"
-        '
-        'MetroRadioButton1
-        '
-        Me.MetroRadioButton1.AutoSize = True
-        Me.MetroRadioButton1.Location = New System.Drawing.Point(4, 61)
-        Me.MetroRadioButton1.Name = "MetroRadioButton1"
-        Me.MetroRadioButton1.Size = New System.Drawing.Size(87, 15)
-        Me.MetroRadioButton1.TabIndex = 3
-        Me.MetroRadioButton1.Text = "Light theme"
-        Me.MetroRadioButton1.UseSelectable = True
-        '
-        'MetroRadioButton2
-        '
-        Me.MetroRadioButton2.AutoSize = True
-        Me.MetroRadioButton2.Location = New System.Drawing.Point(4, 96)
-        Me.MetroRadioButton2.Name = "MetroRadioButton2"
-        Me.MetroRadioButton2.Size = New System.Drawing.Size(84, 15)
-        Me.MetroRadioButton2.TabIndex = 4
-        Me.MetroRadioButton2.Text = "Dark theme"
-        Me.MetroRadioButton2.UseSelectable = True
         '
         'Settings
         '

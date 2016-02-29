@@ -88,14 +88,6 @@ Public Class Main
                 miniTool.balon("XML update not needed!")
             ElseIf MyVal <> "client.ro.r4.madm.net" Then
                 miniTool.balon("XML update not needed!")
-                'XmlVersion("sqllist")
-                'XmlVersion("folder")
-                'XmlVersion("service")
-                'If w = True Then
-                '    Form7.balon("New XML files downloaded!")
-                'Else
-                '    Form7.balon("XML files are up to date!")
-                'End If
             Else
                 XmlVersion("sqllist")
                 XmlVersion("server")
@@ -103,13 +95,11 @@ Public Class Main
                 XmlVersion("service")
                 If w = True Then
                     miniTool.balon("New XML files downloaded!!!")
-                Else
-                    miniTool.balon("XML files are up to date!!")
                 End If
             End If
             MyReg.Close()
         Catch a As Exception
-            MsgBox(a.Message)
+            Logger.WriteToErrorLog(a.Message, a.StackTrace, "PrimaryDNS missing! ")
         End Try
 
         Me.Show()
@@ -199,7 +189,7 @@ Public Class Main
             Loop
             readfolder.Dispose()
         Catch e As Exception
-            miniTool.balon(e.Message)
+            miniTool.balon("ReadFolderList: " + e.Message)
             Logger.WriteToErrorLog(e.Message, e.StackTrace, "error")
         End Try
     End Sub
@@ -228,35 +218,63 @@ Public Class Main
             Loop
             readservice.Dispose()
         Catch e As Exception
-            miniTool.balon(e.Message)
+            miniTool.balon("ReadServiceList: " + e.Message)
             Logger.WriteToErrorLog(e.Message, e.StackTrace, "error")
         End Try
     End Sub
     '-----------------------------------------------------------------------------------------------------------------------------------------END read xml files
     '-----------------------------------------------------------------------------------------------------------------------------------------BEGIN server selection
     Private Sub serverlist_SelectedIndexChanged(sender As Object, e As EventArgs) Handles serverlist.SelectedIndexChanged
-        servicelist.Items.Clear()
-        'Button1.Visible = True
-        'Button6.Visible = True
-        MetroButton2.Visible = True
-        'Button7.Visible = True
-        viewserver()
-        statusserver()
-        For Each item As ListViewItem In serverlist.SelectedItems
-            If item.Group.Name = "ListViewGroup1" Then
-                readfolderlist("QA")
-            ElseIf item.Group.Name = "ListViewGroup4" Then
-                readfolderlist("DEV")
-            Else
-                readfolderlist("UAT")
+        Dim countryIP As String = ""
+        For Each country As ListViewItem In serverlist.Items
+            If country.Selected = True Then
+                Dim countryName As String = country.SubItems(0).Text
+                Try
+                    Dim doc As XmlDocument = New XmlDocument()
+                    doc.Load(svl)
+                    If country.Group.Name = "ListViewGroup1" Then
+                        Dim saveCountry As String = doc.SelectSingleNode("List/QA/Server[Country='" + countryName + "']/Ip").InnerText
+                        countryIP = saveCountry.ToString()
+                    ElseIf country.Group.Name = "ListViewGroup4" Then
+                        Dim saveCountry As String = doc.SelectSingleNode("List/DEV/Server[Country='" + countryName + "']/Ip").InnerText
+                        countryIP = saveCountry.ToString()
+                    ElseIf country.Group.Name = "ListViewGroup2" Then
+                        Dim saveCountry As String = doc.SelectSingleNode("List/UAT/Server[Country='" + countryName + "']/Ip").InnerText
+                        countryIP = saveCountry.ToString()
+                    ElseIf country.Group.Name = "ListViewGroup3" Then
+                        Dim saveCountry As String = doc.SelectSingleNode("List/PROD/Server[Country='" + countryName + "']/Ip").InnerText
+                        countryIP = saveCountry.ToString()
+                    End If
+                    If My.Computer.Network.Ping(countryIP.ToString()) Then
+                        servicelist.Items.Clear()
+                        'Button1.Visible = True
+                        'Button6.Visible = True
+                        MetroButton2.Visible = True
+                        'Button7.Visible = True
+                        viewserver()
+                        statusserver()
+                        For Each item As ListViewItem In serverlist.SelectedItems
+                            If item.Group.Name = "ListViewGroup1" Then
+                                readfolderlist("QA")
+                            ElseIf item.Group.Name = "ListViewGroup4" Then
+                                readfolderlist("DEV")
+                            Else
+                                readfolderlist("UAT")
+                            End If
+                        Next
+                        ' Set the initial sorting type for the ListView. 
+                        Me.tilllist.Sorting = System.Windows.Forms.SortOrder.None
+                        ' Disable automatic sorting to enable manual sorting. 
+                        AddHandler tilllist.ColumnClick, AddressOf Me.tilllist_ColumnClick
+                        loaddatabase()
+                        loadcounts()
+                    End If
+                Catch ex As Exception
+                    Logger.WriteToErrorLog(ex.Message, ex.StackTrace, "error")
+                End Try
             End If
         Next
-        ' Set the initial sorting type for the ListView. 
-        Me.tilllist.Sorting = System.Windows.Forms.SortOrder.None
-        ' Disable automatic sorting to enable manual sorting. 
-        AddHandler tilllist.ColumnClick, AddressOf Me.tilllist_ColumnClick
-        loaddatabase()
-        loadcounts()
+
     End Sub
     Private Sub statusserver()
         Try
@@ -272,7 +290,7 @@ Public Class Main
                 '  tlb.Visible = False
             End If
         Catch e As Exception
-            miniTool.balon(e.Message)
+            miniTool.balon("StatusServer: " + e.Message)
             Logger.WriteToErrorLog(e.Message, e.StackTrace, "error")
         End Try
     End Sub
@@ -318,7 +336,7 @@ Public Class Main
                         conex1.Close()
                         t = True
                     ElseIf conex1.State = ConnectionState.Closed Then
-                        miniTool.balon("DB Offline")
+                        miniTool.balon("ViewServer: Database offline...")
                     End If
                     MetroLabel11.Text = arr(0).ToString + " " + arr1(0).ToString
                 Catch a As Exception
@@ -339,12 +357,11 @@ Public Class Main
                     folderlist.Refresh()
                     Exit For
                 ElseIf item.Selected = True AndAlso Not My.Computer.FileSystem.DirectoryExists(item.SubItems(1).Text) Then
-                    MsgBox(item.SubItems(1).Text)
                     miniTool.balon("Location not found ...")
                 End If
             Next
         Catch ey As Exception
-            miniTool.balon(ey.Message)
+            miniTool.balon("FolderList: " + ey.Message)
             Logger.WriteToErrorLog(ey.Message, ey.StackTrace, "error")
         End Try
     End Sub
@@ -359,7 +376,6 @@ Public Class Main
             Try
                 con.Open()
             Catch e As Exception
-                'Form7.balon(e.Message & " - " & MetroMetroMetroLabel10.Text)
                 Logger.WriteToErrorLog(e.Message, e.StackTrace, "error")
             End Try
             If con.State = ConnectionState.Open Then
@@ -1064,17 +1080,6 @@ Public Class Main
     End Sub
     '-----------------------------------------------------------------------------------------------------------------------------------------END minimize
     '-----------------------------------------------------------------------------------------------------------------------------------------BEGIN hover
-    'db queries tool tip
-    'Private Sub Button1_MouseHover(sender As Object, e As EventArgs) Handles Button1.MouseHover
-    '    ToolTip1.Show(cnt, Button1)
-    'End Sub
-    'Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-    '    If MetroLabel15.Text = "ONLINE" Then
-    '        Form8.ShowDialog()
-    '    Else
-    '        miniTool.balon("Server is Offline ...")
-    '    End If
-    'End Sub
     Private Sub ContextMenuStrip6_Opening(sender As Object, e As CancelEventArgs) Handles ContextMenuStrip6.Opening
         Dim ff As String
         ff = "\\" & MetroLabel8.Text & "\e$\TpDotnet\cfg\Metro.Mpos.Router.xml"
@@ -1088,7 +1093,6 @@ Public Class Main
         My.Computer.Clipboard.SetText(MetroLabel9.Text & " : " & MetroLabel7.Text & " : " & MetroLabel8.Text)
     End Sub
     Private Sub MetroLabel8_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles MetroLabel8.LinkClicked
-        '   My.Computer.Clipboard.SetText(MetroMetroMetroLabel10.Text)
         System.Diagnostics.Process.Start("mstsc.exe", "/v " & MetroLabel8.Text)
 
     End Sub
@@ -1096,30 +1100,32 @@ Public Class Main
     Public Sub ActualVersion()
         Dim cversion As String = Application.ProductVersion
         MetroLabel17.Text = "Version : " & cversion.ToString
-        'Label1.Text = "MPOS Server Tool V" + cversion.ToString
     End Sub
     Shared Sub DeleteOldVersion()
         Dim smallArr As New ArrayList()
         Dim path As String = "oldversion.txt"
         Dim execurrentversion As String = Application.ProductVersion
-        If My.Computer.FileSystem.FileExists("oldversion.txt") Then
-            Using sr As StreamReader = File.OpenText(path)
-                Do While sr.Peek() >= 0
-                    smallArr.Add(sr.ReadLine())
-                Loop
-            End Using
-            If execurrentversion > smallArr(0) Then
-                If My.Computer.FileSystem.FileExists(Application.StartupPath + "/MPOS Server Tool V" & smallArr(0) + ".exe") Then
-                    My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/MPOS Server Tool V" & smallArr(0) + ".exe")
-                    My.Computer.FileSystem.DeleteFile("oldversion.txt")
-                ElseIf My.Computer.FileSystem.FileExists(Application.StartupPath + "/MPOS Server tool 2.0.exe") Then
-                    My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/MPOS Server tool 2.0.exe")
-                    My.Computer.FileSystem.DeleteFile("oldversion.txt")
-                Else
-                    'MsgBox("bad bad bad")
+        Try
+            If My.Computer.FileSystem.FileExists("oldversion.txt") Then
+                Using sr As StreamReader = File.OpenText(path)
+                    Do While sr.Peek() >= 0
+                        smallArr.Add(sr.ReadLine())
+                    Loop
+                End Using
+                If execurrentversion > smallArr(0) Then
+                    If My.Computer.FileSystem.FileExists(Application.StartupPath + "/MPOS Server Tool V" & smallArr(0) + ".exe") Then
+                        My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/MPOS Server Tool V" & smallArr(0) + ".exe")
+                        My.Computer.FileSystem.DeleteFile("oldversion.txt")
+                    ElseIf My.Computer.FileSystem.FileExists(Application.StartupPath + "/MPOS Server tool 2.0.exe") Then
+                        My.Computer.FileSystem.DeleteFile(Application.StartupPath + "/MPOS Server tool 2.0.exe")
+                        My.Computer.FileSystem.DeleteFile("oldversion.txt")
+                    End If
                 End If
             End If
-        End If
+        Catch ex As Exception
+            miniTool.balon(ex.Message)
+            Logger.WriteToErrorLog(ex.Message, ex.StackTrace, "error")
+        End Try
     End Sub
     Public Function ResourceExists(location As Uri) As Boolean
         If (Not String.Equals(location.Scheme, Uri.UriSchemeHttp, StringComparison.InvariantCultureIgnoreCase)) And (Not String.Equals(location.Scheme, Uri.UriSchemeHttps, StringComparison.InvariantCultureIgnoreCase)) Then
@@ -1147,7 +1153,6 @@ Public Class Main
         DeleteOldVersion()
         Timer1.Stop()
     End Sub
-
     Public Sub XmlVersion(files)
 
         Dim ttr As String = ""
@@ -1404,7 +1409,7 @@ Public Class Main
             End If
             sr.Close()
         Catch ex As Exception
-            MsgBox(ex.Message)
+            miniTool.balon("CheckForUpdates: " + ex.Message)
         End Try
     End Sub
 End Class

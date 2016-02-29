@@ -54,10 +54,10 @@ Public Class Settings
 
     Private Sub MetroToggle3_CheckedChanged(sender As Object, e As EventArgs) Handles MetroToggle3.CheckedChanged
         If MetroToggle3.Checked = True Then
-            ServiceModuleDisable()
+            ServiceModuleEnable()
             Button2.Enabled = True
         ElseIf MetroToggle3.Checked = False Then
-            ServiceModuleEnable()
+            ServiceModuleDisable()
             Button2.Enabled = True
         End If
     End Sub
