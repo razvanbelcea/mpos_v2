@@ -133,6 +133,8 @@ Partial Class Main
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
+        Me.MetroLabel19 = New MetroFramework.Controls.MetroLabel()
+        Me.MetroLabel20 = New MetroFramework.Controls.MetroLabel()
         Me.GroupBox1.SuspendLayout()
         Me.status.SuspendLayout()
         Me.ContextMenuStrip3.SuspendLayout()
@@ -216,6 +218,8 @@ Partial Class Main
         '
         'status
         '
+        Me.status.Controls.Add(Me.MetroLabel20)
+        Me.status.Controls.Add(Me.MetroLabel19)
         Me.status.Controls.Add(Me.MetroLabel12)
         Me.status.Controls.Add(Me.MetroLabel8)
         Me.status.Controls.Add(Me.MetroLabel7)
@@ -244,7 +248,7 @@ Partial Class Main
         'MetroLabel12
         '
         Me.MetroLabel12.AutoSize = True
-        Me.MetroLabel12.Location = New System.Drawing.Point(320, 93)
+        Me.MetroLabel12.Location = New System.Drawing.Point(320, 73)
         Me.MetroLabel12.Name = "MetroLabel12"
         Me.MetroLabel12.Size = New System.Drawing.Size(89, 19)
         Me.MetroLabel12.TabIndex = 33
@@ -300,7 +304,7 @@ Partial Class Main
         'MetroLabel16
         '
         Me.MetroLabel16.AutoSize = True
-        Me.MetroLabel16.Location = New System.Drawing.Point(320, 64)
+        Me.MetroLabel16.Location = New System.Drawing.Point(320, 47)
         Me.MetroLabel16.Name = "MetroLabel16"
         Me.MetroLabel16.Size = New System.Drawing.Size(93, 19)
         Me.MetroLabel16.TabIndex = 12
@@ -312,7 +316,7 @@ Partial Class Main
         Me.MetroLabel15.AutoSize = True
         Me.MetroLabel15.FontSize = MetroFramework.MetroLabelSize.Tall
         Me.MetroLabel15.FontWeight = MetroFramework.MetroLabelWeight.Bold
-        Me.MetroLabel15.Location = New System.Drawing.Point(320, 31)
+        Me.MetroLabel15.Location = New System.Drawing.Point(320, 18)
         Me.MetroLabel15.Name = "MetroLabel15"
         Me.MetroLabel15.Size = New System.Drawing.Size(83, 25)
         Me.MetroLabel15.TabIndex = 11
@@ -1044,6 +1048,24 @@ Partial Class Main
         Me.PictureBox5.TabIndex = 20
         Me.PictureBox5.TabStop = False
         '
+        'MetroLabel19
+        '
+        Me.MetroLabel19.AutoSize = True
+        Me.MetroLabel19.Location = New System.Drawing.Point(320, 102)
+        Me.MetroLabel19.Name = "MetroLabel19"
+        Me.MetroLabel19.Size = New System.Drawing.Size(35, 19)
+        Me.MetroLabel19.TabIndex = 34
+        Me.MetroLabel19.Text = "WN:"
+        '
+        'MetroLabel20
+        '
+        Me.MetroLabel20.AutoSize = True
+        Me.MetroLabel20.Location = New System.Drawing.Point(364, 102)
+        Me.MetroLabel20.Name = "MetroLabel20"
+        Me.MetroLabel20.Size = New System.Drawing.Size(18, 19)
+        Me.MetroLabel20.TabIndex = 35
+        Me.MetroLabel20.Text = "..."
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1206,4 +1228,6 @@ Partial Class Main
     Friend WithEvents FavLinksToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MetroLabel12 As MetroFramework.Controls.MetroLabel
     Friend WithEvents MetroToolTip1 As MetroFramework.Components.MetroToolTip
+    Friend WithEvents MetroLabel20 As MetroFramework.Controls.MetroLabel
+    Friend WithEvents MetroLabel19 As MetroFramework.Controls.MetroLabel
 End Class

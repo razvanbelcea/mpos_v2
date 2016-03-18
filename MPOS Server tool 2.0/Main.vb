@@ -309,18 +309,20 @@ Public Class Main
                 MetroLabel9.Text = item.SubItems(0).Text
                 Try
                     Dim arr As New ArrayList
-                    Dim arr1 As New ArrayList
+                    Dim arr1, arr2 As New ArrayList
                     Dim conex1 As SqlConnection
                     Dim dat As SqlDataReader
-                    Dim dat1 As SqlDataReader
-                    Dim cmd As SqlCommand
+                    Dim dat1, dat2 As SqlDataReader
+                    Dim cmd, cmd2 As SqlCommand
                     Dim cmd1 As SqlCommand
                     Dim t As Boolean = False
                     conex1 = New SqlConnection("Data Source=" & item.SubItems(2).Text & ";Database=TPCentralDB;" & cred & ";")
                     cmd = conex1.CreateCommand
                     cmd1 = conex1.CreateCommand
+                    cmd2 = conex1.CreateCommand
                     cmd.CommandText = "select top 1 szDatabaseVersionID from MGIDatabaseVersionUpdate order by szDatabaseVersionID desc"
                     cmd1.CommandText = "select * from (select top 1 szPackageName from EUSoftwareVersion where szResult = 'Success' and szState = 'Finished' and szPackageName like 'Hotfix%' and szWorkstationID in (select top 10 szworkstationid from workstation order by lWorkstationNmbr desc)order by szTimestamp desc) a union select 'Hotfix_00'where (select COUNT(*) from EUSoftwareVersion where szResult = 'Success' and szState = 'Finished' and szPackageName like 'Hotfix%' and szWorkstationID in (select top 10 szworkstationid from workstation order by lWorkstationNmbr desc))=0"
+                    cmd2.CommandText = "select top 1 szVersion from EUSoftwareVersion where szPackageName = 'Metro_Common_TPDotnetSetupPos'"
                     conex1.Open()
                     If conex1.State = ConnectionState.Open Then
                         dat = cmd.ExecuteReader()
@@ -332,13 +334,19 @@ Public Class Main
                         While dat1.Read()
                             arr1.Add(dat1(0))
                         End While
-                        dat.Close()
+                        dat1.Close()
+                        dat2 = cmd2.ExecuteReader()
+                        While dat2.Read()
+                            arr2.Add(dat2(0))
+                        End While
+                        dat2.Close()
                         conex1.Close()
                         t = True
                     ElseIf conex1.State = ConnectionState.Closed Then
                         miniTool.balon("ViewServer: Database offline...")
                     End If
                     MetroLabel11.Text = arr(0).ToString + " " + arr1(0).ToString
+                    MetroLabel20.Text = arr2(0).ToString
                 Catch a As Exception
                     'Form7.balon(a.Message)
                     Logger.WriteToErrorLog(a.Message, a.StackTrace, "error")
