@@ -306,23 +306,25 @@ Public Class Main
             If item.Selected = True Then
                 MetroLabel8.Text = item.SubItems(2).Text
                 MetroLabel7.Text = item.SubItems(1).Text
-                MetroLabel9.Text = item.SubItems(0).Text
+                ' MetroLabel9.Text = item.SubItems(0).Text
                 Try
                     Dim arr As New ArrayList
-                    Dim arr1, arr2 As New ArrayList
+                    Dim arr1, arr2, arr3 As New ArrayList
                     Dim conex1 As SqlConnection
                     Dim dat As SqlDataReader
-                    Dim dat1, dat2 As SqlDataReader
-                    Dim cmd, cmd2 As SqlCommand
+                    Dim dat1, dat2, dat3 As SqlDataReader
+                    Dim cmd, cmd2, cmd3 As SqlCommand
                     Dim cmd1 As SqlCommand
                     Dim t As Boolean = False
                     conex1 = New SqlConnection("Data Source=" & item.SubItems(2).Text & ";Database=TPCentralDB;" & cred & ";")
                     cmd = conex1.CreateCommand
                     cmd1 = conex1.CreateCommand
                     cmd2 = conex1.CreateCommand
-                    cmd.CommandText = "select top 1 szDatabaseVersionID from MGIDatabaseVersionUpdate order by szDatabaseVersionID desc"
+                    cmd3 = conex1.CreateCommand
+                    cmd.CommandText = "select top 1 szDatabaseVersionID from MGIDatabaseVersionUpdate order by szDatabaseInstallDate desc"
                     cmd1.CommandText = "select * from (select top 1 szPackageName from EUSoftwareVersion where szResult = 'Success' and szState = 'Finished' and szPackageName like 'Hotfix%' and szWorkstationID in (select top 10 szworkstationid from workstation order by lWorkstationNmbr desc)order by szTimestamp desc) a union select 'Hotfix_00'where (select COUNT(*) from EUSoftwareVersion where szResult = 'Success' and szState = 'Finished' and szPackageName like 'Hotfix%' and szWorkstationID in (select top 10 szworkstationid from workstation order by lWorkstationNmbr desc))=0"
                     cmd2.CommandText = "select top 1 szVersion from EUSoftwareVersion where szPackageName = 'Metro_Common_TPDotnetSetupPos'"
+                    cmd3.CommandText = "select top 1 szCountryCode from MGIExternalStore"
                     conex1.Open()
                     If conex1.State = ConnectionState.Open Then
                         dat = cmd.ExecuteReader()
@@ -340,6 +342,11 @@ Public Class Main
                             arr2.Add(dat2(0))
                         End While
                         dat2.Close()
+                        dat3 = cmd3.ExecuteReader()
+                        While dat3.Read()
+                            arr3.Add(dat3(0))
+                        End While
+                        dat3.Close()
                         conex1.Close()
                         t = True
                     ElseIf conex1.State = ConnectionState.Closed Then
@@ -347,6 +354,7 @@ Public Class Main
                     End If
                     MetroLabel11.Text = arr(0).ToString + " " + arr1(0).ToString
                     MetroLabel20.Text = arr2(0).ToString
+                    MetroLabel9.Text = arr3(0).ToString
                 Catch a As Exception
                     'Form7.balon(a.Message)
                     Logger.WriteToErrorLog(a.Message, a.StackTrace, "error")
