@@ -34,6 +34,9 @@ Partial Class Main
         Me.MetroRadioButton2 = New MetroFramework.Controls.MetroRadioButton()
         Me.MetroRadioButton1 = New MetroFramework.Controls.MetroRadioButton()
         Me.status = New System.Windows.Forms.GroupBox()
+        Me.MetroLabel23 = New MetroFramework.Controls.MetroLabel()
+        Me.MetroLabel20 = New MetroFramework.Controls.MetroLabel()
+        Me.MetroLabel19 = New MetroFramework.Controls.MetroLabel()
         Me.MetroLabel12 = New MetroFramework.Controls.MetroLabel()
         Me.MetroLabel8 = New System.Windows.Forms.LinkLabel()
         Me.MetroLabel7 = New System.Windows.Forms.LinkLabel()
@@ -52,6 +55,8 @@ Partial Class Main
         Me.MetroLabel11 = New MetroFramework.Controls.MetroLabel()
         Me.MetroLabel10 = New MetroFramework.Controls.MetroLabel()
         Me.MetroLabel9 = New MetroFramework.Controls.MetroLabel()
+        Me.MetroLabel22 = New MetroFramework.Controls.MetroLabel()
+        Me.MetroLabel21 = New MetroFramework.Controls.MetroLabel()
         Me.MetroLabel6 = New MetroFramework.Controls.MetroLabel()
         Me.MetroLabel5 = New MetroFramework.Controls.MetroLabel()
         Me.MetroLabel4 = New MetroFramework.Controls.MetroLabel()
@@ -133,8 +138,7 @@ Partial Class Main
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
-        Me.MetroLabel19 = New MetroFramework.Controls.MetroLabel()
-        Me.MetroLabel20 = New MetroFramework.Controls.MetroLabel()
+        Me.MetroLabel24 = New MetroFramework.Controls.MetroLabel()
         Me.GroupBox1.SuspendLayout()
         Me.status.SuspendLayout()
         Me.ContextMenuStrip3.SuspendLayout()
@@ -218,6 +222,8 @@ Partial Class Main
         '
         'status
         '
+        Me.status.Controls.Add(Me.MetroLabel24)
+        Me.status.Controls.Add(Me.MetroLabel23)
         Me.status.Controls.Add(Me.MetroLabel20)
         Me.status.Controls.Add(Me.MetroLabel19)
         Me.status.Controls.Add(Me.MetroLabel12)
@@ -231,6 +237,8 @@ Partial Class Main
         Me.status.Controls.Add(Me.MetroLabel11)
         Me.status.Controls.Add(Me.MetroLabel10)
         Me.status.Controls.Add(Me.MetroLabel9)
+        Me.status.Controls.Add(Me.MetroLabel22)
+        Me.status.Controls.Add(Me.MetroLabel21)
         Me.status.Controls.Add(Me.MetroLabel6)
         Me.status.Controls.Add(Me.MetroLabel5)
         Me.status.Controls.Add(Me.MetroLabel4)
@@ -245,10 +253,37 @@ Partial Class Main
         Me.status.Text = "Server/Service Status"
         Me.status.Visible = False
         '
+        'MetroLabel23
+        '
+        Me.MetroLabel23.AutoSize = True
+        Me.MetroLabel23.Location = New System.Drawing.Point(318, 64)
+        Me.MetroLabel23.Name = "MetroLabel23"
+        Me.MetroLabel23.Size = New System.Drawing.Size(18, 19)
+        Me.MetroLabel23.TabIndex = 35
+        Me.MetroLabel23.Text = "..."
+        '
+        'MetroLabel20
+        '
+        Me.MetroLabel20.AutoSize = True
+        Me.MetroLabel20.Location = New System.Drawing.Point(318, 45)
+        Me.MetroLabel20.Name = "MetroLabel20"
+        Me.MetroLabel20.Size = New System.Drawing.Size(18, 19)
+        Me.MetroLabel20.TabIndex = 35
+        Me.MetroLabel20.Text = "..."
+        '
+        'MetroLabel19
+        '
+        Me.MetroLabel19.AutoSize = True
+        Me.MetroLabel19.Location = New System.Drawing.Point(225, 45)
+        Me.MetroLabel19.Name = "MetroLabel19"
+        Me.MetroLabel19.Size = New System.Drawing.Size(35, 19)
+        Me.MetroLabel19.TabIndex = 34
+        Me.MetroLabel19.Text = "WN:"
+        '
         'MetroLabel12
         '
         Me.MetroLabel12.AutoSize = True
-        Me.MetroLabel12.Location = New System.Drawing.Point(320, 73)
+        Me.MetroLabel12.Location = New System.Drawing.Point(408, 64)
         Me.MetroLabel12.Name = "MetroLabel12"
         Me.MetroLabel12.Size = New System.Drawing.Size(89, 19)
         Me.MetroLabel12.TabIndex = 33
@@ -273,7 +308,7 @@ Partial Class Main
         Me.MetroLabel7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MetroLabel7.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline
         Me.MetroLabel7.LinkColor = System.Drawing.Color.Black
-        Me.MetroLabel7.Location = New System.Drawing.Point(79, 31)
+        Me.MetroLabel7.Location = New System.Drawing.Point(79, 30)
         Me.MetroLabel7.Name = "MetroLabel7"
         Me.MetroLabel7.Size = New System.Drawing.Size(19, 15)
         Me.MetroLabel7.TabIndex = 31
@@ -304,7 +339,7 @@ Partial Class Main
         'MetroLabel16
         '
         Me.MetroLabel16.AutoSize = True
-        Me.MetroLabel16.Location = New System.Drawing.Point(320, 47)
+        Me.MetroLabel16.Location = New System.Drawing.Point(408, 45)
         Me.MetroLabel16.Name = "MetroLabel16"
         Me.MetroLabel16.Size = New System.Drawing.Size(93, 19)
         Me.MetroLabel16.TabIndex = 12
@@ -316,7 +351,7 @@ Partial Class Main
         Me.MetroLabel15.AutoSize = True
         Me.MetroLabel15.FontSize = MetroFramework.MetroLabelSize.Tall
         Me.MetroLabel15.FontWeight = MetroFramework.MetroLabelWeight.Bold
-        Me.MetroLabel15.Location = New System.Drawing.Point(320, 18)
+        Me.MetroLabel15.Location = New System.Drawing.Point(418, 20)
         Me.MetroLabel15.Name = "MetroLabel15"
         Me.MetroLabel15.Size = New System.Drawing.Size(83, 25)
         Me.MetroLabel15.TabIndex = 11
@@ -379,7 +414,7 @@ Partial Class Main
         'MetroLabel11
         '
         Me.MetroLabel11.AutoSize = True
-        Me.MetroLabel11.Location = New System.Drawing.Point(80, 102)
+        Me.MetroLabel11.Location = New System.Drawing.Point(318, 26)
         Me.MetroLabel11.Name = "MetroLabel11"
         Me.MetroLabel11.Size = New System.Drawing.Size(18, 19)
         Me.MetroLabel11.TabIndex = 9
@@ -403,14 +438,32 @@ Partial Class Main
         Me.MetroLabel9.TabIndex = 7
         Me.MetroLabel9.Text = "..."
         '
+        'MetroLabel22
+        '
+        Me.MetroLabel22.AutoSize = True
+        Me.MetroLabel22.Location = New System.Drawing.Point(225, 83)
+        Me.MetroLabel22.Name = "MetroLabel22"
+        Me.MetroLabel22.Size = New System.Drawing.Size(48, 19)
+        Me.MetroLabel22.TabIndex = 4
+        Me.MetroLabel22.Text = "Till HF:"
+        '
+        'MetroLabel21
+        '
+        Me.MetroLabel21.AutoSize = True
+        Me.MetroLabel21.Location = New System.Drawing.Point(225, 64)
+        Me.MetroLabel21.Name = "MetroLabel21"
+        Me.MetroLabel21.Size = New System.Drawing.Size(69, 19)
+        Me.MetroLabel21.TabIndex = 4
+        Me.MetroLabel21.Text = "Server HF:"
+        '
         'MetroLabel6
         '
         Me.MetroLabel6.AutoSize = True
-        Me.MetroLabel6.Location = New System.Drawing.Point(16, 102)
+        Me.MetroLabel6.Location = New System.Drawing.Point(225, 26)
         Me.MetroLabel6.Name = "MetroLabel6"
-        Me.MetroLabel6.Size = New System.Drawing.Size(55, 19)
+        Me.MetroLabel6.Size = New System.Drawing.Size(87, 19)
         Me.MetroLabel6.TabIndex = 4
-        Me.MetroLabel6.Text = "Version:"
+        Me.MetroLabel6.Text = "Msys Version:"
         '
         'MetroLabel5
         '
@@ -1048,23 +1101,14 @@ Partial Class Main
         Me.PictureBox5.TabIndex = 20
         Me.PictureBox5.TabStop = False
         '
-        'MetroLabel19
+        'MetroLabel24
         '
-        Me.MetroLabel19.AutoSize = True
-        Me.MetroLabel19.Location = New System.Drawing.Point(320, 102)
-        Me.MetroLabel19.Name = "MetroLabel19"
-        Me.MetroLabel19.Size = New System.Drawing.Size(35, 19)
-        Me.MetroLabel19.TabIndex = 34
-        Me.MetroLabel19.Text = "WN:"
-        '
-        'MetroLabel20
-        '
-        Me.MetroLabel20.AutoSize = True
-        Me.MetroLabel20.Location = New System.Drawing.Point(364, 102)
-        Me.MetroLabel20.Name = "MetroLabel20"
-        Me.MetroLabel20.Size = New System.Drawing.Size(18, 19)
-        Me.MetroLabel20.TabIndex = 35
-        Me.MetroLabel20.Text = "..."
+        Me.MetroLabel24.AutoSize = True
+        Me.MetroLabel24.Location = New System.Drawing.Point(318, 83)
+        Me.MetroLabel24.Name = "MetroLabel24"
+        Me.MetroLabel24.Size = New System.Drawing.Size(18, 19)
+        Me.MetroLabel24.TabIndex = 35
+        Me.MetroLabel24.Text = "..."
         '
         'Main
         '
@@ -1230,4 +1274,8 @@ Partial Class Main
     Friend WithEvents MetroToolTip1 As MetroFramework.Components.MetroToolTip
     Friend WithEvents MetroLabel20 As MetroFramework.Controls.MetroLabel
     Friend WithEvents MetroLabel19 As MetroFramework.Controls.MetroLabel
+    Friend WithEvents MetroLabel23 As MetroFramework.Controls.MetroLabel
+    Friend WithEvents MetroLabel22 As MetroFramework.Controls.MetroLabel
+    Friend WithEvents MetroLabel21 As MetroFramework.Controls.MetroLabel
+    Friend WithEvents MetroLabel24 As MetroFramework.Controls.MetroLabel
 End Class

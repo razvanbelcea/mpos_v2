@@ -111,6 +111,15 @@ Public Class Main
         'taskserver()
         cleanshortc("desktop")
         checkforupdate()
+
+        If Settings.MetroToggle3.Checked = True Then
+            Settings.ServiceModuleEnable()
+            Settings.Button2.Enabled = True
+        ElseIf Settings.MetroToggle3.Checked = False Then
+            Settings.ServiceModuleDisable()
+            Settings.Button2.Enabled = True
+        End If
+
     End Sub
     '-----------------------------------------------------------------------------------------------------------------------------------------END form load/unload
     '-----------------------------------------------------------------------------------------------------------------------------------------BEGIN read xml files
@@ -309,11 +318,11 @@ Public Class Main
                 ' MetroLabel9.Text = item.SubItems(0).Text
                 Try
                     Dim arr As New ArrayList
-                    Dim arr1, arr2, arr3 As New ArrayList
+                    Dim arr1, arr2, arr3, arr4 As New ArrayList
                     Dim conex1 As SqlConnection
                     Dim dat As SqlDataReader
-                    Dim dat1, dat2, dat3 As SqlDataReader
-                    Dim cmd, cmd2, cmd3 As SqlCommand
+                    Dim dat1, dat2, dat3, dat4 As SqlDataReader
+                    Dim cmd, cmd2, cmd3, cmd4 As SqlCommand
                     Dim cmd1 As SqlCommand
                     Dim t As Boolean = False
                     conex1 = New SqlConnection("Data Source=" & item.SubItems(2).Text & ";Database=TPCentralDB;" & cred & ";")
@@ -321,9 +330,11 @@ Public Class Main
                     cmd1 = conex1.CreateCommand
                     cmd2 = conex1.CreateCommand
                     cmd3 = conex1.CreateCommand
+                    cmd4 = conex1.CreateCommand
                     cmd.CommandText = "select top 1 szDatabaseVersionID from MGIDatabaseVersionUpdate order by szDatabaseInstallDate desc"
-                    cmd1.CommandText = "select * from (select top 1 szPackageName from EUSoftwareVersion where szResult = 'Success' and szState = 'Finished' and szPackageName like 'Hotfix%' and szWorkstationID in (select top 10 szworkstationid from workstation order by lWorkstationNmbr desc)order by szTimestamp desc) a union select 'Hotfix_00'where (select COUNT(*) from EUSoftwareVersion where szResult = 'Success' and szState = 'Finished' and szPackageName like 'Hotfix%' and szWorkstationID in (select top 10 szworkstationid from workstation order by lWorkstationNmbr desc))=0"
-                    cmd2.CommandText = "select top 1 szVersion from EUSoftwareVersion where szPackageName = 'Metro_Common_TPDotnetSetupPos'"
+                    cmd1.CommandText = "select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%')=0"
+                    cmd4.CommandText = "select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%')=0"
+                    cmd2.CommandText = "select top 1 szVersion from EUSoftwareVersion where szPackageName = 'Metro_Common_TPDotnetSetupPos' order by szTimestamp desc"
                     cmd3.CommandText = "select top 1 szCountryCode from MGIExternalStore"
                     conex1.Open()
                     If conex1.State = ConnectionState.Open Then
@@ -347,12 +358,43 @@ Public Class Main
                             arr3.Add(dat3(0))
                         End While
                         dat3.Close()
+                        dat4 = cmd4.ExecuteReader()
+                        While dat4.Read()
+                            arr4.Add(dat4(0))
+                        End While
+                        dat4.Close()
                         conex1.Close()
                         t = True
                     ElseIf conex1.State = ConnectionState.Closed Then
                         miniTool.balon("ViewServer: Database offline...")
                     End If
-                    MetroLabel11.Text = arr(0).ToString + " " + arr1(0).ToString
+
+                    Dim serverhf As String
+                    Dim shortshf As String = arr1(0).ToString.Substring(arr1(0).ToString.Length - 3)
+
+                    If shortshf.StartsWith(".") Then
+                        serverhf = "0" + shortshf.Substring(shortshf.Length - 2)
+                    ElseIf shortshf.Contains(".") Then
+                        serverhf = "00" + shortshf.Substring(shortshf.Length - 1)
+                    Else
+                        serverhf = shortshf
+                    End If
+
+
+                    Dim tillhf As String
+                    Dim tillshf As String = arr4(0).ToString.Substring(arr4(0).ToString.Length - 3)
+
+                    If tillshf.StartsWith(".") Then
+                        tillhf = "0" + tillshf.Substring(tillshf.Length - 2)
+                    ElseIf tillshf.Contains(".") Then
+                        tillhf = "00" + tillshf.Substring(tillshf.Length - 1)
+                    Else
+                        tillhf = tillshf
+                    End If
+
+                    MetroLabel23.Text = serverhf
+                    MetroLabel24.Text = tillhf
+                    MetroLabel11.Text = arr(0).ToString
                     MetroLabel20.Text = arr2(0).ToString
                     MetroLabel9.Text = arr3(0).ToString
                 Catch a As Exception
@@ -624,17 +666,19 @@ Public Class Main
                     item.SubItems.Add("ON")
                     Try
                         Dim arr As New ArrayList
-                        Dim arr1 As New ArrayList
+                        Dim arr1, arr2 As New ArrayList
                         Dim conex1 As SqlConnection
-                        Dim cmd, cmd1 As SqlCommand
-                        Dim dat, dat1 As SqlDataReader
+                        Dim cmd, cmd1, cmd2 As SqlCommand
+                        Dim dat, dat1, dat2 As SqlDataReader
                         Dim t As Boolean = False
 
                         conex1 = New SqlConnection("Data Source=" & item.SubItems(2).Text & ";Database=TPCentralDB;" & cred & ";")
                         cmd = conex1.CreateCommand
                         cmd1 = conex1.CreateCommand
+                        cmd2 = conex1.CreateCommand
                         cmd.CommandText = "select top 1 szDatabaseVersionID from MGIDatabaseVersionUpdate order by szDatabaseInstallDate desc"
-                        cmd1.CommandText = "select * from (select top 1 szPackageName from EUSoftwareVersion where szResult = 'Success' and szState = 'Finished' and szPackageName like 'Hotfix%' and szWorkstationID in (select top 10 szworkstationid from workstation order by lWorkstationNmbr desc)order by szTimestamp desc) a union select 'Hotfix_00'where (select COUNT(*) from EUSoftwareVersion where szResult = 'Success' and szState = 'Finished' and szPackageName like 'Hotfix%' and szWorkstationID in (select top 10 szworkstationid from workstation order by lWorkstationNmbr desc))=0"
+                        cmd1.CommandText = "select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%')=0"
+                        cmd2.CommandText = "select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%')=0"
                         conex1.Open()
                         If conex1.State = ConnectionState.Open Then
                             dat = cmd.ExecuteReader()
@@ -646,13 +690,43 @@ Public Class Main
                             While dat1.Read()
                                 arr1.Add(dat1(0))
                             End While
-                            dat.Close()
+                            dat1.Close()
+                            dat2 = cmd2.ExecuteReader()
+                            While dat2.Read()
+                                arr2.Add(dat2(0))
+                            End While
+                            dat2.Close()
                             conex1.Close()
                             t = True
                         ElseIf conex1.State = ConnectionState.Closed Then
                             miniTool.balon("DB Offline")
                         End If
-                        item.SubItems.Add(arr(0).ToString + " " + arr1(0).ToString)
+
+                        Dim serverhf As String
+                        Dim shortshf As String = arr1(0).ToString.Substring(arr1(0).ToString.Length - 3)
+
+                        If shortshf.StartsWith(".") Then
+                            serverhf = "0" + shortshf.Substring(shortshf.Length - 2)
+                        ElseIf shortshf.Contains(".") Then
+                            serverhf = "00" + shortshf.Substring(shortshf.Length - 1)
+                        Else
+                            serverhf = shortshf
+                        End If
+
+
+                        Dim tillhf As String
+                        Dim tillshf As String = arr2(0).ToString.Substring(arr2(0).ToString.Length - 3)
+
+                        If tillshf.StartsWith(".") Then
+                            tillhf = "0" + tillshf.Substring(tillshf.Length - 2)
+                        ElseIf tillshf.Contains(".") Then
+                            tillhf = "00" + tillshf.Substring(tillshf.Length - 1)
+                        Else
+                            tillhf = tillshf
+                        End If
+
+
+                        item.SubItems.Add(arr(0).ToString + " " + "HF: " + serverhf + "/" + tillhf)
                     Catch a As Exception
                         'Form7.balon(a.Message)
                         Logger.WriteToErrorLog(a.Message, a.StackTrace, "error")
@@ -1428,4 +1502,5 @@ Public Class Main
             miniTool.balon("CheckForUpdates: " + ex.Message)
         End Try
     End Sub
+
 End Class
