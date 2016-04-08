@@ -52,11 +52,11 @@ Public Class Settings
         Me.Dispose()
     End Sub
 
-    Private Sub MetroToggle3_CheckedChanged(sender As Object, e As EventArgs) Handles MetroToggle3.CheckedChanged
-        If MetroToggle3.Checked = True Then
+    Private Sub MetroToggle6_CheckedChanged(sender As Object, e As EventArgs) Handles MetroToggle6.CheckedChanged
+        If MetroToggle6.Checked = True Then
             ServiceModuleEnable()
             Button2.Enabled = True
-        ElseIf MetroToggle3.Checked = False Then
+        ElseIf MetroToggle6.Checked = False Then
             ServiceModuleDisable()
             Button2.Enabled = True
         End If
@@ -107,9 +107,9 @@ Public Class Settings
         ElseIf MetroToggle2.Checked = False Then
             config.AddSection("Settings").AddKey("SSPI").Value = "0"
         End If
-        If MetroToggle3.Checked = True Then
+        If MetroToggle6.Checked = True Then
             config.AddSection("Settings").AddKey("ServiceModule").Value = "1"
-        ElseIf MetroToggle3.Checked = False Then
+        ElseIf MetroToggle6.Checked = False Then
             config.AddSection("Settings").AddKey("ServiceModule").Value = "0"
         End If
         If MetroToggle4.Checked = True Then
@@ -121,6 +121,11 @@ Public Class Settings
             config.AddSection("Settings").AddKey("printeron").Value = "1"
         ElseIf MetroToggle5.Checked = False Then
             config.AddSection("Settings").AddKey("printeron").Value = "0"
+        End If
+        If MetroToggle7.Checked = True Then
+            config.AddSection("Settings").AddKey("virtualon").Value = "1"
+        ElseIf MetroToggle7.Checked = False Then
+            config.AddSection("Settings").AddKey("virtualon").Value = "0"
         End If
         config.Save("config.ini")
         miniTool.balon("Settings saved!")
@@ -139,9 +144,9 @@ Public Class Settings
         ElseIf MetroToggle2.Checked = False Then
             config.SetKeyValue("Settings", "SSPI", "0")
         End If
-        If MetroToggle3.Checked = True Then
+        If MetroToggle6.Checked = True Then
             config.SetKeyValue("Settings", "ServiceModule", "1")
-        ElseIf MetroToggle3.Checked = False Then
+        ElseIf MetroToggle6.Checked = False Then
             config.SetKeyValue("Settings", "ServiceModule", "0")
         End If
         If MetroToggle4.Checked = True Then
@@ -153,6 +158,11 @@ Public Class Settings
             config.SetKeyValue("Settings", "printeron", "1")
         ElseIf MetroToggle5.Checked = False Then
             config.SetKeyValue("Settings", "printeron", "0")
+        End If
+        If MetroToggle7.Checked = True Then
+            config.SetKeyValue("Settings", "virtualon", "1")
+        ElseIf MetroToggle7.Checked = False Then
+            config.SetKeyValue("Settings", "virtualon", "0")
         End If
         config.Save("config.ini")
         miniTool.balon("Settings saved!")
@@ -176,9 +186,9 @@ Public Class Settings
                 End If
 
                 If config.GetKeyValue("Settings", "ServiceModule") = "1" Then
-                    MetroToggle3.Checked = True
+                    MetroToggle6.Checked = True
                 Else
-                    MetroToggle3.Checked = False
+                    MetroToggle6.Checked = False
                 End If
                 If config.GetKeyValue("Settings", "Startup") = "1" Then
                     MetroToggle4.Checked = True
@@ -189,6 +199,11 @@ Public Class Settings
                     MetroToggle5.Checked = True
                 Else
                     MetroToggle5.Checked = False
+                End If
+                If config.GetKeyValue("Settings", "virtualon") = "1" Then
+                    MetroToggle7.Checked = True
+                Else
+                    MetroToggle7.Checked = False
                 End If
             Else
                 MetroToggle2.Checked = True
@@ -238,6 +253,16 @@ Public Class Settings
         ElseIf MetroRadioButton2.Checked Then
             Main.Theme = MetroFramework.MetroThemeStyle.Dark
             Me.Theme = MetroFramework.MetroThemeStyle.Dark
+        End If
+    End Sub
+
+    Private Sub MetroToggle7_CheckedChanged(sender As Object, e As EventArgs) Handles MetroToggle7.CheckedChanged
+        If MetroToggle7.Checked = True Then
+            Main.virtualon = True
+            Button2.Enabled = True
+        Else
+            Main.virtualon = False
+            Button2.Enabled = True
         End If
     End Sub
 End Class

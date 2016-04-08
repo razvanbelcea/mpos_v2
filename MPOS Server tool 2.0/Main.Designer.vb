@@ -34,6 +34,7 @@ Partial Class Main
         Me.MetroRadioButton2 = New MetroFramework.Controls.MetroRadioButton()
         Me.MetroRadioButton1 = New MetroFramework.Controls.MetroRadioButton()
         Me.status = New System.Windows.Forms.GroupBox()
+        Me.MetroLabel24 = New MetroFramework.Controls.MetroLabel()
         Me.MetroLabel23 = New MetroFramework.Controls.MetroLabel()
         Me.MetroLabel20 = New MetroFramework.Controls.MetroLabel()
         Me.MetroLabel19 = New MetroFramework.Controls.MetroLabel()
@@ -138,7 +139,7 @@ Partial Class Main
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
-        Me.MetroLabel24 = New MetroFramework.Controls.MetroLabel()
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1.SuspendLayout()
         Me.status.SuspendLayout()
         Me.ContextMenuStrip3.SuspendLayout()
@@ -252,6 +253,15 @@ Partial Class Main
         Me.status.TabStop = False
         Me.status.Text = "Server/Service Status"
         Me.status.Visible = False
+        '
+        'MetroLabel24
+        '
+        Me.MetroLabel24.AutoSize = True
+        Me.MetroLabel24.Location = New System.Drawing.Point(318, 83)
+        Me.MetroLabel24.Name = "MetroLabel24"
+        Me.MetroLabel24.Size = New System.Drawing.Size(18, 19)
+        Me.MetroLabel24.TabIndex = 35
+        Me.MetroLabel24.Text = "..."
         '
         'MetroLabel23
         '
@@ -694,7 +704,7 @@ Partial Class Main
         '
         'operatorlist
         '
-        Me.operatorlist.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader5, Me.ColumnHeader6})
+        Me.operatorlist.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader4})
         Me.operatorlist.ContextMenuStrip = Me.ContextMenuStrip2
         Me.operatorlist.Cursor = System.Windows.Forms.Cursors.Hand
         Me.operatorlist.FullRowSelect = True
@@ -1101,14 +1111,9 @@ Partial Class Main
         Me.PictureBox5.TabIndex = 20
         Me.PictureBox5.TabStop = False
         '
-        'MetroLabel24
+        'ColumnHeader4
         '
-        Me.MetroLabel24.AutoSize = True
-        Me.MetroLabel24.Location = New System.Drawing.Point(318, 83)
-        Me.MetroLabel24.Name = "MetroLabel24"
-        Me.MetroLabel24.Size = New System.Drawing.Size(18, 19)
-        Me.MetroLabel24.TabIndex = 35
-        Me.MetroLabel24.Text = "..."
+        Me.ColumnHeader4.Text = "Date"
         '
         'Main
         '
@@ -1278,4 +1283,5 @@ Partial Class Main
     Friend WithEvents MetroLabel22 As MetroFramework.Controls.MetroLabel
     Friend WithEvents MetroLabel21 As MetroFramework.Controls.MetroLabel
     Friend WithEvents MetroLabel24 As MetroFramework.Controls.MetroLabel
+    Friend WithEvents ColumnHeader4 As ColumnHeader
 End Class

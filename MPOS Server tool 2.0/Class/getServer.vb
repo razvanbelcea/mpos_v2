@@ -1,12 +1,14 @@
 ﻿Imports System.Xml
 Imports System
 Imports System.Threading
+Imports System.Collections.Generic
 
 Public Class getServer
 
-    Shared Sub populate(ByVal type, ByVal grup)
+    Shared Sub populate(ByVal type As String, ByVal grup As Integer)
         Main.serverlist.Items.Clear()
         miniTool.ComboBox1.Items.Clear()
+
         Dim svl As String = "serverlist.xml"
         Dim readserver As New XmlTextReader(svl)
         Dim i As Integer = 0

@@ -44,6 +44,7 @@ Public Class Main
     Public Shared x As Boolean = False
     Public Shared w As Boolean = False
     Public Shared printeron As Boolean
+    Public Shared virtualon As Boolean
     Public Shared qafolder As String
     Public Shared uatfolder As String
     Public Shared Logger As New ErrorLogger
@@ -112,10 +113,10 @@ Public Class Main
         cleanshortc("desktop")
         checkforupdate()
 
-        If Settings.MetroToggle3.Checked = True Then
+        If Settings.MetroToggle6.Checked = True Then
             Settings.ServiceModuleEnable()
             Settings.Button2.Enabled = True
-        ElseIf Settings.MetroToggle3.Checked = False Then
+        ElseIf Settings.MetroToggle6.Checked = False Then
             Settings.ServiceModuleDisable()
             Settings.Button2.Enabled = True
         End If
@@ -467,15 +468,27 @@ Public Class Main
             con1 = New SqlConnection("Data Source=" & MetroLabel8.Text & ";Database=TPCentralDB;" & cred & ";")
             cmd1 = con1.CreateCommand
             con1.Open()
-            cmd1.CommandText = "select lOperatorID,szname from OperatorProfileAffiliation as a join profile as b on a.lProfileID=b.lProfileID"
+            ' cmd1.CommandText = "select lOperatorID,szname from OperatorProfileAffiliation as a join profile as b on a.lProfileID=b.lProfileID"
+            cmd1.CommandText = " select  e.lOperatorID, e.szName, e.szSignOnPassword, ISNULL(f.szLastUpdLocal,'') as szLastUpdLocal from (select d.lOperatorID, d.szName, c.szSignOnPassword, c.szLastUpdLocal from (select lOperatorID,szname from OperatorProfileAffiliation as a join profile as b on a.lProfileID=b.lProfileID) d join Operator as c on d.lOperatorID = c.lOperatorID ) e full outer join (select * from OperatorPasswordHistory where szLastUpdLocal in (select MAX(szLastUpdLocal) from OperatorPasswordHistory group by lOperatorID)) as f on e.lOperatorID = f.lOperatorID"
             dat1 = cmd1.ExecuteReader()
             While dat1.Read()
                 If tokenoperators.IsCancellationRequested Then
                     tokenoperators.ThrowIfCancellationRequested()
                 End If
-                operatorlist.Items.Add(dat1(0))
-                operatorlist.Items(i).SubItems.Add(dat1(1))
-                i = i + 1
+
+                If dat1(2) = "PkaIqJt8znE=" Then
+                    Dim cryptpass As String = "******"
+                    operatorlist.Items.Add(dat1(0))
+                    operatorlist.Items(i).SubItems.Add(dat1(1))
+                    operatorlist.Items(i).SubItems.Add(cryptpass)
+                    i = i + 1
+                Else
+                    operatorlist.Items.Add(dat1(0))
+                    operatorlist.Items(i).SubItems.Add(dat1(1))
+                    operatorlist.Items(i).SubItems.Add(dat1(3))
+                    i = i + 1
+                End If
+
             End While
             dat1.Close()
             con1.Close()
@@ -488,15 +501,21 @@ Public Class Main
         Dim i As Integer = 0
         Dim arr As Array = {"-", "-", "-", "-", "-", "-", "-"}
         Dim con As SqlConnection
-        Dim cmd As SqlCommand
+        Dim cmd, cmd1 As SqlCommand
         Dim dat As SqlDataReader
         Try
             tilllist.HeaderStyle = ColumnHeaderStyle.None
             con = New SqlConnection("Data Source=" & MetroLabel8.Text & ";Database=TPCentralDB;" & cred & ";")
             cmd = con.CreateCommand
+            cmd1 = con.CreateCommand
             cmd.CommandText = "select szWorkstationID,lWorkstationNmbr, szWorkstationGroupID,lOperatorID from workstation left join operator on lLoggedOnWorkstationNmbr=lWorkstationNmbr where bisthickpos<>0"
+            cmd1.CommandText = "select szWorkstationID,lWorkstationNmbr, szWorkstationGroupID,lOperatorID from workstation left join operator on lLoggedOnWorkstationNmbr=lWorkstationNmbr where bisthickpos<>0 and szWorkstationID not like '%MPV%' and szWorkstationID not like '%LAGO%'"
             con.Open()
-            dat = cmd.ExecuteReader()
+            If virtualon = True Then
+                dat = cmd.ExecuteReader()
+            Else
+                dat = cmd1.ExecuteReader()
+            End If
             ' tpb.Visible = True === causes application to freeze/ fix needed 
             While dat.Read()
                 arr = {"-", "-", "-", "-", "-", "-", "-"}
@@ -752,7 +771,7 @@ Public Class Main
     End Sub
     '-----------------------------------------------------------------------------------------------------------------------------------------END load stuff
     '-----------------------------------------------------------------------------------------------------------------------------------------BEGIN tasks 
-    Private Sub taskserver(ByVal type, ByVal group)
+    Private Sub taskserver(ByVal type As String, ByVal group As Integer, ByVal refresh As Boolean)
         If anulareserver IsNot Nothing Then
             anulareserver.Cancel()
         End If
@@ -875,13 +894,13 @@ Public Class Main
     Private Sub RefreshStatusToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RefreshStatusToolStripMenuItem.Click
         For Each item As ListViewItem In serverlist.SelectedItems
             If item.Group.Name = "ListViewGroup1" Then
-                taskserver("QA", 0)
+                taskserver("QA", 0, True)
             ElseIf item.Group.Name = "ListViewGroup2" Then
-                taskserver("UAT", 1)
+                taskserver("UAT", 1, True)
             ElseIf item.Group.Name = "ListViewGroup4" Then
-                taskserver("DEV", 3)
+                taskserver("DEV", 3, True)
             ElseIf item.Group.Name = "ListViewGroup3" Then
-                taskserver("PROD", 2)
+                taskserver("PROD", 2, True)
             End If
         Next
     End Sub
@@ -1092,9 +1111,9 @@ Public Class Main
             For Each item As ListViewItem In serverlist.Items
                 If item.Selected = True Then
                     If Environment.Is64BitOperatingSystem = False Then
-                        Process.Start("C:\Program Files\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(5).Text)
+                        Process.Start("C:\Program Files\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(2).Text)
                     Else
-                        Process.Start("C:\Program Files (x86)\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(5).Text)
+                        Process.Start("C:\Program Files (x86)\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(2).Text)
                     End If
                     Exit For
                 End If
@@ -1432,19 +1451,19 @@ Public Class Main
     End Sub
 
     Private Sub MetroRadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles MetroRadioButton1.CheckedChanged
-        taskserver("QA", 0)
+        taskserver("QA", 0, False)
     End Sub
 
     Private Sub MetroRadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles MetroRadioButton2.CheckedChanged
-        taskserver("UAT", 1)
+        taskserver("UAT", 1, False)
     End Sub
 
     Private Sub MetroRadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles MetroRadioButton3.CheckedChanged
-        taskserver("DEV", 3)
+        taskserver("DEV", 3, False)
     End Sub
 
     Private Sub MetroRadioButton4_CheckedChanged(sender As Object, e As EventArgs) Handles MetroRadioButton4.CheckedChanged
-        taskserver("PROD", 2)
+        taskserver("PROD", 2, False)
     End Sub
 
     Private Sub BarcodeGeneratorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarcodeGeneratorToolStripMenuItem.Click

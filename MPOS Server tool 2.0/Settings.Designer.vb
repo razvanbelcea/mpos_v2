@@ -42,6 +42,9 @@ Partial Class Settings
         Me.MetroLabel7 = New MetroFramework.Controls.MetroLabel()
         Me.ToolTip1 = New MetroFramework.Components.MetroToolTip()
         Me.PictureBox6 = New System.Windows.Forms.PictureBox()
+        Me.MetroLabel9 = New MetroFramework.Controls.MetroLabel()
+        Me.MetroToggle6 = New MetroFramework.Controls.MetroToggle()
+        Me.MetroToggle7 = New MetroFramework.Controls.MetroToggle()
         Me.MetroTabControl1.SuspendLayout()
         Me.MetroTabPage1.SuspendLayout()
         Me.MetroTabPage2.SuspendLayout()
@@ -81,8 +84,11 @@ Partial Class Settings
         Me.MetroTabPage1.Controls.Add(Me.Button2)
         Me.MetroTabPage1.Controls.Add(Me.MetroToggle5)
         Me.MetroTabPage1.Controls.Add(Me.MetroToggle4)
+        Me.MetroTabPage1.Controls.Add(Me.MetroToggle7)
+        Me.MetroTabPage1.Controls.Add(Me.MetroToggle6)
         Me.MetroTabPage1.Controls.Add(Me.MetroToggle3)
         Me.MetroTabPage1.Controls.Add(Me.MetroToggle2)
+        Me.MetroTabPage1.Controls.Add(Me.MetroLabel9)
         Me.MetroTabPage1.Controls.Add(Me.MetroLabel6)
         Me.MetroTabPage1.Controls.Add(Me.MetroLabel5)
         Me.MetroTabPage1.Controls.Add(Me.MetroLabel4)
@@ -163,7 +169,7 @@ Partial Class Settings
         Me.MetroLabel6.AutoSize = True
         Me.MetroLabel6.Location = New System.Drawing.Point(3, 86)
         Me.MetroLabel6.Name = "MetroLabel6"
-        Me.MetroLabel6.Size = New System.Drawing.Size(100, 19)
+        Me.MetroLabel6.Size = New System.Drawing.Size(99, 19)
         Me.MetroLabel6.TabIndex = 7
         Me.MetroLabel6.Text = "Service module"
         '
@@ -181,7 +187,7 @@ Partial Class Settings
         Me.MetroLabel4.AutoSize = True
         Me.MetroLabel4.Location = New System.Drawing.Point(240, 24)
         Me.MetroLabel4.Name = "MetroLabel4"
-        Me.MetroLabel4.Size = New System.Drawing.Size(91, 19)
+        Me.MetroLabel4.Size = New System.Drawing.Size(90, 19)
         Me.MetroLabel4.TabIndex = 5
         Me.MetroLabel4.Text = "Run at startup"
         '
@@ -277,6 +283,39 @@ Partial Class Settings
         Me.PictureBox6.TabIndex = 22
         Me.PictureBox6.TabStop = False
         '
+        'MetroLabel9
+        '
+        Me.MetroLabel9.AutoSize = True
+        Me.MetroLabel9.Location = New System.Drawing.Point(240, 86)
+        Me.MetroLabel9.Name = "MetroLabel9"
+        Me.MetroLabel9.Size = New System.Drawing.Size(68, 19)
+        Me.MetroLabel9.TabIndex = 7
+        Me.MetroLabel9.Text = "Virtual tills"
+        '
+        'MetroToggle6
+        '
+        Me.MetroToggle6.AutoSize = True
+        Me.MetroToggle6.Location = New System.Drawing.Point(106, 86)
+        Me.MetroToggle6.Name = "MetroToggle6"
+        Me.MetroToggle6.Size = New System.Drawing.Size(80, 17)
+        Me.MetroToggle6.Style = MetroFramework.MetroColorStyle.Green
+        Me.MetroToggle6.TabIndex = 9
+        Me.MetroToggle6.Text = "Off"
+        Me.MetroToggle6.UseSelectable = True
+        Me.MetroToggle6.UseStyleColors = True
+        '
+        'MetroToggle7
+        '
+        Me.MetroToggle7.AutoSize = True
+        Me.MetroToggle7.Location = New System.Drawing.Point(358, 88)
+        Me.MetroToggle7.Name = "MetroToggle7"
+        Me.MetroToggle7.Size = New System.Drawing.Size(80, 17)
+        Me.MetroToggle7.Style = MetroFramework.MetroColorStyle.Green
+        Me.MetroToggle7.TabIndex = 9
+        Me.MetroToggle7.Text = "Off"
+        Me.MetroToggle7.UseSelectable = True
+        Me.MetroToggle7.UseStyleColors = True
+        '
         'Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -325,4 +364,7 @@ Partial Class Settings
     Friend WithEvents MetroRadioButton2 As MetroFramework.Controls.MetroRadioButton
     Friend WithEvents MetroRadioButton1 As MetroFramework.Controls.MetroRadioButton
     Friend WithEvents MetroLabel7 As MetroFramework.Controls.MetroLabel
+    Friend WithEvents MetroToggle7 As MetroFramework.Controls.MetroToggle
+    Friend WithEvents MetroToggle6 As MetroFramework.Controls.MetroToggle
+    Friend WithEvents MetroLabel9 As MetroFramework.Controls.MetroLabel
 End Class
