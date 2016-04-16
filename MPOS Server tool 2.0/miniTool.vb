@@ -272,7 +272,7 @@ Public Class miniTool
             MsgBox(ey.Message)
         End Try
     End Sub
-    Public Sub balon(ss)
+    Public Shared Sub balon(ss)
         Main.NotifyIcon1.BalloonTipText = ss
         Main.NotifyIcon1.ShowBalloonTip(60)
     End Sub

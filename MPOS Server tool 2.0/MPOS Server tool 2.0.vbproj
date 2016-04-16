@@ -141,12 +141,6 @@
     <Compile Include="hotfix.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="input.Designer.vb">
-      <DependentUpon>input.vb</DependentUpon>
-    </Compile>
-    <Compile Include="input.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="miniTool.Designer.vb">
       <DependentUpon>miniTool.vb</DependentUpon>
     </Compile>
@@ -196,9 +190,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="hotfix.resx">
       <DependentUpon>hotfix.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="input.resx">
-      <DependentUpon>input.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.vb</DependentUpon>

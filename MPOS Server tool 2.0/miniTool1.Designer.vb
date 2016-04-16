@@ -125,6 +125,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to ONLINE.
+        '''</summary>
+        Friend Shared ReadOnly Property Main_DBQueriesToolStripMenuItem_Click_ONLINE() As String
+            Get
+                Return ResourceManager.GetString("Main_DBQueriesToolStripMenuItem_Click_ONLINE", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Friend Shared ReadOnly Property Panel1_BackgroundImage() As System.Drawing.Bitmap

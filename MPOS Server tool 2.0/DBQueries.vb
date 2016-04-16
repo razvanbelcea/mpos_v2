@@ -11,7 +11,7 @@ Imports iTextSharp.text.pdf
 Imports iTextSharp.text
 Imports System.Threading
 
-Public Class DBQueries
+Public Class DbQueries
     'DESIGN AREA
     Private Sub PictureBox6_MouseMove(sender As Object, e As MouseEventArgs) Handles PictureBox6.MouseMove
         PictureBox6.Image = My.Resources.back_b
@@ -129,7 +129,7 @@ Public Class DBQueries
         Dim row As String() = New String() {False, "-", "-", "-", "-", "-"}
         If Main.MetroLabel15.Text = "ONLINE" Then
             Try
-                con = New SqlConnection("Data Source=" & Main.MetroLabel8.Text & ";Database=TPCentralDB;" & Main.cred & ";")
+                con = New SqlConnection("Data Source=" & Main.MetroLabel8.Text & ";Database=TPCentralDB;" & Main.Cred & ";")
                 cmd = con.CreateCommand
                 con.Open()
                 For Each item In artlist.Items
@@ -291,7 +291,7 @@ Public Class DBQueries
         Dim s1, s2 As Integer
         If Main.MetroLabel15.Text = "ONLINE" Then
             Try
-                con = New SqlConnection("Data Source=" & Main.MetroLabel8.Text & ";Database=TPCentralDB;" & Main.cred & ";")
+                con = New SqlConnection("Data Source=" & Main.MetroLabel8.Text & ";Database=TPCentralDB;" & Main.Cred & ";")
                 cmd = con.CreateCommand
                 con.Open()
                 For Each item In cuslist.Items
@@ -477,7 +477,7 @@ Public Class DBQueries
                 ssql = "select szstatuscode Status, szExternalID ExternalID, szStoreID StoreNr, lPaymentType PaymentType, szLoadDate LoadDate, szErrorAddInfo Error, szInvoiceID InvoiceID from mgirecalltransactioncod"
             End If
 
-            con1 = New SqlConnection("Data Source=" & Main.MetroLabel8.Text & ";Database=TPCentralDB;" & Main.cred & ";")
+            con1 = New SqlConnection("Data Source=" & Main.MetroLabel8.Text & ";Database=TPCentralDB;" & Main.Cred & ";")
             Dim runsql As New SqlDataAdapter(ssql, con1)
             runsql.Fill(dat1, "cod")
             DataGridView3.DataSource = dat1.Tables(0)
@@ -509,7 +509,7 @@ Public Class DBQueries
                 ssql = "select lHostInterfaceID1 Host1, lHostInterfaceID2 Host2 ,lTaNmbr TaNr, dInvoiceTotalToPayAmount Total ,lInvoiceBookNumber BookNr, szMetroInvoiceNumber InvoiceNr, szCustomerNumber CustomerNr, szDate Date from maitxinvoice"
             End If
 
-            con1 = New SqlConnection("Data Source=" & Main.MetroLabel8.Text & ";Database=TPCentralDB;" & Main.cred & ";")
+            con1 = New SqlConnection("Data Source=" & Main.MetroLabel8.Text & ";Database=TPCentralDB;" & Main.Cred & ";")
             Dim runsql As New SqlDataAdapter(ssql, con1)
             runsql.Fill(dat1, "tx")
             DataGridView4.DataSource = dat1.Tables(0)
@@ -547,9 +547,9 @@ Public Class DBQueries
 
                     If RadioButton1.Checked Then
                         ipp = System.Net.Dns.GetHostEntry(ComboBox1.Text & ".MPOS.MADM.NET").AddressList(0).ToString()
-                        csql = "Data Source=" & ipp & ";Database=TPPosDB;" & Main.cred & ";"
+                        csql = "Data Source=" & ipp & ";Database=TPPosDB;" & Main.Cred & ";"
                     Else
-                        csql = "Data Source=" & Main.MetroLabel8.Text & ";Database=TPCentralDB;" & Main.cred & ";"
+                        csql = "Data Source=" & Main.MetroLabel8.Text & ";Database=TPCentralDB;" & Main.Cred & ";"
                     End If
 
                     ssql = "SELECT lLastIncrementalValue+1 'Next Seq.',szInvoiceID 'Last Barcode',lLastIncrementalValue 'Last Seq.',lRetailStoreID 'Store',lWorkstationNmbr 'Till',lBookType 'Book Type' FROM MGIWorkstationInvoiceID  where bTrainingFlag=0 and lBookType in (11,12,13)"
@@ -677,7 +677,7 @@ Public Class DBQueries
     End Sub
 
     Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton1.CheckedChanged
-        Dim conq As New SqlConnection("Data Source=" & Main.MetroLabel8.Text & ";Database=TPCentralDB;" & Main.cred & ";")
+        Dim conq As New SqlConnection("Data Source=" & Main.MetroLabel8.Text & ";Database=TPCentralDB;" & Main.Cred & ";")
         Dim cmdq As New SqlCommand
         Dim datq As SqlDataReader
         ComboBox1.Items.Clear()
@@ -784,9 +784,9 @@ Public Class DBQueries
 
         Dim i As Integer
         For i = 0 To images.Length - 1
-            If Path.GetExtension(images(i).Name.ToLower()) = ".jpg" OrElse _
-               Path.GetExtension(images(i).Name.ToLower()) = ".jpeg" OrElse _
-               Path.GetExtension(images(i).Name.ToLower()) = ".png" OrElse _
+            If Path.GetExtension(images(i).Name.ToLower()) = ".jpg" OrElse
+               Path.GetExtension(images(i).Name.ToLower()) = ".jpeg" OrElse
+               Path.GetExtension(images(i).Name.ToLower()) = ".png" OrElse
                Path.GetExtension(images(i).Name.ToLower()) = ".gif" Then
                 newImages.Add(images(i))
             End If

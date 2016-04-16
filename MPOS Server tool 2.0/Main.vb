@@ -31,34 +31,34 @@ Public Class Main
     End Sub
 
     '==========================================================================================================================
-    Public Shared UID As String = "TpAdmin"
-    Public Shared PSW As String = "Cawt6__56UBn_szF8_10"
-    Public Shared cred1 As String = "Integrated Security=SSPI"
-    Public Shared cred2 As String = "Uid=" & UID & "; Password=" & PSW
-    Public Shared cred As String '= cred1
-    Public Shared svl As String = "serverlist.xml"
-    Public Shared ffl As String = "folderlist.xml"
-    Public Shared srl As String = "servicelist.xml"
-    Public Shared cfl As String = "countlist.xml"
-    Public Shared hff As String = "\c$\mgi\mposinstallstate.xml"
-    Public Shared x As Boolean = False
-    Public Shared w As Boolean = False
-    Public Shared printeron As Boolean
-    Public Shared virtualon As Boolean
-    Public Shared qafolder As String
-    Public Shared uatfolder As String
+    Public Shared Uid As String = "TpAdmin"
+    Public Shared Psw As String = "Cawt6__56UBn_szF8_10"
+    Public Shared Cred1 As String = "Integrated Security=SSPI"
+    Public Shared Cred2 As String = "Uid=" & Uid & "; Password=" & Psw
+    Public Shared Cred As String '= cred1
+    Public Shared Svl As String = "serverlist.xml"
+    Public Shared Ffl As String = "folderlist.xml"
+    Public Shared Srl As String = "servicelist.xml"
+    Public Shared Cfl As String = "countlist.xml"
+    Public Shared Hff As String = "\c$\mgi\mposinstallstate.xml"
+    Public Shared X As Boolean = False
+    Public Shared W As Boolean = False
+    Public Shared Printeron As Boolean
+    Public Shared Virtualon As Boolean
+    Public Shared Qafolder As String
+    Public Shared Uatfolder As String
     Public Shared Logger As New ErrorLogger
-    Dim anulareserver As CancellationTokenSource
-    Dim anulareservice As CancellationTokenSource
-    Dim anularetills As CancellationTokenSource
-    Dim anulareoperators As CancellationTokenSource
-    Dim cnt As String = ""
+    Dim _anulareserver As CancellationTokenSource
+    Dim _anulareservice As CancellationTokenSource
+    Dim _anularetills As CancellationTokenSource
+    Dim _anulareoperators As CancellationTokenSource
+    Dim _cnt As String = ""
 
     '-----------------------------------------------------------------------------------------------------------------------------------------BEGIN form load/unload
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If x = False Then
+        If X = False Then
             NotifyIcon1.Visible = True
-            Me.Hide()
+            Hide()
             miniTool.Show()
             e.Cancel = True
         End If
@@ -66,53 +66,48 @@ Public Class Main
 
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then
-            Me.Close()
+            Close()
         End If
     End Sub
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MetroRadioButton1.Checked = True
-        Control.CheckForIllegalCrossThreadCalls = False
-        Timer1.Interval = 5000
-        Timer1.Enabled = True
-        Timer1.Start()
-
+        CheckForIllegalCrossThreadCalls = False
+        'Timer1.Interval = 5000
+        'Timer1.Enabled = True
+        'Timer1.Start()
+        Autoupdaterexists()
         Try
-            Dim MyReg As RegistryKey
-            Dim MyVal As Object
-            MyReg = Registry.LocalMachine.OpenSubKey("SOFTWARE\Policies\Microsoft\System\DNSClient", False)
-            If (Not MyReg Is Nothing) Then
-                MyVal = MyReg.GetValue("PrimaryDnsSuffix")
+            Dim myReg As RegistryKey
+            Dim myVal As Object
+            myReg = Registry.LocalMachine.OpenSubKey("SOFTWARE\Policies\Microsoft\System\DNSClient", False)
+            If (Not myReg Is Nothing) Then
+                myVal = myReg.GetValue("PrimaryDnsSuffix")
             Else
-                MyVal = "not_ro"
+                myVal = "not_ro"
             End If
-            If MyVal = "not_ro" Then
+            If myVal = "not_ro" Then
                 miniTool.balon("XML update not needed!")
-            ElseIf MyVal <> "client.ro.r4.madm.net" Then
+            ElseIf myVal <> "client.ro.r4.madm.net" Then
                 miniTool.balon("XML update not needed!")
             Else
                 XmlVersion("sqllist")
                 XmlVersion("server")
                 XmlVersion("folder")
                 XmlVersion("service")
-                If w = True Then
+                If W = True Then
                     miniTool.balon("New XML files downloaded!!!")
                 End If
             End If
-            MyReg.Close()
+            myReg.Close()
         Catch a As Exception
             Logger.WriteToErrorLog(a.Message, a.StackTrace, "PrimaryDNS missing! ")
         End Try
-
-        Me.Show()
-        If Me.TopMost = False Then
-            Me.TopMost = True
-            Me.TopMost = False
+        Show()
+        If TopMost = False Then
+            TopMost = True
+            TopMost = False
         End If
-
-        'taskserver()
-        cleanshortc("desktop")
-        checkforupdate()
-
+        Cleanshortc("desktop")
         If Settings.MetroToggle6.Checked = True Then
             Settings.ServiceModuleEnable()
             Settings.Button2.Enabled = True
@@ -149,8 +144,8 @@ Public Class Main
         MetroLabel14.Visible = False
     End Sub
     Private Sub PictureBox7_Click(sender As Object, e As EventArgs) Handles PictureBox7.Click
-        x = False
-        Me.Close()
+        X = False
+        Close()
     End Sub
     Private Sub PictureBox8_MouseMove(sender As Object, e As MouseEventArgs) Handles PictureBox8.MouseMove
         PictureBox8.Image = My.Resources.minimize_b
@@ -163,12 +158,12 @@ Public Class Main
     End Sub
 
     Private Sub PictureBox8_Click(sender As Object, e As EventArgs) Handles PictureBox8.Click
-        Me.WindowState = FormWindowState.Minimized
+        WindowState = FormWindowState.Minimized
     End Sub
 
     'END OF DESIGN AREA
-    Private Sub readfolderlist(link)
-        Dim readfolder As XmlTextReader = New XmlTextReader(ffl)
+    Private Sub Readfolderlist(link)
+        Dim readfolder As XmlTextReader = New XmlTextReader(Ffl)
         Dim i As Integer = 0
         Dim env As String = ""
 
@@ -203,8 +198,8 @@ Public Class Main
             Logger.WriteToErrorLog(e.Message, e.StackTrace, "error")
         End Try
     End Sub
-    Private Sub readservicelist()
-        Dim readservice As XmlTextReader = New XmlTextReader(srl)
+    Private Sub Readservicelist()
+        Dim readservice As XmlTextReader = New XmlTextReader(Srl)
         Dim i As Integer = 0
         servicelist.Items.Clear()
         Try
@@ -235,27 +230,27 @@ Public Class Main
     '-----------------------------------------------------------------------------------------------------------------------------------------END read xml files
     '-----------------------------------------------------------------------------------------------------------------------------------------BEGIN server selection
     Private Sub serverlist_SelectedIndexChanged(sender As Object, e As EventArgs) Handles serverlist.SelectedIndexChanged
-        Dim countryIP As String = ""
+        Dim countryIp As String = ""
         For Each country As ListViewItem In serverlist.Items
             If country.Selected = True Then
                 Dim countryName As String = country.SubItems(0).Text
                 Try
                     Dim doc As XmlDocument = New XmlDocument()
-                    doc.Load(svl)
+                    doc.Load(Svl)
                     If country.Group.Name = "ListViewGroup1" Then
                         Dim saveCountry As String = doc.SelectSingleNode("List/QA/Server[Country='" + countryName + "']/Ip").InnerText
-                        countryIP = saveCountry.ToString()
+                        countryIp = saveCountry.ToString()
                     ElseIf country.Group.Name = "ListViewGroup4" Then
                         Dim saveCountry As String = doc.SelectSingleNode("List/DEV/Server[Country='" + countryName + "']/Ip").InnerText
-                        countryIP = saveCountry.ToString()
+                        countryIp = saveCountry.ToString()
                     ElseIf country.Group.Name = "ListViewGroup2" Then
                         Dim saveCountry As String = doc.SelectSingleNode("List/UAT/Server[Country='" + countryName + "']/Ip").InnerText
-                        countryIP = saveCountry.ToString()
+                        countryIp = saveCountry.ToString()
                     ElseIf country.Group.Name = "ListViewGroup3" Then
                         Dim saveCountry As String = doc.SelectSingleNode("List/PROD/Server[Country='" + countryName + "']/Ip").InnerText
-                        countryIP = saveCountry.ToString()
+                        countryIp = saveCountry.ToString()
                     End If
-                    If My.Computer.Network.Ping(countryIP.ToString()) Then
+                    If My.Computer.Network.Ping(countryIp.ToString()) Then
                         servicelist.Items.Clear()
                         'Button1.Visible = True
                         'Button6.Visible = True
@@ -265,17 +260,17 @@ Public Class Main
                         statusserver()
                         For Each item As ListViewItem In serverlist.SelectedItems
                             If item.Group.Name = "ListViewGroup1" Then
-                                readfolderlist("QA")
+                                Readfolderlist("QA")
                             ElseIf item.Group.Name = "ListViewGroup4" Then
-                                readfolderlist("DEV")
+                                Readfolderlist("DEV")
                             Else
-                                readfolderlist("UAT")
+                                Readfolderlist("UAT")
                             End If
                         Next
                         ' Set the initial sorting type for the ListView. 
-                        Me.tilllist.Sorting = System.Windows.Forms.SortOrder.None
+                        tilllist.Sorting = Windows.Forms.SortOrder.None
                         ' Disable automatic sorting to enable manual sorting. 
-                        AddHandler tilllist.ColumnClick, AddressOf Me.tilllist_ColumnClick
+                        AddHandler tilllist.ColumnClick, AddressOf tilllist_ColumnClick
                         loaddatabase()
                         loadcounts()
                     End If
@@ -286,7 +281,7 @@ Public Class Main
         Next
 
     End Sub
-    Private Sub statusserver()
+    Private Sub Statusserver()
         Try
             If My.Computer.Network.Ping(MetroLabel8.Text) Then
                 MetroLabel15.Text = "ONLINE"
@@ -304,7 +299,7 @@ Public Class Main
             Logger.WriteToErrorLog(e.Message, e.StackTrace, "error")
         End Try
     End Sub
-    Private Sub viewserver()
+    Private Sub Viewserver()
         metro.Visible = False
         ' title.Visible = False
         folderlist.Visible = True
@@ -325,8 +320,7 @@ Public Class Main
                     Dim dat1, dat2, dat3, dat4 As SqlDataReader
                     Dim cmd, cmd2, cmd3, cmd4 As SqlCommand
                     Dim cmd1 As SqlCommand
-                    Dim t As Boolean = False
-                    conex1 = New SqlConnection("Data Source=" & item.SubItems(2).Text & ";Database=TPCentralDB;" & cred & ";")
+                    conex1 = New SqlConnection("Data Source=" & item.SubItems(2).Text & ";Database=TPCentralDB;" & Cred & ";")
                     cmd = conex1.CreateCommand
                     cmd1 = conex1.CreateCommand
                     cmd2 = conex1.CreateCommand
@@ -365,7 +359,6 @@ Public Class Main
                         End While
                         dat4.Close()
                         conex1.Close()
-                        t = True
                     ElseIf conex1.State = ConnectionState.Closed Then
                         miniTool.balon("ViewServer: Database offline...")
                     End If
@@ -426,11 +419,11 @@ Public Class Main
     End Sub
     '-----------------------------------------------------------------------------------------------------------------------------------------END folder selection
     '-----------------------------------------------------------------------------------------------------------------------------------------BEGIN load stuff
-    Private Sub loaddatabase()
+    Private Sub Loaddatabase()
         operatorlist.Items.Clear()
         tilllist.Items.Clear()
         Dim con As SqlConnection
-        con = New SqlConnection("Data Source=" & MetroLabel8.Text & ";Database=TPCentralDB;" & cred & ";")
+        con = New SqlConnection("Data Source=" & MetroLabel8.Text & ";Database=TPCentralDB;" & Cred & ";")
         If MetroLabel15.Text = "ONLINE" Then
             Try
                 con.Open()
@@ -459,17 +452,17 @@ Public Class Main
             '   tlb.Visible = False
         End If
     End Sub
-    Private Sub loadoperators(tokenoperators As CancellationToken)
+    Private Sub Loadoperators(tokenoperators As CancellationToken)
         Dim i As Integer = 0
         Dim con1 As SqlConnection
         Dim cmd1 As SqlCommand
         Dim dat1 As SqlDataReader
         Try
-            con1 = New SqlConnection("Data Source=" & MetroLabel8.Text & ";Database=TPCentralDB;" & cred & ";")
+            con1 = New SqlConnection("Data Source=" & MetroLabel8.Text & ";Database=TPCentralDB;" & Cred & ";")
             cmd1 = con1.CreateCommand
             con1.Open()
             ' cmd1.CommandText = "select lOperatorID,szname from OperatorProfileAffiliation as a join profile as b on a.lProfileID=b.lProfileID"
-            cmd1.CommandText = " select  e.lOperatorID, e.szName, e.szSignOnPassword, ISNULL(f.szLastUpdLocal,'') as szLastUpdLocal from (select d.lOperatorID, d.szName, c.szSignOnPassword, c.szLastUpdLocal from (select lOperatorID,szname from OperatorProfileAffiliation as a join profile as b on a.lProfileID=b.lProfileID) d join Operator as c on d.lOperatorID = c.lOperatorID ) e full outer join (select * from OperatorPasswordHistory where szLastUpdLocal in (select MAX(szLastUpdLocal) from OperatorPasswordHistory group by lOperatorID)) as f on e.lOperatorID = f.lOperatorID"
+            cmd1.CommandText = " select  e.lOperatorID, e.szName, e.szSignOnPassword, ISNULL(f.szLastUpdLocal,'null') as szLastUpdLocal from (select d.lOperatorID, d.szName, c.szSignOnPassword, c.szLastUpdLocal from (select lOperatorID,szname from OperatorProfileAffiliation as a join profile as b on a.lProfileID=b.lProfileID) d join Operator as c on d.lOperatorID = c.lOperatorID ) e full outer join (select * from OperatorPasswordHistory where szLastUpdLocal in (select MAX(szLastUpdLocal) from OperatorPasswordHistory group by lOperatorID)) as f on e.lOperatorID = f.lOperatorID"
             dat1 = cmd1.ExecuteReader()
             While dat1.Read()
                 If tokenoperators.IsCancellationRequested Then
@@ -496,7 +489,7 @@ Public Class Main
             'Logger.WriteToErrorLog(e.Message, e.StackTrace, "error")
         End Try
     End Sub
-    Private Sub loadtills(tokentills As CancellationToken)
+    Private Sub Loadtills(tokentills As CancellationToken)
         Dim ff As String
         Dim i As Integer = 0
         Dim arr As Array = {"-", "-", "-", "-", "-", "-", "-"}
@@ -505,13 +498,13 @@ Public Class Main
         Dim dat As SqlDataReader
         Try
             tilllist.HeaderStyle = ColumnHeaderStyle.None
-            con = New SqlConnection("Data Source=" & MetroLabel8.Text & ";Database=TPCentralDB;" & cred & ";")
+            con = New SqlConnection("Data Source=" & MetroLabel8.Text & ";Database=TPCentralDB;" & Cred & ";")
             cmd = con.CreateCommand
             cmd1 = con.CreateCommand
             cmd.CommandText = "select szWorkstationID,lWorkstationNmbr, szWorkstationGroupID,lOperatorID from workstation left join operator on lLoggedOnWorkstationNmbr=lWorkstationNmbr where bisthickpos<>0"
             cmd1.CommandText = "select szWorkstationID,lWorkstationNmbr, szWorkstationGroupID,lOperatorID from workstation left join operator on lLoggedOnWorkstationNmbr=lWorkstationNmbr where bisthickpos<>0 and szWorkstationID not like '%MPV%' and szWorkstationID not like '%LAGO%'"
             con.Open()
-            If virtualon = True Then
+            If Virtualon = True Then
                 dat = cmd.ExecuteReader()
             Else
                 dat = cmd1.ExecuteReader()
@@ -529,7 +522,7 @@ Public Class Main
                     arr(3) = dat(3)
                 End If
                 Try
-                    arr(4) = System.Net.Dns.GetHostEntry(arr(0) & ".MPOS.MADM.NET").AddressList(0).ToString()
+                    arr(4) = Dns.GetHostEntry(arr(0) & ".MPOS.MADM.NET").AddressList(0).ToString()
                 Catch e As Exception
                     Logger.WriteToErrorLog(e.Message, e.StackTrace, "error")
                 End Try
@@ -542,7 +535,7 @@ Public Class Main
                 Catch e As Exception
                     ' Logger.WriteToErrorLog(e.Message, e.StackTrace, "error")
                 End Try
-                If printeron = True Then
+                If Printeron = True Then
                     Try
                         For Each item As ListViewItem In serverlist.SelectedItems
                             If item.Group.Name = "ListViewGroup1" Then
@@ -593,12 +586,12 @@ Public Class Main
         End Try
         ' tpb.Visible = False === causes application to freeze/ fix needed 
     End Sub
-    Private Sub loadcounts()
-        Dim readcounts As XmlTextReader = New XmlTextReader(cfl)
-        Dim con3 As New SqlConnection("Data Source=" & MetroLabel8.Text & ";Database=TPCentralDB;" & cred & ";")
+    Private Sub Loadcounts()
+        Dim readcounts As XmlTextReader = New XmlTextReader(Cfl)
+        Dim con3 As New SqlConnection("Data Source=" & MetroLabel8.Text & ";Database=TPCentralDB;" & Cred & ";")
         Dim cmd3 As New SqlCommand
         Dim dat3 As SqlDataReader
-        cnt = vbTab & vbTab & vbTab & vbTab & vbTab & vbCrLf
+        _cnt = vbTab & vbTab & vbTab & vbTab & vbTab & vbCrLf
         Try
             If MetroLabel15.Text = "ONLINE" Then
                 con3.Open()
@@ -617,14 +610,14 @@ Public Class Main
                                         Select Case readcounts.Name
                                             Case "Name"
                                                 readcounts.Read()
-                                                cnt = cnt & readcounts.Value & " : "
+                                                _cnt = _cnt & readcounts.Value & " : "
                                             Case "Sql"
                                                 readcounts.Read()
                                                 cmd3 = con3.CreateCommand
                                                 cmd3.CommandText = readcounts.Value
                                                 dat3 = cmd3.ExecuteReader()
                                                 dat3.Read()
-                                                cnt = cnt & dat3(0) & vbCrLf
+                                                _cnt = _cnt & dat3(0) & vbCrLf
                                                 dat3.Close()
                                         End Select
                                 End Select
@@ -639,7 +632,7 @@ Public Class Main
                 cmd3.Dispose()
                 con3.Close()
             End If
-            cnt = cnt & vbCrLf & vbTab & vbTab & vbTab & vbTab & vbTab
+            _cnt = _cnt & vbCrLf & vbTab & vbTab & vbTab & vbTab & vbTab
         Catch ex As Exception
             miniTool.balon(ex.Message)
             Logger.WriteToErrorLog(ex.Message, ex.StackTrace, "error")
@@ -647,8 +640,7 @@ Public Class Main
             con3.Close()
         End Try
     End Sub
-    Private Sub loadservice(tokenservice As CancellationToken)
-        Dim i As Integer = 0
+    Private Sub Loadservice(tokenservice As CancellationToken)
         ccd.Visible = False
         ' Label6.Visible = False
         If MetroLabel15.Text = "ONLINE" Then
@@ -671,9 +663,8 @@ Public Class Main
             '   Label6.Visible = False
         End If
     End Sub
-    Private Sub loadping(tokenserver As CancellationToken)
+    Private Sub Loadping(tokenserver As CancellationToken)
         Dim i As Integer = 0
-        Dim msg As String = ""
         ' Dim MyReg As RegistryKey
         ' Dim MyVal As Object
         ' sss.Visible = True
@@ -689,9 +680,8 @@ Public Class Main
                         Dim conex1 As SqlConnection
                         Dim cmd, cmd1, cmd2 As SqlCommand
                         Dim dat, dat1, dat2 As SqlDataReader
-                        Dim t As Boolean = False
 
-                        conex1 = New SqlConnection("Data Source=" & item.SubItems(2).Text & ";Database=TPCentralDB;" & cred & ";")
+                        conex1 = New SqlConnection("Data Source=" & item.SubItems(2).Text & ";Database=TPCentralDB;" & Cred & ";")
                         cmd = conex1.CreateCommand
                         cmd1 = conex1.CreateCommand
                         cmd2 = conex1.CreateCommand
@@ -716,7 +706,6 @@ Public Class Main
                             End While
                             dat2.Close()
                             conex1.Close()
-                            t = True
                         ElseIf conex1.State = ConnectionState.Closed Then
                             miniTool.balon("DB Offline")
                         End If
@@ -771,52 +760,52 @@ Public Class Main
     End Sub
     '-----------------------------------------------------------------------------------------------------------------------------------------END load stuff
     '-----------------------------------------------------------------------------------------------------------------------------------------BEGIN tasks 
-    Private Sub taskserver(ByVal type As String, ByVal group As Integer, ByVal refresh As Boolean)
-        If anulareserver IsNot Nothing Then
-            anulareserver.Cancel()
+
+    Private Sub Taskserver(ByVal type As String, ByVal group As Integer, ByVal refresh As Boolean)
+        If _anulareserver IsNot Nothing Then
+            _anulareserver.Cancel()
         End If
         ' readserverlist()
         getServer.populate(type, group)
-        anulareserver = New CancellationTokenSource
-        Dim tokenserver = anulareserver.Token
-        Task.Factory.StartNew(Sub() loadping(tokenserver), tokenserver)
+        _anulareserver = New CancellationTokenSource
+        Dim tokenserver = _anulareserver.Token
+        Task.Factory.StartNew(Sub() Loadping(tokenserver), tokenserver)
     End Sub
-    Private Sub taskservice()
-        If anulareservice IsNot Nothing Then
-            anulareservice.Cancel()
+    Private Sub Taskservice()
+        If _anulareservice IsNot Nothing Then
+            _anulareservice.Cancel()
         End If
-        readservicelist()
-        anulareservice = New CancellationTokenSource
-        Dim tokenservice = anulareservice.Token
-        Task.Factory.StartNew(Sub() loadservice(tokenservice), tokenservice)
+        Readservicelist()
+        _anulareservice = New CancellationTokenSource
+        Dim tokenservice = _anulareservice.Token
+        Task.Factory.StartNew(Sub() Loadservice(tokenservice), tokenservice)
     End Sub
-    Private Sub taskoperators()
-        If anulareoperators IsNot Nothing Then
-            anulareoperators.Cancel()
+    Private Sub Taskoperators()
+        If _anulareoperators IsNot Nothing Then
+            _anulareoperators.Cancel()
         End If
-        anulareoperators = New CancellationTokenSource
-        Dim tokenoperators = anulareoperators.Token
-        Task.Factory.StartNew(Sub() loadoperators(tokenoperators), tokenoperators)
+        _anulareoperators = New CancellationTokenSource
+        Dim tokenoperators = _anulareoperators.Token
+        Task.Factory.StartNew(Sub() Loadoperators(tokenoperators), tokenoperators)
     End Sub
-    Private Sub tasktills()
-        If anularetills IsNot Nothing Then
-            anularetills.Cancel()
+    Private Sub Tasktills()
+        If _anularetills IsNot Nothing Then
+            _anularetills.Cancel()
         End If
-        anularetills = New CancellationTokenSource
-        Dim tokentills = anularetills.Token
-        Task.Factory.StartNew(Sub() loadtills(tokentills), tokentills)
+        _anularetills = New CancellationTokenSource
+        Dim tokentills = _anularetills.Token
+        Task.Factory.StartNew(Sub() Loadtills(tokentills), tokentills)
     End Sub
     '-----------------------------------------------------------------------------------------------------------------------------------------END tasks
     '-----------------------------------------------------------------------------------------------------------------------------------------BEGIN menus
-    Private Sub logoffoperator()
-        Dim con As New SqlConnection("Data Source=" & MetroLabel8.Text & ";Database=TPCentralDB;" & cred & ";")
-        Dim cmd As New SqlCommand
+    Private Sub Logoffoperator()
+        Dim con As New SqlConnection("Data Source=" & MetroLabel8.Text & ";Database=TPCentralDB;" & Cred & ";")
         Try
             con.Open()
             If MetroLabel15.Text = "ONLINE" Then
                 For Each item As ListViewItem In tilllist.Items
                     If item.Selected = True Then
-                        cmd = New SqlCommand("update operator set lLoggedOnWorkstationNmbr=0 where loperatorid=" & item.SubItems(4).Text, con)
+                        Dim cmd As SqlCommand = New SqlCommand("update operator set lLoggedOnWorkstationNmbr=0 where loperatorid=" & item.SubItems(4).Text, con)
                         Try
                             miniTool.balon("Operator has been forced logged off !" & vbCrLf & cmd.ExecuteNonQuery().ToString & " row/s have been updated")
                         Catch eg As Exception
@@ -834,7 +823,7 @@ Public Class Main
             Logger.WriteToErrorLog(ex.Message, ex.StackTrace, "error")
         End Try
     End Sub
-    Private Sub restarttill()
+    Private Sub Restarttill()
         For Each item As ListViewItem In tilllist.Items
             If item.Selected = True Then
                 Try
@@ -848,15 +837,14 @@ Public Class Main
             End If
         Next
     End Sub
-    Private Sub resetoperator()
-        Dim con As New SqlConnection("Data Source=" & MetroLabel8.Text & ";Database=TPCentralDB;" & cred & ";")
-        Dim cmd As New SqlCommand
+    Private Sub Resetoperator()
+        Dim con As New SqlConnection("Data Source=" & MetroLabel8.Text & ";Database=TPCentralDB;" & Cred & ";")
         Try
             If MetroLabel15.Text = "ONLINE" Then
                 con.Open()
                 For Each item As ListViewItem In operatorlist.Items
                     If item.Selected = True AndAlso item.SubItems(0).Text <> "-" Then
-                        cmd = New SqlCommand("update Operator set szSignOnPassword='PkaIqJt8znE=',szPasswordExpirationDate='20161111',bPasswordChangeFlag=0 where lOperatorID='" & item.SubItems(0).Text & "'", con)
+                        Dim cmd As SqlCommand = New SqlCommand("update Operator set szSignOnPassword='PkaIqJt8znE=',szPasswordExpirationDate='20161111',bPasswordChangeFlag=0 where lOperatorID='" & item.SubItems(0).Text & "'", con)
                         Try
                             miniTool.balon("Operator password has been reset to : 123" & vbCrLf & cmd.ExecuteNonQuery().ToString & "  row/s have been updated")
                         Catch
@@ -1012,7 +1000,7 @@ Public Class Main
         miniTool.movetilllog(0)
     End Sub
     Private Sub MSTSCToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MstscToolStripMenuItem.Click
-        System.Diagnostics.Process.Start("mstsc.exe", "/v " & MetroLabel8.Text)
+        Process.Start("mstsc.exe", "/v " & MetroLabel8.Text)
     End Sub
     Private Sub ContextMenuStrip1_Closing(sender As Object, e As ToolStripDropDownClosingEventArgs) Handles ContextMenuStrip1.Closing
         SetPrinterToolStripMenuItem.Visible = False
@@ -1079,23 +1067,21 @@ Public Class Main
     End Sub
     Private Sub OpenMPOSToolAppToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenMPOSToolAppToolStripMenuItem.Click
         miniTool.Hide()
-        Me.Show()
-        If Me.TopMost = False Then
-            Me.TopMost = True
-            Me.TopMost = False
+        Show()
+        If TopMost = False Then
+            TopMost = True
+            TopMost = False
         End If
     End Sub
     Private Sub OpenInSCCMToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles OpenInSCCMToolStripMenuItem1.Click
         Try
-            For Each item As ListViewItem In tilllist.Items
-                If item.Selected = True Then
-                    If Environment.Is64BitOperatingSystem = False Then
-                        Process.Start("C:\Program Files\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(5).Text)
-                    Else
-                        Process.Start("C:\Program Files (x86)\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(5).Text)
-                    End If
-                    Exit For
+            For Each item As ListViewItem In From item1 As ListViewItem In tilllist.Items Where item1.Selected = True
+                If Environment.Is64BitOperatingSystem = False Then
+                    Process.Start("C:\Program Files\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(5).Text)
+                Else
+                    Process.Start("C:\Program Files (x86)\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(5).Text)
                 End If
+                Exit For
             Next
         Catch ed As Exception
             miniTool.balon(ed.Message)
@@ -1103,20 +1089,18 @@ Public Class Main
         End Try
     End Sub
     Private Sub ExitMPOSToolAppToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitMPOSToolAppToolStripMenuItem.Click
-        x = True
-        Me.Close()
+        X = True
+        Close()
     End Sub
     Private Sub OpenInSCCMToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenInSCCMToolStripMenuItem.Click
         Try
-            For Each item As ListViewItem In serverlist.Items
-                If item.Selected = True Then
-                    If Environment.Is64BitOperatingSystem = False Then
-                        Process.Start("C:\Program Files\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(2).Text)
-                    Else
-                        Process.Start("C:\Program Files (x86)\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(2).Text)
-                    End If
-                    Exit For
+            For Each item As ListViewItem In From item1 As ListViewItem In serverlist.Items Where item1.Selected = True
+                If Environment.Is64BitOperatingSystem = False Then
+                    Process.Start("C:\Program Files\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(2).Text)
+                Else
+                    Process.Start("C:\Program Files (x86)\Microsoft Configuration Manager\AdminConsole\bin\i386\CmRcViewer.exe", item.SubItems(2).Text)
                 End If
+                Exit For
             Next
         Catch ed As Exception
             miniTool.balon(ed.Message)
@@ -1128,16 +1112,11 @@ Public Class Main
             OpenInSCCMToolStripMenuItem.Visible = False
             GetServerLogsToolStripMenuItem.Visible = False
             MstscToolStripMenuItem.Visible = False
-            For Each item As ListViewItem In serverlist.Items
-                If item.Selected = True And item.SubItems.Count > 3 Then
-                    If item.SubItems(3).Text = "ON" Then
-                        OpenInSCCMToolStripMenuItem.Visible = True
-                        GetServerLogsToolStripMenuItem.Visible = True
-                        MstscToolStripMenuItem.Visible = True
-                        Exit For
-                    End If
-                End If
-            Next
+            If (From item As ListViewItem In serverlist.Items Where item.Selected = True And item.SubItems.Count > 3).Any(Function(item) item.SubItems(3).Text = "ON") Then
+                OpenInSCCMToolStripMenuItem.Visible = True
+                GetServerLogsToolStripMenuItem.Visible = True
+                MstscToolStripMenuItem.Visible = True
+            End If
         Catch ed As Exception
             miniTool.balon(ed.Message)
             Logger.WriteToErrorLog(ed.Message, ed.StackTrace, "error")
@@ -1145,26 +1124,19 @@ Public Class Main
     End Sub
     Private Sub ContextMenuStrip2_Opening(sender As Object, e As CancelEventArgs) Handles ContextMenuStrip2.Opening
         ResetOperatorPassword123ToolStripMenuItem.Visible = False
-        For Each item As ListViewItem In operatorlist.Items
-            If item.Selected Then
-                ResetOperatorPassword123ToolStripMenuItem.Visible = True
-                Exit For
-            End If
+        For Each item As ListViewItem In From item1 As ListViewItem In operatorlist.Items Where item1.Selected
+            ResetOperatorPassword123ToolStripMenuItem.Visible = True
+            Exit For
         Next
     End Sub
     Private Sub ContextMenuStrip3_Opening(sender As Object, e As CancelEventArgs) Handles ContextMenuStrip3.Opening
         Try
             RestartServiceToolStripMenuItem.Visible = False
             StartStopServiceToolStripMenuItem.Visible = False
-            For Each item As ListViewItem In servicelist.Items
-                If item.Selected And MetroLabel15.Text = "ONLINE" And item.SubItems.Count > 1 Then
-                    If item.SubItems(2).Text <> "-" Then
-                        RestartServiceToolStripMenuItem.Visible = True
-                        StartStopServiceToolStripMenuItem.Visible = True
-                        Exit For
-                    End If
-                End If
-            Next
+            If (From item As ListViewItem In servicelist.Items Where item.Selected And MetroLabel15.Text = "ONLINE" And item.SubItems.Count > 1).Any(Function(item) item.SubItems(2).Text <> "-") Then
+                RestartServiceToolStripMenuItem.Visible = True
+                StartStopServiceToolStripMenuItem.Visible = True
+            End If
         Catch ed As Exception
             miniTool.balon(ed.Message)
             Logger.WriteToErrorLog(ed.Message, ed.StackTrace, "error")
@@ -1173,16 +1145,16 @@ Public Class Main
     '-----------------------------------------------------------------------------------------------------------------------------------------END menus
     '-----------------------------------------------------------------------------------------------------------------------------------------BEGIN minimize
     Private Sub NotifyIcon1_MouseClick(sender As Object, e As MouseEventArgs) Handles NotifyIcon1.MouseClick
-        If e.Button = Windows.Forms.MouseButtons.Left Then
-            If Me.Visible Then
-                Me.Hide()
+        If e.Button = MouseButtons.Left Then
+            If Visible Then
+                Hide()
                 miniTool.Show()
             Else
                 miniTool.Hide()
-                Me.Show()
-                If Me.TopMost = False Then
-                    Me.TopMost = True
-                    Me.TopMost = False
+                Show()
+                If TopMost = False Then
+                    TopMost = True
+                    TopMost = False
                 End If
             End If
         End If
@@ -1202,7 +1174,7 @@ Public Class Main
         My.Computer.Clipboard.SetText(MetroLabel9.Text & " : " & MetroLabel7.Text & " : " & MetroLabel8.Text)
     End Sub
     Private Sub MetroLabel8_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles MetroLabel8.LinkClicked
-        System.Diagnostics.Process.Start("mstsc.exe", "/v " & MetroLabel8.Text)
+        Process.Start("mstsc.exe", "/v " & MetroLabel8.Text)
 
     End Sub
     '-----------------------------------------------------------------------------------------------------------
@@ -1241,21 +1213,20 @@ Public Class Main
             Throw New NotSupportedException("URI scheme is not supported")
         End If
 
-        Dim request = Net.WebRequest.Create(location)
+        Dim request = WebRequest.Create(location)
         request.Method = "HEAD"
 
         Try
             Using response = request.GetResponse
-                Return DirectCast(response, Net.HttpWebResponse).StatusCode = Net.HttpStatusCode.OK
+                Return DirectCast(response, HttpWebResponse).StatusCode = HttpStatusCode.OK
             End Using
-        Catch ex As Net.WebException
-            Select Case DirectCast(ex.Response, Net.HttpWebResponse).StatusCode
-                Case Net.HttpStatusCode.NotFound
+        Catch ex As WebException
+            Select Case DirectCast(ex.Response, HttpWebResponse).StatusCode
+                Case HttpStatusCode.NotFound
                     Return False
                 Case Else
                     Throw
             End Select
-            Logger.WriteToErrorLog(ex.Message, ex.StackTrace, "error")
         End Try
     End Function
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -1268,15 +1239,15 @@ Public Class Main
         Dim link As String = ""
 
         If files = "server" Then
-            ttr = Main.svl
+            ttr = Svl
             link = "\\buk11fsr001\GRP_MSYS_MPOS_DELIVERY\pos\Users\public\serverlist.xml"
             'Dim link As New Uri("http://my-collaboration.metrogroup-networking.com/personal/r4_razvan_belcea/Shared%20Documents/serverlist.xml")
         ElseIf files = "folder" Then
-            ttr = Main.ffl
+            ttr = Ffl
             link = "\\buk11fsr001\GRP_MSYS_MPOS_DELIVERY\pos\Users\public\folderlist.xml"
             'Dim link As New Uri("http://my-collaboration.metrogroup-networking.com/personal/r4_razvan_belcea/Shared%20Documents/folderlist.xml")
         ElseIf files = "service" Then
-            ttr = Main.srl
+            ttr = Srl
             link = "\\buk11fsr001\GRP_MSYS_MPOS_DELIVERY\pos\Users\public\servicelist.xml"
             'Dim link As New Uri("http://my-collaboration.metrogroup-networking.com/personal/r4_razvan_belcea/Shared%20Documents/servicelist.xml")
         ElseIf files = "sqllist" Then
@@ -1285,7 +1256,7 @@ Public Class Main
             'Dim link As New Uri("http://my-collaboration.metrogroup-networking.com/personal/r4_razvan_belcea/Shared%20Documents/sqllist.xml")
         End If
 
-        Dim xmlread As XmlTextReader = New XmlTextReader(ttr)
+        Dim xmlread = New XmlTextReader(ttr)
         Dim myArr As New ArrayList()
         Try
             Do While (xmlread.Read())
@@ -1321,7 +1292,6 @@ Public Class Main
             MsgBox("Invalid address at " + link)
         End If
         If myArr(0).ToString < myArr(1).ToString Then
-            Dim credentials As System.Net.NetworkCredential = System.Net.CredentialCache.DefaultNetworkCredentials
             Try
                 If My.Computer.FileSystem.FileExists(ttr) Then
                     My.Computer.FileSystem.DeleteFile(ttr)
@@ -1333,7 +1303,7 @@ Public Class Main
                 miniTool.balon(ex.Message + " Error Downloading update.")
                 Logger.WriteToErrorLog(ex.Message, ex.StackTrace, "error")
             End Try
-            w = True
+            W = True
         End If
     End Sub
 
@@ -1342,33 +1312,29 @@ Public Class Main
         MetroButton2.Hide()
     End Sub
 
-    Public Sub cleanshortc(path)
+    Public Sub Cleanshortc(path)
         Try
-            Dim Directory As String = CreateObject("WScript.Shell").Specialfolders(10)
+            Dim directory As String = CreateObject("WScript.Shell").Specialfolders(10)
             If path = "desktop" Then
-                Directory = CreateObject("WScript.Shell").Specialfolders(10)
+                directory = CreateObject("WScript.Shell").Specialfolders(10)
             ElseIf path = "startup" Then
-                Directory = CreateObject("WScript.Shell").SpecialFolders("Startup")
+                directory = CreateObject("WScript.Shell").SpecialFolders("Startup")
             End If
-            For Each filename As String In IO.Directory.GetFiles(Directory, "*", IO.SearchOption.AllDirectories)
-                If Microsoft.VisualBasic.Right(filename, 4) = ".lnk" Then
-                    If InStr(filename, "MPOS Tool") > 1 Then
-                        My.Computer.FileSystem.DeleteFile(filename)
-                    End If
-                End If
+            For Each filename As String In From filename1 In IO.Directory.GetFiles(directory, "*", SearchOption.AllDirectories) Where Microsoft.VisualBasic.Right(filename1, 4) = ".lnk" Where InStr(filename1, "MPOS Tool") > 1
+                My.Computer.FileSystem.DeleteFile(filename)
             Next
-            createshortc(Directory & "\MPOS Tool.lnk", "MPOS")
+            Createshortc(directory & "\MPOS Tool.lnk", "MPOS")
         Catch ex As Exception
             miniTool.balon(ex.Message)
             Logger.WriteToErrorLog(ex.Message, ex.StackTrace, "error")
         End Try
     End Sub
-    Public Sub createshortc(FileName, Title)
+    Public Sub Createshortc(fileName, title)
         Try
-            Dim shortc As Object = CreateObject("WScript.Shell").CreateShortcut(FileName)
+            Dim shortc As Object = CreateObject("WScript.Shell").CreateShortcut(fileName)
             shortc.TargetPath = Application.ExecutablePath
             shortc.WindowStyle = 1I
-            shortc.Description = Title
+            shortc.Description = title
             shortc.WorkingDirectory = Application.StartupPath
             shortc.IconLocation = Application.ExecutablePath & ", 0"
             shortc.Arguments = String.Empty
@@ -1380,21 +1346,21 @@ Public Class Main
     End Sub
 
     ' TILL LIST COMPARER
-    Dim sortColumn As Integer = -1
-    Private Sub tilllist_ColumnClick(sender As Object, e As System.Windows.Forms.ColumnClickEventArgs)
+    Dim _sortColumn As Integer = -1
+    Private Sub tilllist_ColumnClick(sender As Object, e As ColumnClickEventArgs)
 
         ' Determine whether the column is the same as the last column clicked.
-        If e.Column <> sortColumn Then
+        If e.Column <> _sortColumn Then
             ' Set the sort column to the new column.
-            sortColumn = e.Column
+            _sortColumn = e.Column
             ' Set the sort order to ascending by default.
-            tilllist.Sorting = System.Windows.Forms.SortOrder.Ascending
+            tilllist.Sorting = Windows.Forms.SortOrder.Ascending
         Else
             ' Determine what the last sort order was and change it.
-            If tilllist.Sorting = System.Windows.Forms.SortOrder.Ascending Then
-                tilllist.Sorting = System.Windows.Forms.SortOrder.Descending
+            If tilllist.Sorting = Windows.Forms.SortOrder.Ascending Then
+                tilllist.Sorting = Windows.Forms.SortOrder.Descending
             Else
-                tilllist.Sorting = System.Windows.Forms.SortOrder.Ascending
+                tilllist.Sorting = Windows.Forms.SortOrder.Ascending
             End If
         End If
         ' Call the sort method to manually sort.
@@ -1408,27 +1374,27 @@ Public Class Main
     ' Implements the manual sorting of items by column.
     Class ListViewItemComparer
         Implements IComparer
-        Private col As Integer
-        Private order As System.Windows.Forms.SortOrder
+        Private ReadOnly _col As Integer
+        Private ReadOnly _order As Windows.Forms.SortOrder
 
         Public Sub New()
-            col = 0
-            order = System.Windows.Forms.SortOrder.Ascending
+            _col = 0
+            _order = Windows.Forms.SortOrder.Ascending
         End Sub
 
-        Public Sub New(column As Integer, order As System.Windows.Forms.SortOrder)
-            col = column
-            Me.order = order
+        Public Sub New(column As Integer, order As Windows.Forms.SortOrder)
+            _col = column
+            _order = order
         End Sub
 
         Public Function Compare(x As Object, y As Object) As Integer _
-                            Implements System.Collections.IComparer.Compare
+                            Implements IComparer.Compare
             Dim returnVal As Integer = -1
             returnVal = [String].Compare(CType(x,
-                            ListViewItem).SubItems(col).Text,
-                            CType(y, ListViewItem).SubItems(col).Text)
+                            ListViewItem).SubItems(_col).Text,
+                            CType(y, ListViewItem).SubItems(_col).Text)
             ' Determine whether the sort order is descending.
-            If order = System.Windows.Forms.SortOrder.Descending Then
+            If _order = Windows.Forms.SortOrder.Descending Then
                 ' Invert the value returned by String.Compare.
                 returnVal *= -1
             End If
@@ -1438,7 +1404,7 @@ Public Class Main
     End Class
 
     Private Sub MSTSCToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles MstscToolStripMenuItem1.Click
-        System.Diagnostics.Process.Start("mstsc.exe", "/v " & tilllist.SelectedItems.Item(0).SubItems(5).Text)
+        Process.Start("mstsc.exe", "/v " & tilllist.SelectedItems.Item(0).SubItems(5).Text)
     End Sub
 
     Private Sub LinkLabel1_Click(sender As Object, e As EventArgs) Handles LinkLabel1.Click
@@ -1446,8 +1412,8 @@ Public Class Main
     End Sub
 
     Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
-        x = True
-        Me.Close()
+        X = True
+        Close()
     End Sub
 
     Private Sub MetroRadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles MetroRadioButton1.CheckedChanged
@@ -1475,10 +1441,6 @@ Public Class Main
         End If
     End Sub
 
-    Private Sub PictureBox6_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub DiscountTableToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DiscountTableToolStripMenuItem.Click
         Try
             If MetroLabel15.Text = "ONLINE" Then
@@ -1492,34 +1454,64 @@ Public Class Main
     End Sub
 
     Private Sub MetroLabel12_MouseMove(sender As Object, e As MouseEventArgs) Handles MetroLabel12.MouseMove
-        MetroToolTip1.Show(cnt, MetroLabel12)
+        MetroToolTip1.Show(_cnt, MetroLabel12)
     End Sub
 
-    Private Sub HotfixesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HotfixesToolStripMenuItem.Click
+    Private Shared Sub HotfixesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HotfixesToolStripMenuItem.Click
         hotfix.ShowDialog()
     End Sub
 
-    Private Sub checkforupdate()
-        Try
-            Dim WbReq As New Net.WebClient
-            WbReq.Proxy.Credentials = System.Net.CredentialCache.DefaultCredentials
-            WbReq.Dispose()
+    'Private Sub Checkforupdate()
+    '    Try
+    '        Dim wbReq As New Net.WebClient
+    '        wbReq.Proxy.Credentials = System.Net.CredentialCache.DefaultCredentials
+    '        wbReq.Dispose()
 
-            Dim request As System.Net.HttpWebRequest = System.Net.HttpWebRequest.Create("http://my-collaboration.metrogroup-networking.com/personal/r4_razvan_belcea/Shared%20Documents/Update.txt")
-            request.Credentials = System.Net.CredentialCache.DefaultCredentials
-            Dim response As System.Net.HttpWebResponse = request.GetResponse()
-            Dim sr As IO.StreamReader = New System.IO.StreamReader(response.GetResponseStream())
-            Dim exenewestversion As String = sr.ReadToEnd()
-            Dim execurrentversion As String = System.Windows.Forms.Application.ProductVersion
-            If execurrentversion < exenewestversion Then
-                updateapp.app()
+    '        Dim request As HttpWebRequest = HttpWebRequest.Create("http://my-collaboration.metrogroup-networking.com/personal/r4_razvan_belcea/Shared%20Documents/Update.txt")
+    '        request.Credentials = CredentialCache.DefaultCredentials
+    '        Dim response As HttpWebResponse = request.GetResponse()
+    '        Dim sr = New StreamReader(response.GetResponseStream())
+    '        Dim exenewestversion As String = sr.ReadToEnd()
+    '        Dim execurrentversion As String = Application.ProductVersion
+    '        If execurrentversion < exenewestversion Then
+    '            updateapp.app()
+    '        Else
+    '            ActualVersion()
+    '        End If
+    '        sr.Close()
+    '    Catch ex As Exception
+    '        miniTool.balon("CheckForUpdates: " + ex.Message)
+    '    End Try
+    'End Sub
+
+    Private Shared Sub Autoupdaterexists()
+        Try
+            Dim wbReq As New Net.WebClient
+            wbReq.Proxy.Credentials = CredentialCache.DefaultCredentials
+            wbReq.Dispose()
+            Const filetoget As String = "http://sunt.pro/m_update/AutoUpdater.exe"
+            Dim filedownloaded As String = Application.StartupPath + " \AutoUpdater.exe"
+            If My.Computer.FileSystem.DirectoryExists(Application.StartupPath & "\Resources") Then
+                If Not File.Exists(Application.StartupPath + "\AutoUpdater.exe") Then
+                    My.Computer.Network.DownloadFile(filetoget, filedownloaded)
+                End If
             Else
-                ActualVersion()
+                My.Computer.FileSystem.CreateDirectory(Application.StartupPath + " \Resources\")
+                If Not File.Exists(Application.StartupPath + "\AutoUpdater.exe") Then
+                    My.Computer.Network.DownloadFile(filetoget, filedownloaded)
+                End If
             End If
-            sr.Close()
         Catch ex As Exception
-            miniTool.balon("CheckForUpdates: " + ex.Message)
+            Logger.WriteToErrorLog(ex.Message, ex.StackTrace, "error")
         End Try
     End Sub
+    Private Sub CheckForUpdatesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CheckForUpdatesToolStripMenuItem.Click
+        Try
+            X = True
+            Process.Start(Application.StartupPath + "\AutoUpdater.exe")
+            Me.Close()
+        Catch ex As Exception
 
+        End Try
+    End Sub
 End Class

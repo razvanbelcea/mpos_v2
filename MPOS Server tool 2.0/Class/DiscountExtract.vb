@@ -2,7 +2,7 @@
 Imports System.Data.SqlClient
 Imports System.Runtime.InteropServices
 Public Class DiscountExtract
-    Public Shared Sub getem()
+    Public Shared Sub Getem()
         Dim connetionString As String
         Dim connection As SqlConnection
         Dim command As SqlCommand
@@ -593,21 +593,21 @@ Public Class DiscountExtract
         End Try
 
     End Sub
-    Private Shared Sub ExcelCleanUp( _
-ByVal oXL As Excel.Application, _
-ByVal oWB As Excel.Workbook, _
+    Private Shared Sub ExcelCleanUp(
+ByVal oXl As Excel.Application,
+ByVal oWb As Excel.Workbook,
 ByVal oSheet As Excel.Worksheet)
 
         GC.Collect()
         GC.WaitForPendingFinalizers()
 
-        Marshal.FinalReleaseComObject(oXL)
+        Marshal.FinalReleaseComObject(oXl)
         Marshal.FinalReleaseComObject(oSheet)
-        Marshal.FinalReleaseComObject(oWB)
+        Marshal.FinalReleaseComObject(oWb)
 
         oSheet = Nothing
-        oWB = Nothing
-        oXL = Nothing
+        oWb = Nothing
+        oXl = Nothing
 
     End Sub
 End Class

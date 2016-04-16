@@ -23,10 +23,10 @@ Partial Class Main
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ListViewGroup1 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("QA", System.Windows.Forms.HorizontalAlignment.Center)
-        Dim ListViewGroup2 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("UAT", System.Windows.Forms.HorizontalAlignment.Center)
-        Dim ListViewGroup3 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("PROD", System.Windows.Forms.HorizontalAlignment.Center)
-        Dim ListViewGroup4 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("DEV", System.Windows.Forms.HorizontalAlignment.Center)
+        Dim ListViewGroup5 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("QA", System.Windows.Forms.HorizontalAlignment.Center)
+        Dim ListViewGroup6 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("UAT", System.Windows.Forms.HorizontalAlignment.Center)
+        Dim ListViewGroup7 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("PROD", System.Windows.Forms.HorizontalAlignment.Center)
+        Dim ListViewGroup8 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("DEV", System.Windows.Forms.HorizontalAlignment.Center)
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.MetroRadioButton4 = New MetroFramework.Controls.MetroRadioButton()
@@ -92,6 +92,7 @@ Partial Class Main
         Me.operatorlist = New System.Windows.Forms.ListView()
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ContextMenuStrip2 = New MetroFramework.Controls.MetroContextMenu(Me.components)
         Me.ResetOperatorPassword123ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RefreshToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
@@ -117,7 +118,6 @@ Partial Class Main
         Me.DiscountTableToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InputTableToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HotfixesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FavLinksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MetroButton1 = New MetroFramework.Controls.MetroButton()
@@ -139,7 +139,7 @@ Partial Class Main
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
-        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.CheckForUpdatesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
         Me.status.SuspendLayout()
         Me.ContextMenuStrip3.SuspendLayout()
@@ -202,7 +202,7 @@ Partial Class Main
         Me.MetroRadioButton2.AutoSize = True
         Me.MetroRadioButton2.Location = New System.Drawing.Point(135, 24)
         Me.MetroRadioButton2.Name = "MetroRadioButton2"
-        Me.MetroRadioButton2.Size = New System.Drawing.Size(46, 15)
+        Me.MetroRadioButton2.Size = New System.Drawing.Size(45, 15)
         Me.MetroRadioButton2.Style = MetroFramework.MetroColorStyle.Magenta
         Me.MetroRadioButton2.TabIndex = 1
         Me.MetroRadioButton2.Text = "UAT"
@@ -462,7 +462,7 @@ Partial Class Main
         Me.MetroLabel21.AutoSize = True
         Me.MetroLabel21.Location = New System.Drawing.Point(225, 64)
         Me.MetroLabel21.Name = "MetroLabel21"
-        Me.MetroLabel21.Size = New System.Drawing.Size(69, 19)
+        Me.MetroLabel21.Size = New System.Drawing.Size(70, 19)
         Me.MetroLabel21.TabIndex = 4
         Me.MetroLabel21.Text = "Server HF:"
         '
@@ -471,7 +471,7 @@ Partial Class Main
         Me.MetroLabel6.AutoSize = True
         Me.MetroLabel6.Location = New System.Drawing.Point(225, 26)
         Me.MetroLabel6.Name = "MetroLabel6"
-        Me.MetroLabel6.Size = New System.Drawing.Size(87, 19)
+        Me.MetroLabel6.Size = New System.Drawing.Size(86, 19)
         Me.MetroLabel6.TabIndex = 4
         Me.MetroLabel6.Text = "Msys Version:"
         '
@@ -489,7 +489,7 @@ Partial Class Main
         Me.MetroLabel4.AutoSize = True
         Me.MetroLabel4.Location = New System.Drawing.Point(16, 64)
         Me.MetroLabel4.Name = "MetroLabel4"
-        Me.MetroLabel4.Size = New System.Drawing.Size(58, 19)
+        Me.MetroLabel4.Size = New System.Drawing.Size(59, 19)
         Me.MetroLabel4.TabIndex = 2
         Me.MetroLabel4.Text = "Country:"
         '
@@ -725,6 +725,10 @@ Partial Class Main
         Me.ColumnHeader6.Text = "Profile"
         Me.ColumnHeader6.Width = 75
         '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "Date"
+        '
         'ContextMenuStrip2
         '
         Me.ContextMenuStrip2.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
@@ -759,7 +763,7 @@ Partial Class Main
         Me.MetroLabel1.AutoSize = True
         Me.MetroLabel1.Location = New System.Drawing.Point(24, 573)
         Me.MetroLabel1.Name = "MetroLabel1"
-        Me.MetroLabel1.Size = New System.Drawing.Size(100, 19)
+        Me.MetroLabel1.Size = New System.Drawing.Size(101, 19)
         Me.MetroLabel1.TabIndex = 7
         Me.MetroLabel1.Text = "Loading servers"
         '
@@ -775,19 +779,19 @@ Partial Class Main
         Me.serverlist.Font = New System.Drawing.Font("Arial Narrow", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.serverlist.FullRowSelect = True
         Me.serverlist.GridLines = True
-        ListViewGroup1.Header = "QA"
-        ListViewGroup1.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
-        ListViewGroup1.Name = "ListViewGroup1"
-        ListViewGroup2.Header = "UAT"
-        ListViewGroup2.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
-        ListViewGroup2.Name = "ListViewGroup2"
-        ListViewGroup3.Header = "PROD"
-        ListViewGroup3.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
-        ListViewGroup3.Name = "ListViewGroup3"
-        ListViewGroup4.Header = "DEV"
-        ListViewGroup4.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
-        ListViewGroup4.Name = "ListViewGroup4"
-        Me.serverlist.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {ListViewGroup1, ListViewGroup2, ListViewGroup3, ListViewGroup4})
+        ListViewGroup5.Header = "QA"
+        ListViewGroup5.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
+        ListViewGroup5.Name = "ListViewGroup1"
+        ListViewGroup6.Header = "UAT"
+        ListViewGroup6.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
+        ListViewGroup6.Name = "ListViewGroup2"
+        ListViewGroup7.Header = "PROD"
+        ListViewGroup7.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
+        ListViewGroup7.Name = "ListViewGroup3"
+        ListViewGroup8.Header = "DEV"
+        ListViewGroup8.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
+        ListViewGroup8.Name = "ListViewGroup4"
+        Me.serverlist.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {ListViewGroup5, ListViewGroup6, ListViewGroup7, ListViewGroup8})
         Me.serverlist.HideSelection = False
         Me.serverlist.LabelWrap = False
         Me.serverlist.Location = New System.Drawing.Point(24, 116)
@@ -893,7 +897,7 @@ Partial Class Main
         '
         Me.MetroContextMenu1.AccessibleRole = System.Windows.Forms.AccessibleRole.Window
         Me.MetroContextMenu1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.MetroContextMenu1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DBQueriesToolStripMenuItem, Me.BarcodeGeneratorToolStripMenuItem, Me.DiscountExtractToolStripMenuItem, Me.HotfixesToolStripMenuItem, Me.FavLinksToolStripMenuItem, Me.ToolStripSeparator1, Me.ToolStripMenuItem1})
+        Me.MetroContextMenu1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DBQueriesToolStripMenuItem, Me.BarcodeGeneratorToolStripMenuItem, Me.DiscountExtractToolStripMenuItem, Me.HotfixesToolStripMenuItem, Me.ToolStripSeparator1, Me.CheckForUpdatesToolStripMenuItem, Me.ToolStripMenuItem1})
         Me.MetroContextMenu1.Name = "MetroContextMenu1"
         Me.MetroContextMenu1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
         Me.MetroContextMenu1.Size = New System.Drawing.Size(173, 142)
@@ -937,12 +941,6 @@ Partial Class Main
         Me.HotfixesToolStripMenuItem.Name = "HotfixesToolStripMenuItem"
         Me.HotfixesToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
         Me.HotfixesToolStripMenuItem.Text = "Hotfixes"
-        '
-        'FavLinksToolStripMenuItem
-        '
-        Me.FavLinksToolStripMenuItem.Name = "FavLinksToolStripMenuItem"
-        Me.FavLinksToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
-        Me.FavLinksToolStripMenuItem.Text = "Fav Links"
         '
         'ToolStripSeparator1
         '
@@ -1006,7 +1004,7 @@ Partial Class Main
         Me.MetroLabel17.AutoSize = True
         Me.MetroLabel17.Location = New System.Drawing.Point(1011, 598)
         Me.MetroLabel17.Name = "MetroLabel17"
-        Me.MetroLabel17.Size = New System.Drawing.Size(90, 19)
+        Me.MetroLabel17.Size = New System.Drawing.Size(88, 19)
         Me.MetroLabel17.TabIndex = 19
         Me.MetroLabel17.Text = "MetroLabel17"
         '
@@ -1111,9 +1109,11 @@ Partial Class Main
         Me.PictureBox5.TabIndex = 20
         Me.PictureBox5.TabStop = False
         '
-        'ColumnHeader4
+        'CheckForUpdatesToolStripMenuItem
         '
-        Me.ColumnHeader4.Text = "Date"
+        Me.CheckForUpdatesToolStripMenuItem.Name = "CheckForUpdatesToolStripMenuItem"
+        Me.CheckForUpdatesToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
+        Me.CheckForUpdatesToolStripMenuItem.Text = "Check for updates"
         '
         'Main
         '
@@ -1274,7 +1274,6 @@ Partial Class Main
     Friend WithEvents InputTableToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents folder As System.Windows.Forms.GroupBox
     Friend WithEvents HotfixesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents FavLinksToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MetroLabel12 As MetroFramework.Controls.MetroLabel
     Friend WithEvents MetroToolTip1 As MetroFramework.Components.MetroToolTip
     Friend WithEvents MetroLabel20 As MetroFramework.Controls.MetroLabel
@@ -1284,4 +1283,5 @@ Partial Class Main
     Friend WithEvents MetroLabel21 As MetroFramework.Controls.MetroLabel
     Friend WithEvents MetroLabel24 As MetroFramework.Controls.MetroLabel
     Friend WithEvents ColumnHeader4 As ColumnHeader
+    Friend WithEvents CheckForUpdatesToolStripMenuItem As ToolStripMenuItem
 End Class
