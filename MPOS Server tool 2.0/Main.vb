@@ -72,9 +72,6 @@ Public Class Main
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MetroRadioButton1.Checked = True
         CheckForIllegalCrossThreadCalls = False
-        'Timer1.Interval = 5000
-        'Timer1.Enabled = True
-        'Timer1.Start()
         Autoupdaterexists()
         Try
             Dim myReg As RegistryKey
@@ -1513,5 +1510,55 @@ Public Class Main
         Catch ex As Exception
 
         End Try
+    End Sub
+
+    Private Sub MetroTextBox1_TextChanged(sender As Object, e As EventArgs) Handles MetroTextBox1.TextChanged
+        '        Dim itm As ListViewItem
+        'Dim i As Integer
+
+        'For i = 0 To serverlist.Items.Count - 1
+        '    'itm = serverlist.SelectedItems(i)
+        '    'Console.WriteLine(ContactFirstColumnHeader = {1} ContactLastColumnHeader = {2},itm.SubItems(1),itm.SubItems(2))
+        '    serverlist.Items(i).Selected = False
+        '    serverlist.Items(i).BackColor = Color.White
+        'Next
+
+        'With serverlist
+        '    itm = .FindItemWithText(MetroTextBox1.Text, True, 0, True)
+
+
+        '    If Not itm Is Nothing Then
+        '        .Items.Item(itm.Index).BackColor = Color.LemonChiffon
+        '        .Items.Item(itm.Index).EnsureVisible()
+        '    Else
+        '        MsgBox("No Record Found!")
+        '        For i = 0 To serverlist.Items.Count - 1
+        '            serverlist.Items(i).Selected = False
+        '            serverlist.Items(i).BackColor = Color.White
+        '        Next
+        '        .Items(0).EnsureVisible()
+        '        .Items.Item(0).BackColor = Color.LemonChiffon
+        '        MetroTextBox1.SelectionStart = 0
+        '        MetroTextBox1.Focus()
+        '    End If
+        'End With
+        'itm = Nothing
+
+        Dim list As List(Of ListViewItem) = (From item In serverlist.Items.OfType(Of ListViewItem)()
+                                             Where item.SubItems(0).Text.Contains(MetroTextBox1.Text.ToUpper())
+                                             Select item).ToList
+        If list.Count = 0 Then
+            serverlist.Items.Add(New ListViewItem("Your search returned no results"))
+            'MsgBox("Your search returned no results")
+        Else
+            'MsgBox(list.Count)
+        End If
+
+
+        serverlist.Items.Clear()
+        For Each item In list
+            serverlist.Items.Add(item)
+        Next
+
     End Sub
 End Class
