@@ -298,7 +298,6 @@ Public Class Main
     End Sub
     Private Sub Viewserver()
         metro.Visible = False
-        ' title.Visible = False
         folderlist.Visible = True
         status.Visible = True
         folder.Visible = True
@@ -308,57 +307,44 @@ Public Class Main
             If item.Selected = True Then
                 MetroLabel8.Text = item.SubItems(2).Text
                 MetroLabel7.Text = item.SubItems(1).Text
-                ' MetroLabel9.Text = item.SubItems(0).Text
                 Try
-                    Dim arr As New ArrayList
-                    Dim arr1, arr2, arr3, arr4 As New ArrayList
-                    Dim conex1 As SqlConnection
-                    Dim dat As SqlDataReader
-                    Dim dat1, dat2, dat3, dat4 As SqlDataReader
-                    Dim cmd, cmd2, cmd3, cmd4 As SqlCommand
-                    Dim cmd1 As SqlCommand
-                    conex1 = New SqlConnection("Data Source=" & item.SubItems(2).Text & ";Database=TPCentralDB;" & Cred & ";")
-                    cmd = conex1.CreateCommand
-                    cmd1 = conex1.CreateCommand
-                    cmd2 = conex1.CreateCommand
-                    cmd3 = conex1.CreateCommand
-                    cmd4 = conex1.CreateCommand
-                    cmd.CommandText = "select top 1 szDatabaseVersionID from MGIDatabaseVersionUpdate order by szDatabaseInstallDate desc"
-                    cmd1.CommandText = "select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%')=0"
-                    cmd4.CommandText = "select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%')=0"
-                    cmd2.CommandText = "select top 1 szVersion from EUSoftwareVersion where szPackageName = 'Metro_Common_TPDotnetSetupPos' order by szTimestamp desc"
-                    cmd3.CommandText = "select top 1 szCountryCode from MGIExternalStore"
-                    conex1.Open()
-                    If conex1.State = ConnectionState.Open Then
-                        dat = cmd.ExecuteReader()
-                        While dat.Read()
-                            arr.Add(dat(0))
-                        End While
-                        dat.Close()
-                        dat1 = cmd1.ExecuteReader()
-                        While dat1.Read()
-                            arr1.Add(dat1(0))
-                        End While
-                        dat1.Close()
-                        dat2 = cmd2.ExecuteReader()
-                        While dat2.Read()
-                            arr2.Add(dat2(0))
-                        End While
-                        dat2.Close()
-                        dat3 = cmd3.ExecuteReader()
-                        While dat3.Read()
-                            arr3.Add(dat3(0))
-                        End While
-                        dat3.Close()
-                        dat4 = cmd4.ExecuteReader()
-                        While dat4.Read()
-                            arr4.Add(dat4(0))
-                        End While
-                        dat4.Close()
-                        conex1.Close()
-                    ElseIf conex1.State = ConnectionState.Closed Then
-                        miniTool.balon("ViewServer: Database offline...")
-                    End If
+                    Dim arr, arr1, arr2, arr3, arr4 As New ArrayList
+
+                    Dim db As New SqldbManager(MetroLabel8.Text,,, 1)
+                    Dim szDatabaseVersionId As SqlDataReader = db.ReadSqlData("select top 1 szDatabaseVersionID from MGIDatabaseVersionUpdate order by szDatabaseInstallDate desc, szDatabaseInstallTime desc")
+
+                    While szDatabaseVersionId.Read()
+                        arr.Add(szDatabaseVersionId(0))
+                    End While
+                    szDatabaseVersionId.Close()
+
+                    Dim euSoftwareVersionServer As SqlDataReader = db.ReadSqlData("select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%')=0")
+
+                    While euSoftwareVersionServer.Read()
+                        arr1.Add(euSoftwareVersionServer(0))
+                    End While
+                    euSoftwareVersionServer.Close()
+
+                    Dim euSoftwareVersionTill As SqlDataReader = db.ReadSqlData("select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%')=0")
+
+                    While euSoftwareVersionTill.Read()
+                        arr4.Add(euSoftwareVersionTill(0))
+                    End While
+                    euSoftwareVersionTill.Close()
+
+                    Dim szPackageName As SqlDataReader = db.ReadSqlData("select top 1 szVersion from EUSoftwareVersion where szPackageName = 'Metro_Common_TPDotnetSetupPos' order by szTimestamp desc")
+
+                    While szPackageName.Read()
+                        arr2.Add(szPackageName(0))
+                    End While
+                    szPackageName.Close()
+
+                    Dim szCountryCode As SqlDataReader = db.ReadSqlData("select top 1 szCountryCode from MGIExternalStore")
+
+                    While szCountryCode.Read()
+                        arr3.Add(szCountryCode(0))
+                    End While
+                    szCountryCode.Close()
 
                     Dim serverhf As String
                     Dim shortshf As String = arr1(0).ToString.Substring(arr1(0).ToString.Length - 3)
@@ -389,7 +375,6 @@ Public Class Main
                     MetroLabel20.Text = arr2(0).ToString
                     MetroLabel9.Text = arr3(0).ToString
                 Catch a As Exception
-                    'Form7.balon(a.Message)
                     Logger.WriteToErrorLog(a.Message, a.StackTrace, "error")
                 End Try
                 Exit For
@@ -451,72 +436,64 @@ Public Class Main
     End Sub
     Private Sub Loadoperators(tokenoperators As CancellationToken)
         Dim i As Integer = 0
-        Dim con1 As SqlConnection
-        Dim cmd1 As SqlCommand
-        Dim dat1 As SqlDataReader
         Try
-            con1 = New SqlConnection("Data Source=" & MetroLabel8.Text & ";Database=TPCentralDB;" & Cred & ";")
-            cmd1 = con1.CreateCommand
-            con1.Open()
-            ' cmd1.CommandText = "select lOperatorID,szname from OperatorProfileAffiliation as a join profile as b on a.lProfileID=b.lProfileID"
-            cmd1.CommandText = " select  e.lOperatorID, e.szName, e.szSignOnPassword, ISNULL(f.szLastUpdLocal,'null') as szLastUpdLocal from (select d.lOperatorID, d.szName, c.szSignOnPassword, c.szLastUpdLocal from (select lOperatorID,szname from OperatorProfileAffiliation as a join profile as b on a.lProfileID=b.lProfileID) d join Operator as c on d.lOperatorID = c.lOperatorID ) e full outer join (select * from OperatorPasswordHistory where szLastUpdLocal in (select MAX(szLastUpdLocal) from OperatorPasswordHistory group by lOperatorID)) as f on e.lOperatorID = f.lOperatorID"
-            dat1 = cmd1.ExecuteReader()
-            While dat1.Read()
+
+            Dim db As New SqldbManager(MetroLabel8.Text,,, 1)
+            Dim loadOperator As SqlDataReader = db.ReadSqlData("select  e.lOperatorID, e.szName, e.szSignOnPassword, ISNULL(f.szLastUpdLocal,'null') as szLastUpdLocal from (select d.lOperatorID, d.szName, c.szSignOnPassword, c.szLastUpdLocal from (select lOperatorID,szname from OperatorProfileAffiliation as a join profile as b on a.lProfileID=b.lProfileID) d join Operator as c on d.lOperatorID = c.lOperatorID ) e full outer join (select * from OperatorPasswordHistory where szLastUpdLocal in (select MAX(szLastUpdLocal) from OperatorPasswordHistory group by lOperatorID)) as f on e.lOperatorID = f.lOperatorID")
+
+            While loadOperator.Read()
+
                 If tokenoperators.IsCancellationRequested Then
                     tokenoperators.ThrowIfCancellationRequested()
                 End If
 
-                If dat1(2) = "PkaIqJt8znE=" Then
+                If loadOperator(2) = "PkaIqJt8znE=" Then
                     Dim cryptpass As String = "******"
-                    operatorlist.Items.Add(dat1(0))
-                    operatorlist.Items(i).SubItems.Add(dat1(1))
+                    operatorlist.Items.Add(loadOperator(0))
+                    operatorlist.Items(i).SubItems.Add(loadOperator(1))
                     operatorlist.Items(i).SubItems.Add(cryptpass)
                     i = i + 1
                 Else
-                    operatorlist.Items.Add(dat1(0))
-                    operatorlist.Items(i).SubItems.Add(dat1(1))
-                    operatorlist.Items(i).SubItems.Add(dat1(3))
+                    operatorlist.Items.Add(loadOperator(0))
+                    operatorlist.Items(i).SubItems.Add(loadOperator(1))
+                    operatorlist.Items(i).SubItems.Add(loadOperator(3))
                     i = i + 1
                 End If
 
             End While
-            dat1.Close()
-            con1.Close()
+            loadOperator.Close()
         Catch e As Exception
-            'Logger.WriteToErrorLog(e.Message, e.StackTrace, "error")
+            Logger.WriteToErrorLog(e.Message, e.StackTrace, "error")
         End Try
     End Sub
     Private Sub Loadtills(tokentills As CancellationToken)
         Dim ff As String
         Dim i As Integer = 0
         Dim arr As Array = {"-", "-", "-", "-", "-", "-", "-"}
-        Dim con As SqlConnection
-        Dim cmd, cmd1 As SqlCommand
-        Dim dat As SqlDataReader
         Try
             tilllist.HeaderStyle = ColumnHeaderStyle.None
-            con = New SqlConnection("Data Source=" & MetroLabel8.Text & ";Database=TPCentralDB;" & Cred & ";")
-            cmd = con.CreateCommand
-            cmd1 = con.CreateCommand
-            cmd.CommandText = "select szWorkstationID,lWorkstationNmbr, szWorkstationGroupID,lOperatorID from workstation left join operator on lLoggedOnWorkstationNmbr=lWorkstationNmbr where bisthickpos<>0"
-            cmd1.CommandText = "select szWorkstationID,lWorkstationNmbr, szWorkstationGroupID,lOperatorID from workstation left join operator on lLoggedOnWorkstationNmbr=lWorkstationNmbr where bisthickpos<>0 and szWorkstationID not like '%MPV%' and szWorkstationID not like '%LAGO%'"
-            con.Open()
+
+            Dim db As New SqldbManager(MetroLabel8.Text,,, 1)
+            Dim wks As String = "select szWorkstationID,lWorkstationNmbr, szWorkstationGroupID,lOperatorID from workstation left join operator on lLoggedOnWorkstationNmbr=lWorkstationNmbr where bisthickpos<>0"
+            Dim wksNovirtual As String = "select szWorkstationID,lWorkstationNmbr, szWorkstationGroupID,lOperatorID from workstation left join operator on lLoggedOnWorkstationNmbr=lWorkstationNmbr where bisthickpos<>0 and szWorkstationID not like '%MPV%' and szWorkstationID not like '%LAGO%'"
+            Dim rightone As String
             If Virtualon = True Then
-                dat = cmd.ExecuteReader()
+                rightone = wks
             Else
-                dat = cmd1.ExecuteReader()
+                rightone = wksNovirtual
             End If
-            ' tpb.Visible = True === causes application to freeze/ fix needed 
-            While dat.Read()
+            Dim workstation As SqlDataReader = db.ReadSqlData(rightone)
+
+            While workstation.Read()
                 arr = {"-", "-", "-", "-", "-", "-", "-"}
                 If tokentills.IsCancellationRequested Then
                     tokentills.ThrowIfCancellationRequested()
                 End If
-                arr(0) = dat(0)
-                arr(1) = dat(1)
-                arr(2) = dat(2)
-                If Not IsDBNull(dat(3)) Then
-                    arr(3) = dat(3)
+                arr(0) = workstation(0)
+                arr(1) = workstation(1)
+                arr(2) = workstation(2)
+                If Not IsDBNull(workstation(3)) Then
+                    arr(3) = workstation(3)
                 End If
                 Try
                     arr(4) = Dns.GetHostEntry(arr(0) & ".MPOS.MADM.NET").AddressList(0).ToString()
@@ -574,8 +551,7 @@ Public Class Main
                 Next
                 i = i + 1
             End While
-            dat.Dispose()
-            con.Dispose()
+            workstation.Close()
             tilllist.HeaderStyle = ColumnHeaderStyle.Clickable
         Catch e As Exception
             'Form7.balon(e.Message)
@@ -585,19 +561,14 @@ Public Class Main
     End Sub
     Private Sub Loadcounts()
         Dim readcounts As XmlTextReader = New XmlTextReader(Cfl)
-        Dim con3 As New SqlConnection("Data Source=" & MetroLabel8.Text & ";Database=TPCentralDB;" & Cred & ";")
-        Dim cmd3 As New SqlCommand
-        Dim dat3 As SqlDataReader
+        Dim db As New SqldbManager(MetroLabel8.Text,,, 1)        
         _cnt = vbTab & vbTab & vbTab & vbTab & vbTab & vbCrLf
         Try
             If MetroLabel15.Text = "ONLINE" Then
-                con3.Open()
-                cmd3 = con3.CreateCommand
-                cmd3.CommandText = "select lRetailStoreID from workstation where szWorkstationID='" & MetroLabel7.Text & "'"
-                dat3 = cmd3.ExecuteReader()
-                dat3.Read()
-                MetroLabel10.Text = dat3(0)
-                dat3.Close()
+                Dim wksquery as string = "select lRetailStoreID from workstation where szWorkstationID='" & MetroLabel7.Text & "'"
+                Dim readworkstation as SqlDataReader = db.ReadSqlData(wksquery)
+               MetroLabel10.Text = readworkstation(0)
+                MsgBox("Store is " + readworkstation(0))
                 For Each item As ListViewItem In serverlist.Items
                     If item.Selected = True Then
                         Try
@@ -610,12 +581,10 @@ Public Class Main
                                                 _cnt = _cnt & readcounts.Value & " : "
                                             Case "Sql"
                                                 readcounts.Read()
-                                                cmd3 = con3.CreateCommand
-                                                cmd3.CommandText = readcounts.Value
-                                                dat3 = cmd3.ExecuteReader()
-                                                dat3.Read()
-                                                _cnt = _cnt & dat3(0) & vbCrLf
-                                                dat3.Close()
+                                                wksquery = readcounts.Value
+                                                dim readmeagain as SqlDataReader = db.ReadSqlData(wksquery)
+                                                _cnt = _cnt & readmeagain(0) & vbCrLf
+                                                readmeagain.Close()
                                         End Select
                                 End Select
                             Loop
@@ -626,15 +595,11 @@ Public Class Main
                         Exit For
                     End If
                 Next
-                cmd3.Dispose()
-                con3.Close()
+                readworkstation.Close()
             End If
             _cnt = _cnt & vbCrLf & vbTab & vbTab & vbTab & vbTab & vbTab
         Catch ex As Exception
-            miniTool.balon(ex.Message)
             Logger.WriteToErrorLog(ex.Message, ex.StackTrace, "error")
-            cmd3.Dispose()
-            con3.Close()
         End Try
     End Sub
     Private Sub Loadservice(tokenservice As CancellationToken)
@@ -662,9 +627,6 @@ Public Class Main
     End Sub
     Private Sub Loadping(tokenserver As CancellationToken)
         Dim i As Integer = 0
-        ' Dim MyReg As RegistryKey
-        ' Dim MyVal As Object
-        ' sss.Visible = True
         Try
             For Each item As ListViewItem In serverlist.Items
                 tokenserver.ThrowIfCancellationRequested()
@@ -672,40 +634,29 @@ Public Class Main
                     item.ForeColor = Color.Green
                     item.SubItems.Add("ON")
                     Try
-                        Dim arr As New ArrayList
-                        Dim arr1, arr2 As New ArrayList
-                        Dim conex1 As SqlConnection
-                        Dim cmd, cmd1, cmd2 As SqlCommand
-                        Dim dat, dat1, dat2 As SqlDataReader
+            Dim arr, arr1, arr2 As New ArrayList
 
-                        conex1 = New SqlConnection("Data Source=" & item.SubItems(2).Text & ";Database=TPCentralDB;" & Cred & ";")
-                        cmd = conex1.CreateCommand
-                        cmd1 = conex1.CreateCommand
-                        cmd2 = conex1.CreateCommand
-                        cmd.CommandText = "select top 1 szDatabaseVersionID from MGIDatabaseVersionUpdate order by szDatabaseInstallDate desc"
-                        cmd1.CommandText = "select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%')=0"
-                        cmd2.CommandText = "select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%')=0"
-                        conex1.Open()
-                        If conex1.State = ConnectionState.Open Then
-                            dat = cmd.ExecuteReader()
-                            While dat.Read()
-                                arr.Add(dat(0))
-                            End While
-                            dat.Close()
-                            dat1 = cmd1.ExecuteReader()
-                            While dat1.Read()
-                                arr1.Add(dat1(0))
-                            End While
-                            dat1.Close()
-                            dat2 = cmd2.ExecuteReader()
-                            While dat2.Read()
-                                arr2.Add(dat2(0))
-                            End While
-                            dat2.Close()
-                            conex1.Close()
-                        ElseIf conex1.State = ConnectionState.Closed Then
-                            miniTool.balon("DB Offline")
-                        End If
+            Dim db As New SqldbManager(item.SubItems(2).Text,,, 1)
+            Dim szDatabaseVersionId As SqlDataReader = db.ReadSqlData("select top 1 szDatabaseVersionID from MGIDatabaseVersionUpdate order by szDatabaseInstallDate desc, szDatabaseInstallTime desc")
+
+            While szDatabaseVersionId.Read()
+                arr.Add(szDatabaseVersionId(0))
+            End While
+            szDatabaseVersionId.Close()
+
+            Dim euSoftwareVersionServer As SqlDataReader = db.ReadSqlData("select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%')=0")
+
+            While euSoftwareVersionServer.Read()
+                arr1.Add(euSoftwareVersionServer(0))
+            End While
+            euSoftwareVersionServer.Close()
+
+            Dim euSoftwareVersionTill As SqlDataReader = db.ReadSqlData("select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%')=0")
+
+            While euSoftwareVersionTill.Read()
+                arr2.Add(euSoftwareVersionTill(0))
+            End While
+            euSoftwareVersionTill.Close()
 
                         Dim serverhf As String
                         Dim shortshf As String = arr1(0).ToString.Substring(arr1(0).ToString.Length - 3)
