@@ -113,6 +113,7 @@ Public Class Main
             Settings.Button2.Enabled = True
         End If
 
+
     End Sub
     '-----------------------------------------------------------------------------------------------------------------------------------------END form load/unload
     '-----------------------------------------------------------------------------------------------------------------------------------------BEGIN read xml files
@@ -253,8 +254,8 @@ Public Class Main
                         'Button6.Visible = True
                         MetroButton2.Visible = True
                         'Button7.Visible = True
-                        viewserver()
-                        statusserver()
+                        Viewserver()
+                        Statusserver()
                         For Each item As ListViewItem In serverlist.SelectedItems
                             If item.Group.Name = "ListViewGroup1" Then
                                 Readfolderlist("QA")
@@ -268,8 +269,8 @@ Public Class Main
                         tilllist.Sorting = Windows.Forms.SortOrder.None
                         ' Disable automatic sorting to enable manual sorting. 
                         AddHandler tilllist.ColumnClick, AddressOf tilllist_ColumnClick
-                        loaddatabase()
-                        loadcounts()
+                        Loaddatabase()
+                        Loadcounts()
                     End If
                 Catch ex As Exception
                     Logger.WriteToErrorLog(ex.Message, ex.StackTrace, "error")
@@ -432,8 +433,8 @@ Public Class Main
                 MetroLabel16.Text = "DB is ONLINE"
                 MetroLabel16.ForeColor = Color.Green
                 MetroLabel16.Style = MetroColorStyle.Green
-                tasktills()
-                taskoperators()
+                Tasktills()
+                Taskoperators()
             Else
                 MetroLabel16.Text = "DB is OFFLINE"
                 MetroLabel16.ForeColor = Color.Red
@@ -858,34 +859,34 @@ Public Class Main
         End Try
     End Sub
     Private Sub ResetOperatorPassword123ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetOperatorPassword123ToolStripMenuItem.Click
-        resetoperator()
+        Resetoperator()
     End Sub
     Private Sub RefreshToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles RefreshToolStripMenuItem2.Click
-        loaddatabase()
+        Loaddatabase()
     End Sub
     Private Sub RefreshDBToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RefreshDBToolStripMenuItem.Click
-        loaddatabase()
+        Loaddatabase()
     End Sub
     Private Sub RestartTillToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RestartTillToolStripMenuItem.Click
         Dim result As Integer = MessageBox.Show("Are you sure you want to reboot the till ?", "Reboot till", MessageBoxButtons.YesNo)
         If result = DialogResult.Yes Then
-            restarttill()
+            Restarttill()
         Else
         End If
     End Sub
     Private Sub ForceSignOutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ForceSignOutToolStripMenuItem.Click
-        logoffoperator()
+        Logoffoperator()
     End Sub
     Private Sub RefreshStatusToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RefreshStatusToolStripMenuItem.Click
         For Each item As ListViewItem In serverlist.SelectedItems
             If item.Group.Name = "ListViewGroup1" Then
-                taskserver("QA", 0, True)
+                Taskserver("QA", 0, True)
             ElseIf item.Group.Name = "ListViewGroup2" Then
-                taskserver("UAT", 1, True)
+                Taskserver("UAT", 1, True)
             ElseIf item.Group.Name = "ListViewGroup4" Then
-                taskserver("DEV", 3, True)
+                Taskserver("DEV", 3, True)
             ElseIf item.Group.Name = "ListViewGroup3" Then
-                taskserver("PROD", 2, True)
+                Taskserver("PROD", 2, True)
             End If
         Next
     End Sub
@@ -893,7 +894,7 @@ Public Class Main
     '    'about.ShowDialog()
     'End Sub
     Private Sub RefreshToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles RefreshToolStripMenuItem1.Click
-        taskservice()
+        Taskservice()
     End Sub
     Private Sub RestartServiceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RestartServiceToolStripMenuItem.Click
         Try
@@ -905,7 +906,7 @@ Public Class Main
                     serv.Start()
                 End If
             Next
-            taskservice()
+            Taskservice()
         Catch ed As Exception
             miniTool.balon(ed.Message)
             Logger.WriteToErrorLog(ed.Message, ed.StackTrace, "error")
@@ -923,7 +924,7 @@ Public Class Main
                     End If
                 End If
             Next
-            taskservice()
+            Taskservice()
         Catch ed As Exception
             miniTool.balon(ed.Message)
             Logger.WriteToErrorLog(ed.Message, ed.StackTrace, "error")
@@ -1305,7 +1306,7 @@ Public Class Main
     End Sub
 
     Private Sub MetroButton2_Click(sender As Object, e As EventArgs) Handles MetroButton2.Click
-        taskservice()
+        Taskservice()
         MetroButton2.Hide()
     End Sub
 
@@ -1414,19 +1415,19 @@ Public Class Main
     End Sub
 
     Private Sub MetroRadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles MetroRadioButton1.CheckedChanged
-        taskserver("QA", 0, False)
+        Taskserver("QA", 0, False)
     End Sub
 
     Private Sub MetroRadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles MetroRadioButton2.CheckedChanged
-        taskserver("UAT", 1, False)
+        Taskserver("UAT", 1, False)
     End Sub
 
     Private Sub MetroRadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles MetroRadioButton3.CheckedChanged
-        taskserver("DEV", 3, False)
+        Taskserver("DEV", 3, False)
     End Sub
 
     Private Sub MetroRadioButton4_CheckedChanged(sender As Object, e As EventArgs) Handles MetroRadioButton4.CheckedChanged
-        taskserver("PROD", 2, False)
+        Taskserver("PROD", 2, False)
     End Sub
 
     Private Sub BarcodeGeneratorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarcodeGeneratorToolStripMenuItem.Click
@@ -1441,7 +1442,7 @@ Public Class Main
     Private Sub DiscountTableToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DiscountTableToolStripMenuItem.Click
         Try
             If MetroLabel15.Text = "ONLINE" Then
-                DiscountExtract.getem()
+                DiscountExtract.Getem()
             Else
                 miniTool.balon("Please select a server!")
             End If
@@ -1457,29 +1458,6 @@ Public Class Main
     Private Shared Sub HotfixesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HotfixesToolStripMenuItem.Click
         hotfix.ShowDialog()
     End Sub
-
-    'Private Sub Checkforupdate()
-    '    Try
-    '        Dim wbReq As New Net.WebClient
-    '        wbReq.Proxy.Credentials = System.Net.CredentialCache.DefaultCredentials
-    '        wbReq.Dispose()
-
-    '        Dim request As HttpWebRequest = HttpWebRequest.Create("http://my-collaboration.metrogroup-networking.com/personal/r4_razvan_belcea/Shared%20Documents/Update.txt")
-    '        request.Credentials = CredentialCache.DefaultCredentials
-    '        Dim response As HttpWebResponse = request.GetResponse()
-    '        Dim sr = New StreamReader(response.GetResponseStream())
-    '        Dim exenewestversion As String = sr.ReadToEnd()
-    '        Dim execurrentversion As String = Application.ProductVersion
-    '        If execurrentversion < exenewestversion Then
-    '            updateapp.app()
-    '        Else
-    '            ActualVersion()
-    '        End If
-    '        sr.Close()
-    '    Catch ex As Exception
-    '        miniTool.balon("CheckForUpdates: " + ex.Message)
-    '    End Try
-    'End Sub
 
     Private Shared Sub Autoupdaterexists()
         Try
@@ -1513,36 +1491,6 @@ Public Class Main
     End Sub
 
     Private Sub MetroTextBox1_TextChanged(sender As Object, e As EventArgs) Handles MetroTextBox1.TextChanged
-        '        Dim itm As ListViewItem
-        'Dim i As Integer
-
-        'For i = 0 To serverlist.Items.Count - 1
-        '    'itm = serverlist.SelectedItems(i)
-        '    'Console.WriteLine(ContactFirstColumnHeader = {1} ContactLastColumnHeader = {2},itm.SubItems(1),itm.SubItems(2))
-        '    serverlist.Items(i).Selected = False
-        '    serverlist.Items(i).BackColor = Color.White
-        'Next
-
-        'With serverlist
-        '    itm = .FindItemWithText(MetroTextBox1.Text, True, 0, True)
-
-
-        '    If Not itm Is Nothing Then
-        '        .Items.Item(itm.Index).BackColor = Color.LemonChiffon
-        '        .Items.Item(itm.Index).EnsureVisible()
-        '    Else
-        '        MsgBox("No Record Found!")
-        '        For i = 0 To serverlist.Items.Count - 1
-        '            serverlist.Items(i).Selected = False
-        '            serverlist.Items(i).BackColor = Color.White
-        '        Next
-        '        .Items(0).EnsureVisible()
-        '        .Items.Item(0).BackColor = Color.LemonChiffon
-        '        MetroTextBox1.SelectionStart = 0
-        '        MetroTextBox1.Focus()
-        '    End If
-        'End With
-        'itm = Nothing
 
         Dim list As List(Of ListViewItem) = (From item In serverlist.Items.OfType(Of ListViewItem)()
                                              Where item.SubItems(0).Text.Contains(MetroTextBox1.Text.ToUpper())
@@ -1554,11 +1502,32 @@ Public Class Main
             'MsgBox(list.Count)
         End If
 
-
+        Dim i As Integer
         serverlist.Items.Clear()
         For Each item In list
-            serverlist.Items.Add(item)
+            If MetroRadioButton1.Checked = True Then
+                item.Group = serverlist.Groups("ListViewGroup1")
+                serverlist.Items.Add(item)
+            ElseIf MetroRadioButton2.Checked = True Then
+                item.Group = serverlist.Groups("ListViewGroup2")
+                serverlist.Items.Add(item)
+            ElseIf MetroRadioButton3.Checked = True Then
+                item.Group = serverlist.Groups("ListViewGroup4")
+                serverlist.Items.Add(item)
+            ElseIf MetroRadioButton4.Checked = True Then
+                item.Group = serverlist.Groups("ListViewGroup3")
+                serverlist.Items.Add(item)
+            End If
         Next
 
+        If MetroTextBox1.Text = "" AndAlso MetroRadioButton1.Checked = True Then
+            Taskserver("QA", 0, False)
+        ElseIf MetroTextBox1.Text = "" AndAlso MetroRadioButton2.Checked Then
+            Taskserver("UAT", 1, False)
+        ElseIf MetroTextBox1.Text = "" AndAlso MetroRadioButton3.Checked Then
+            Taskserver("DEV", 3, False)
+        ElseIf MetroTextBox1.Text = "" AndAlso MetroRadioButton4.Checked Then
+            Taskserver("PROD", 2, False)
+        End If
     End Sub
 End Class
