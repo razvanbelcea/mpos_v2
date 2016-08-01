@@ -96,6 +96,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\2.0.6000.0\System.Management.Automation.dll</HintPath>
+    </Reference>
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -134,6 +138,12 @@
       <DependentUpon>DBQueries.vb</DependentUpon>
     </Compile>
     <Compile Include="DBQueries.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VMSnapshot.Designer.vb">
+      <DependentUpon>VMSnapshot.vb</DependentUpon>
+    </Compile>
+    <Compile Include="VMSnapshot.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="hotfix.Designer.vb">
@@ -209,6 +219,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VMSnapshot.resx">
+      <DependentUpon>VMSnapshot.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

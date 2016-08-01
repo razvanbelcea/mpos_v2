@@ -27,7 +27,7 @@ Public Class getServer
                             s = readserver.Value & " "
                         Case "Name"
                             readserver.Read()
-                            Main.serverlist.Items(i).SubItems.Add(readserver.Value)
+                            Main.serverlist.Items(i).SubItems.Add(readserver.Value)                            
                             s = s & readserver.Value & " IP-"
                         Case "Ip"
                             readserver.Read()

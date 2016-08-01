@@ -50,9 +50,9 @@ Partial Class Main
         Me.MetroLabel16 = New MetroFramework.Controls.MetroLabel()
         Me.MetroLabel15 = New MetroFramework.Controls.MetroLabel()
         Me.servicelist = New System.Windows.Forms.ListView()
-        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
         Me.ContextMenuStrip3 = New MetroFramework.Controls.MetroContextMenu(Me.components)
         Me.RestartServiceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StartStopServiceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -70,14 +70,14 @@ Partial Class Main
         Me.tills = New System.Windows.Forms.GroupBox()
         Me.tpb = New MetroFramework.Controls.MetroProgressSpinner()
         Me.tilllist = New System.Windows.Forms.ListView()
-        Me.nr = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.Tillname = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.tillno = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.Tilltype = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.Signon = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.TillIP = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.Tillstatus = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.printertype = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.nr = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
+        Me.Tillname = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
+        Me.tillno = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
+        Me.Tilltype = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
+        Me.Signon = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
+        Me.TillIP = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
+        Me.Tillstatus = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
+        Me.printertype = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
         Me.ContextMenuStrip1 = New MetroFramework.Controls.MetroContextMenu(Me.components)
         Me.OpenInSCCMToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MstscToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -89,25 +89,33 @@ Partial Class Main
         Me.MatrixToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LaserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RefreshDBToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.metro = New System.Windows.Forms.PictureBox()
+        Me.ChangeTillModeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WholeSalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RegularSalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReturnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DepositToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CorrectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CODGUIToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AdviceNoteCreationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LinkLabel1 = New MetroFramework.Controls.MetroLink()
         Me.folderlist = New System.Windows.Forms.ListView()
         Me.operators = New System.Windows.Forms.GroupBox()
         Me.operatorlist = New System.Windows.Forms.ListView()
-        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
         Me.ContextMenuStrip2 = New MetroFramework.Controls.MetroContextMenu(Me.components)
         Me.ResetOperatorPassword123ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RefreshToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripProgressBar1 = New MetroFramework.Controls.MetroProgressBar()
         Me.MetroLabel1 = New MetroFramework.Controls.MetroLabel()
         Me.serverlist = New System.Windows.Forms.ListView()
-        Me.country = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.servername = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ip = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.statuss = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.vers = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.country = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
+        Me.servername = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
+        Me.ip = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
+        Me.statuss = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
+        Me.vers = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
         Me.ContextMenuStrip4 = New MetroFramework.Controls.MetroContextMenu(Me.components)
         Me.OpenInSCCMToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MstscToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -141,29 +149,31 @@ Partial Class Main
         Me.MetroLabel18 = New MetroFramework.Controls.MetroLabel()
         Me.folder = New System.Windows.Forms.GroupBox()
         Me.MetroToolTip1 = New MetroFramework.Components.MetroToolTip()
+        Me.MetroGrid1 = New MetroFramework.Controls.MetroGrid()
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
-        Me.MetroGrid1 = New MetroFramework.Controls.MetroGrid()
-        Me.GroupBox1.SuspendLayout()
-        Me.status.SuspendLayout()
-        Me.ContextMenuStrip3.SuspendLayout()
-        Me.tills.SuspendLayout()
-        Me.ContextMenuStrip1.SuspendLayout()
-        CType(Me.metro, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.operators.SuspendLayout()
-        Me.ContextMenuStrip2.SuspendLayout()
-        Me.ContextMenuStrip4.SuspendLayout()
-        Me.MetroContextMenu1.SuspendLayout()
-        CType(Me.MetroStyleManager1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ContextMenuStrip7.SuspendLayout()
-        Me.ContextMenuStrip6.SuspendLayout()
-        Me.folder.SuspendLayout()
-        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MetroGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
+        Me.metro = New System.Windows.Forms.PictureBox()
+        Me.VMSnapshotToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GroupBox1.SuspendLayout
+        Me.status.SuspendLayout
+        Me.ContextMenuStrip3.SuspendLayout
+        Me.tills.SuspendLayout
+        Me.ContextMenuStrip1.SuspendLayout
+        Me.operators.SuspendLayout
+        Me.ContextMenuStrip2.SuspendLayout
+        Me.ContextMenuStrip4.SuspendLayout
+        Me.MetroContextMenu1.SuspendLayout
+        CType(Me.MetroStyleManager1,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.ContextMenuStrip7.SuspendLayout
+        Me.ContextMenuStrip6.SuspendLayout
+        Me.folder.SuspendLayout
+        CType(Me.MetroGrid1,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PictureBox8,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PictureBox7,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PictureBox5,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.metro,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.SuspendLayout
         '
         'GroupBox1
         '
@@ -172,12 +182,12 @@ Partial Class Main
         Me.GroupBox1.Controls.Add(Me.MetroRadioButton3)
         Me.GroupBox1.Controls.Add(Me.MetroRadioButton2)
         Me.GroupBox1.Controls.Add(Me.MetroRadioButton1)
-        Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI Light", 10.0!)
+        Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI Light", 10!)
         Me.GroupBox1.Location = New System.Drawing.Point(24, 64)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(467, 46)
         Me.GroupBox1.TabIndex = 0
-        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.TabStop = false
         Me.GroupBox1.Text = "Environment"
         '
         'MetroTextBox1
@@ -192,8 +202,8 @@ Partial Class Main
         Me.MetroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue
         Me.MetroTextBox1.CustomButton.TabIndex = 1
         Me.MetroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light
-        Me.MetroTextBox1.CustomButton.UseSelectable = True
-        Me.MetroTextBox1.CustomButton.Visible = False
+        Me.MetroTextBox1.CustomButton.UseSelectable = true
+        Me.MetroTextBox1.CustomButton.Visible = false
         Me.MetroTextBox1.Lines = New String(-1) {}
         Me.MetroTextBox1.Location = New System.Drawing.Point(6, 22)
         Me.MetroTextBox1.MaxLength = 32767
@@ -206,58 +216,58 @@ Partial Class Main
         Me.MetroTextBox1.Size = New System.Drawing.Size(167, 23)
         Me.MetroTextBox1.TabIndex = 4
         Me.MetroToolTip1.SetToolTip(Me.MetroTextBox1, "Mhmm")
-        Me.MetroTextBox1.UseSelectable = True
+        Me.MetroTextBox1.UseSelectable = true
         Me.MetroTextBox1.WaterMark = "search"
-        Me.MetroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.MetroTextBox1.WaterMarkFont = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel)
+        Me.MetroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(CType(CType(109,Byte),Integer), CType(CType(109,Byte),Integer), CType(CType(109,Byte),Integer))
+        Me.MetroTextBox1.WaterMarkFont = New System.Drawing.Font("Segoe UI", 12!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel)
         '
         'MetroRadioButton4
         '
-        Me.MetroRadioButton4.AutoSize = True
+        Me.MetroRadioButton4.AutoSize = true
         Me.MetroRadioButton4.Location = New System.Drawing.Point(370, 24)
         Me.MetroRadioButton4.Name = "MetroRadioButton4"
         Me.MetroRadioButton4.Size = New System.Drawing.Size(54, 15)
         Me.MetroRadioButton4.Style = MetroFramework.MetroColorStyle.Purple
         Me.MetroRadioButton4.TabIndex = 3
         Me.MetroRadioButton4.Text = "PROD"
-        Me.MetroRadioButton4.UseSelectable = True
-        Me.MetroRadioButton4.UseStyleColors = True
+        Me.MetroRadioButton4.UseSelectable = true
+        Me.MetroRadioButton4.UseStyleColors = true
         '
         'MetroRadioButton3
         '
-        Me.MetroRadioButton3.AutoSize = True
+        Me.MetroRadioButton3.AutoSize = true
         Me.MetroRadioButton3.Location = New System.Drawing.Point(309, 24)
         Me.MetroRadioButton3.Name = "MetroRadioButton3"
         Me.MetroRadioButton3.Size = New System.Drawing.Size(44, 15)
         Me.MetroRadioButton3.Style = MetroFramework.MetroColorStyle.Pink
         Me.MetroRadioButton3.TabIndex = 2
         Me.MetroRadioButton3.Text = "DEV"
-        Me.MetroRadioButton3.UseSelectable = True
-        Me.MetroRadioButton3.UseStyleColors = True
+        Me.MetroRadioButton3.UseSelectable = true
+        Me.MetroRadioButton3.UseStyleColors = true
         '
         'MetroRadioButton2
         '
-        Me.MetroRadioButton2.AutoSize = True
+        Me.MetroRadioButton2.AutoSize = true
         Me.MetroRadioButton2.Location = New System.Drawing.Point(248, 24)
         Me.MetroRadioButton2.Name = "MetroRadioButton2"
         Me.MetroRadioButton2.Size = New System.Drawing.Size(46, 15)
         Me.MetroRadioButton2.Style = MetroFramework.MetroColorStyle.Magenta
         Me.MetroRadioButton2.TabIndex = 1
         Me.MetroRadioButton2.Text = "UAT"
-        Me.MetroRadioButton2.UseSelectable = True
-        Me.MetroRadioButton2.UseStyleColors = True
+        Me.MetroRadioButton2.UseSelectable = true
+        Me.MetroRadioButton2.UseStyleColors = true
         '
         'MetroRadioButton1
         '
-        Me.MetroRadioButton1.AutoSize = True
+        Me.MetroRadioButton1.AutoSize = true
         Me.MetroRadioButton1.Location = New System.Drawing.Point(193, 24)
         Me.MetroRadioButton1.Name = "MetroRadioButton1"
         Me.MetroRadioButton1.Size = New System.Drawing.Size(40, 15)
         Me.MetroRadioButton1.Style = MetroFramework.MetroColorStyle.Green
         Me.MetroRadioButton1.TabIndex = 0
         Me.MetroRadioButton1.Text = "QA"
-        Me.MetroRadioButton1.UseSelectable = True
-        Me.MetroRadioButton1.UseStyleColors = True
+        Me.MetroRadioButton1.UseSelectable = true
+        Me.MetroRadioButton1.UseStyleColors = true
         '
         'status
         '
@@ -283,18 +293,18 @@ Partial Class Main
         Me.status.Controls.Add(Me.MetroLabel4)
         Me.status.Controls.Add(Me.MetroLabel3)
         Me.status.Controls.Add(Me.MetroLabel2)
-        Me.status.Font = New System.Drawing.Font("Segoe UI Light", 10.0!)
+        Me.status.Font = New System.Drawing.Font("Segoe UI Light", 10!)
         Me.status.Location = New System.Drawing.Point(497, 64)
         Me.status.Name = "status"
         Me.status.Size = New System.Drawing.Size(508, 286)
         Me.status.TabIndex = 2
-        Me.status.TabStop = False
+        Me.status.TabStop = false
         Me.status.Text = "Server/Service Status"
-        Me.status.Visible = False
+        Me.status.Visible = false
         '
         'MetroLabel24
         '
-        Me.MetroLabel24.AutoSize = True
+        Me.MetroLabel24.AutoSize = true
         Me.MetroLabel24.Location = New System.Drawing.Point(318, 83)
         Me.MetroLabel24.Name = "MetroLabel24"
         Me.MetroLabel24.Size = New System.Drawing.Size(18, 19)
@@ -303,7 +313,7 @@ Partial Class Main
         '
         'MetroLabel23
         '
-        Me.MetroLabel23.AutoSize = True
+        Me.MetroLabel23.AutoSize = true
         Me.MetroLabel23.Location = New System.Drawing.Point(318, 64)
         Me.MetroLabel23.Name = "MetroLabel23"
         Me.MetroLabel23.Size = New System.Drawing.Size(18, 19)
@@ -312,7 +322,7 @@ Partial Class Main
         '
         'MetroLabel20
         '
-        Me.MetroLabel20.AutoSize = True
+        Me.MetroLabel20.AutoSize = true
         Me.MetroLabel20.Location = New System.Drawing.Point(318, 45)
         Me.MetroLabel20.Name = "MetroLabel20"
         Me.MetroLabel20.Size = New System.Drawing.Size(18, 19)
@@ -321,7 +331,7 @@ Partial Class Main
         '
         'MetroLabel19
         '
-        Me.MetroLabel19.AutoSize = True
+        Me.MetroLabel19.AutoSize = true
         Me.MetroLabel19.Location = New System.Drawing.Point(225, 45)
         Me.MetroLabel19.Name = "MetroLabel19"
         Me.MetroLabel19.Size = New System.Drawing.Size(35, 19)
@@ -330,7 +340,7 @@ Partial Class Main
         '
         'MetroLabel12
         '
-        Me.MetroLabel12.AutoSize = True
+        Me.MetroLabel12.AutoSize = true
         Me.MetroLabel12.Location = New System.Drawing.Point(408, 64)
         Me.MetroLabel12.Name = "MetroLabel12"
         Me.MetroLabel12.Size = New System.Drawing.Size(89, 19)
@@ -339,28 +349,28 @@ Partial Class Main
         '
         'MetroLabel8
         '
-        Me.MetroLabel8.AutoSize = True
-        Me.MetroLabel8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MetroLabel8.AutoSize = true
+        Me.MetroLabel8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.MetroLabel8.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline
         Me.MetroLabel8.LinkColor = System.Drawing.Color.Black
         Me.MetroLabel8.Location = New System.Drawing.Point(79, 49)
         Me.MetroLabel8.Name = "MetroLabel8"
         Me.MetroLabel8.Size = New System.Drawing.Size(19, 15)
         Me.MetroLabel8.TabIndex = 32
-        Me.MetroLabel8.TabStop = True
+        Me.MetroLabel8.TabStop = true
         Me.MetroLabel8.Text = "..."
         '
         'MetroLabel7
         '
-        Me.MetroLabel7.AutoSize = True
-        Me.MetroLabel7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MetroLabel7.AutoSize = true
+        Me.MetroLabel7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.MetroLabel7.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline
         Me.MetroLabel7.LinkColor = System.Drawing.Color.Black
         Me.MetroLabel7.Location = New System.Drawing.Point(79, 30)
         Me.MetroLabel7.Name = "MetroLabel7"
         Me.MetroLabel7.Size = New System.Drawing.Size(19, 15)
         Me.MetroLabel7.TabIndex = 31
-        Me.MetroLabel7.TabStop = True
+        Me.MetroLabel7.TabStop = true
         Me.MetroLabel7.Text = "..."
         '
         'MetroButton2
@@ -371,8 +381,8 @@ Partial Class Main
         Me.MetroButton2.Style = MetroFramework.MetroColorStyle.Orange
         Me.MetroButton2.TabIndex = 14
         Me.MetroButton2.Text = "Get services"
-        Me.MetroButton2.UseSelectable = True
-        Me.MetroButton2.UseStyleColors = True
+        Me.MetroButton2.UseSelectable = true
+        Me.MetroButton2.UseStyleColors = true
         '
         'ccd
         '
@@ -381,22 +391,22 @@ Partial Class Main
         Me.ccd.Name = "ccd"
         Me.ccd.Size = New System.Drawing.Size(30, 28)
         Me.ccd.TabIndex = 13
-        Me.ccd.UseSelectable = True
+        Me.ccd.UseSelectable = true
         Me.ccd.Value = 20
         '
         'MetroLabel16
         '
-        Me.MetroLabel16.AutoSize = True
+        Me.MetroLabel16.AutoSize = true
         Me.MetroLabel16.Location = New System.Drawing.Point(408, 45)
         Me.MetroLabel16.Name = "MetroLabel16"
         Me.MetroLabel16.Size = New System.Drawing.Size(93, 19)
         Me.MetroLabel16.TabIndex = 12
         Me.MetroLabel16.Text = "DB is OFFLINE"
-        Me.MetroLabel16.UseStyleColors = True
+        Me.MetroLabel16.UseStyleColors = true
         '
         'MetroLabel15
         '
-        Me.MetroLabel15.AutoSize = True
+        Me.MetroLabel15.AutoSize = true
         Me.MetroLabel15.FontSize = MetroFramework.MetroLabelSize.Tall
         Me.MetroLabel15.FontWeight = MetroFramework.MetroLabelWeight.Bold
         Me.MetroLabel15.Location = New System.Drawing.Point(418, 20)
@@ -404,7 +414,7 @@ Partial Class Main
         Me.MetroLabel15.Size = New System.Drawing.Size(83, 25)
         Me.MetroLabel15.TabIndex = 11
         Me.MetroLabel15.Text = "OFFLINE"
-        Me.MetroLabel15.UseStyleColors = True
+        Me.MetroLabel15.UseStyleColors = true
         '
         'servicelist
         '
@@ -414,7 +424,7 @@ Partial Class Main
         Me.servicelist.Name = "servicelist"
         Me.servicelist.Size = New System.Drawing.Size(494, 156)
         Me.servicelist.TabIndex = 10
-        Me.servicelist.UseCompatibleStateImageBehavior = False
+        Me.servicelist.UseCompatibleStateImageBehavior = false
         Me.servicelist.View = System.Windows.Forms.View.Details
         '
         'ColumnHeader1
@@ -433,13 +443,13 @@ Partial Class Main
         '
         'ContextMenuStrip3
         '
-        Me.ContextMenuStrip3.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        Me.ContextMenuStrip3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer))
+        Me.ContextMenuStrip3.BackColor = System.Drawing.Color.FromArgb(CType(CType(17,Byte),Integer), CType(CType(17,Byte),Integer), CType(CType(17,Byte),Integer))
+        Me.ContextMenuStrip3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(204,Byte),Integer), CType(CType(204,Byte),Integer), CType(CType(204,Byte),Integer))
         Me.ContextMenuStrip3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RestartServiceToolStripMenuItem, Me.StartStopServiceToolStripMenuItem, Me.RefreshToolStripMenuItem1})
         Me.ContextMenuStrip3.Name = "ContextMenuStrip3"
         Me.ContextMenuStrip3.Size = New System.Drawing.Size(168, 70)
         Me.ContextMenuStrip3.Theme = MetroFramework.MetroThemeStyle.Dark
-        Me.ContextMenuStrip3.UseStyleColors = True
+        Me.ContextMenuStrip3.UseStyleColors = true
         '
         'RestartServiceToolStripMenuItem
         '
@@ -461,7 +471,7 @@ Partial Class Main
         '
         'MetroLabel11
         '
-        Me.MetroLabel11.AutoSize = True
+        Me.MetroLabel11.AutoSize = true
         Me.MetroLabel11.Location = New System.Drawing.Point(318, 26)
         Me.MetroLabel11.Name = "MetroLabel11"
         Me.MetroLabel11.Size = New System.Drawing.Size(18, 19)
@@ -470,7 +480,7 @@ Partial Class Main
         '
         'MetroLabel10
         '
-        Me.MetroLabel10.AutoSize = True
+        Me.MetroLabel10.AutoSize = true
         Me.MetroLabel10.Location = New System.Drawing.Point(80, 83)
         Me.MetroLabel10.Name = "MetroLabel10"
         Me.MetroLabel10.Size = New System.Drawing.Size(18, 19)
@@ -479,7 +489,7 @@ Partial Class Main
         '
         'MetroLabel9
         '
-        Me.MetroLabel9.AutoSize = True
+        Me.MetroLabel9.AutoSize = true
         Me.MetroLabel9.Location = New System.Drawing.Point(80, 64)
         Me.MetroLabel9.Name = "MetroLabel9"
         Me.MetroLabel9.Size = New System.Drawing.Size(18, 19)
@@ -488,7 +498,7 @@ Partial Class Main
         '
         'MetroLabel22
         '
-        Me.MetroLabel22.AutoSize = True
+        Me.MetroLabel22.AutoSize = true
         Me.MetroLabel22.Location = New System.Drawing.Point(225, 83)
         Me.MetroLabel22.Name = "MetroLabel22"
         Me.MetroLabel22.Size = New System.Drawing.Size(48, 19)
@@ -497,7 +507,7 @@ Partial Class Main
         '
         'MetroLabel21
         '
-        Me.MetroLabel21.AutoSize = True
+        Me.MetroLabel21.AutoSize = true
         Me.MetroLabel21.Location = New System.Drawing.Point(225, 64)
         Me.MetroLabel21.Name = "MetroLabel21"
         Me.MetroLabel21.Size = New System.Drawing.Size(69, 19)
@@ -506,7 +516,7 @@ Partial Class Main
         '
         'MetroLabel6
         '
-        Me.MetroLabel6.AutoSize = True
+        Me.MetroLabel6.AutoSize = true
         Me.MetroLabel6.Location = New System.Drawing.Point(225, 26)
         Me.MetroLabel6.Name = "MetroLabel6"
         Me.MetroLabel6.Size = New System.Drawing.Size(87, 19)
@@ -515,7 +525,7 @@ Partial Class Main
         '
         'MetroLabel5
         '
-        Me.MetroLabel5.AutoSize = True
+        Me.MetroLabel5.AutoSize = true
         Me.MetroLabel5.Location = New System.Drawing.Point(16, 83)
         Me.MetroLabel5.Name = "MetroLabel5"
         Me.MetroLabel5.Size = New System.Drawing.Size(43, 19)
@@ -524,7 +534,7 @@ Partial Class Main
         '
         'MetroLabel4
         '
-        Me.MetroLabel4.AutoSize = True
+        Me.MetroLabel4.AutoSize = true
         Me.MetroLabel4.Location = New System.Drawing.Point(16, 64)
         Me.MetroLabel4.Name = "MetroLabel4"
         Me.MetroLabel4.Size = New System.Drawing.Size(58, 19)
@@ -533,7 +543,7 @@ Partial Class Main
         '
         'MetroLabel3
         '
-        Me.MetroLabel3.AutoSize = True
+        Me.MetroLabel3.AutoSize = true
         Me.MetroLabel3.Location = New System.Drawing.Point(16, 45)
         Me.MetroLabel3.Name = "MetroLabel3"
         Me.MetroLabel3.Size = New System.Drawing.Size(23, 19)
@@ -542,7 +552,7 @@ Partial Class Main
         '
         'MetroLabel2
         '
-        Me.MetroLabel2.AutoSize = True
+        Me.MetroLabel2.AutoSize = true
         Me.MetroLabel2.Location = New System.Drawing.Point(16, 26)
         Me.MetroLabel2.Name = "MetroLabel2"
         Me.MetroLabel2.Size = New System.Drawing.Size(48, 19)
@@ -554,40 +564,40 @@ Partial Class Main
         Me.tills.Controls.Add(Me.tpb)
         Me.tills.Controls.Add(Me.tilllist)
         Me.tills.Controls.Add(Me.metro)
-        Me.tills.Font = New System.Drawing.Font("Segoe UI Light", 10.0!)
+        Me.tills.Font = New System.Drawing.Font("Segoe UI Light", 10!)
         Me.tills.Location = New System.Drawing.Point(497, 357)
         Me.tills.Name = "tills"
         Me.tills.Size = New System.Drawing.Size(507, 234)
         Me.tills.TabIndex = 3
-        Me.tills.TabStop = False
+        Me.tills.TabStop = false
         Me.tills.Text = "Tills"
-        Me.tills.Visible = False
+        Me.tills.Visible = false
         '
         'tpb
         '
-        Me.tpb.Enabled = False
+        Me.tpb.Enabled = false
         Me.tpb.Location = New System.Drawing.Point(464, 193)
         Me.tpb.Maximum = 100
         Me.tpb.Name = "tpb"
         Me.tpb.Size = New System.Drawing.Size(30, 28)
         Me.tpb.TabIndex = 14
-        Me.tpb.UseSelectable = True
+        Me.tpb.UseSelectable = true
         Me.tpb.Value = 20
-        Me.tpb.Visible = False
+        Me.tpb.Visible = false
         '
         'tilllist
         '
         Me.tilllist.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.nr, Me.Tillname, Me.tillno, Me.Tilltype, Me.Signon, Me.TillIP, Me.Tillstatus, Me.printertype})
         Me.tilllist.ContextMenuStrip = Me.ContextMenuStrip1
         Me.tilllist.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.tilllist.FullRowSelect = True
+        Me.tilllist.FullRowSelect = true
         Me.tilllist.Location = New System.Drawing.Point(6, 25)
-        Me.tilllist.MultiSelect = False
+        Me.tilllist.MultiSelect = false
         Me.tilllist.Name = "tilllist"
-        Me.tilllist.ShowGroups = False
+        Me.tilllist.ShowGroups = false
         Me.tilllist.Size = New System.Drawing.Size(495, 203)
         Me.tilllist.TabIndex = 1
-        Me.tilllist.UseCompatibleStateImageBehavior = False
+        Me.tilllist.UseCompatibleStateImageBehavior = false
         Me.tilllist.View = System.Windows.Forms.View.Details
         '
         'nr
@@ -630,49 +640,49 @@ Partial Class Main
         '
         'ContextMenuStrip1
         '
-        Me.ContextMenuStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        Me.ContextMenuStrip1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenInSCCMToolStripMenuItem1, Me.MstscToolStripMenuItem1, Me.RestartTillToolStripMenuItem, Me.ForceSignOutToolStripMenuItem, Me.GetLogsToolStripMenuItem, Me.SetPrinterToolStripMenuItem, Me.RefreshDBToolStripMenuItem})
+        Me.ContextMenuStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(17,Byte),Integer), CType(CType(17,Byte),Integer), CType(CType(17,Byte),Integer))
+        Me.ContextMenuStrip1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(204,Byte),Integer), CType(CType(204,Byte),Integer), CType(CType(204,Byte),Integer))
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenInSCCMToolStripMenuItem1, Me.MstscToolStripMenuItem1, Me.RestartTillToolStripMenuItem, Me.ForceSignOutToolStripMenuItem, Me.GetLogsToolStripMenuItem, Me.SetPrinterToolStripMenuItem, Me.RefreshDBToolStripMenuItem, Me.ChangeTillModeToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(153, 158)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(169, 180)
         Me.ContextMenuStrip1.Theme = MetroFramework.MetroThemeStyle.Dark
-        Me.ContextMenuStrip1.UseStyleColors = True
+        Me.ContextMenuStrip1.UseStyleColors = true
         '
         'OpenInSCCMToolStripMenuItem1
         '
         Me.OpenInSCCMToolStripMenuItem1.Name = "OpenInSCCMToolStripMenuItem1"
-        Me.OpenInSCCMToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.OpenInSCCMToolStripMenuItem1.Size = New System.Drawing.Size(168, 22)
         Me.OpenInSCCMToolStripMenuItem1.Text = "Open in SCCM"
         '
         'MstscToolStripMenuItem1
         '
         Me.MstscToolStripMenuItem1.Name = "MstscToolStripMenuItem1"
-        Me.MstscToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.MstscToolStripMenuItem1.Size = New System.Drawing.Size(168, 22)
         Me.MstscToolStripMenuItem1.Text = "mstsc"
         '
         'RestartTillToolStripMenuItem
         '
         Me.RestartTillToolStripMenuItem.Name = "RestartTillToolStripMenuItem"
-        Me.RestartTillToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.RestartTillToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
         Me.RestartTillToolStripMenuItem.Text = "Restart Till"
         '
         'ForceSignOutToolStripMenuItem
         '
         Me.ForceSignOutToolStripMenuItem.Name = "ForceSignOutToolStripMenuItem"
-        Me.ForceSignOutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ForceSignOutToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
         Me.ForceSignOutToolStripMenuItem.Text = "Force SignOff"
         '
         'GetLogsToolStripMenuItem
         '
         Me.GetLogsToolStripMenuItem.Name = "GetLogsToolStripMenuItem"
-        Me.GetLogsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.GetLogsToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
         Me.GetLogsToolStripMenuItem.Text = "Get Till Logs"
         '
         'SetPrinterToolStripMenuItem
         '
         Me.SetPrinterToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NoneToolStripMenuItem, Me.MatrixToolStripMenuItem, Me.LaserToolStripMenuItem})
         Me.SetPrinterToolStripMenuItem.Name = "SetPrinterToolStripMenuItem"
-        Me.SetPrinterToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SetPrinterToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
         Me.SetPrinterToolStripMenuItem.Text = "Set Printer"
         '
         'NoneToolStripMenuItem
@@ -696,17 +706,63 @@ Partial Class Main
         'RefreshDBToolStripMenuItem
         '
         Me.RefreshDBToolStripMenuItem.Name = "RefreshDBToolStripMenuItem"
-        Me.RefreshDBToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.RefreshDBToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
         Me.RefreshDBToolStripMenuItem.Text = "Refresh DB"
         '
-        'metro
+        'ChangeTillModeToolStripMenuItem
         '
-        Me.metro.Location = New System.Drawing.Point(391, 57)
-        Me.metro.Name = "metro"
-        Me.metro.Size = New System.Drawing.Size(178, 50)
-        Me.metro.TabIndex = 15
-        Me.metro.TabStop = False
-        Me.metro.Visible = False
+        Me.ChangeTillModeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SalesToolStripMenuItem, Me.WholeSalesToolStripMenuItem, Me.RegularSalesToolStripMenuItem, Me.ReturnToolStripMenuItem, Me.DepositToolStripMenuItem, Me.CorrectionToolStripMenuItem, Me.CODGUIToolStripMenuItem, Me.AdviceNoteCreationToolStripMenuItem})
+        Me.ChangeTillModeToolStripMenuItem.Name = "ChangeTillModeToolStripMenuItem"
+        Me.ChangeTillModeToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.ChangeTillModeToolStripMenuItem.Text = "Change Till Mode"
+        '
+        'SalesToolStripMenuItem
+        '
+        Me.SalesToolStripMenuItem.Name = "SalesToolStripMenuItem"
+        Me.SalesToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.SalesToolStripMenuItem.Text = "Sales"
+        '
+        'WholeSalesToolStripMenuItem
+        '
+        Me.WholeSalesToolStripMenuItem.Name = "WholeSalesToolStripMenuItem"
+        Me.WholeSalesToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.WholeSalesToolStripMenuItem.Text = "WholeSales"
+        '
+        'RegularSalesToolStripMenuItem
+        '
+        Me.RegularSalesToolStripMenuItem.Name = "RegularSalesToolStripMenuItem"
+        Me.RegularSalesToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.RegularSalesToolStripMenuItem.Text = "RegularSales"
+        '
+        'ReturnToolStripMenuItem
+        '
+        Me.ReturnToolStripMenuItem.Name = "ReturnToolStripMenuItem"
+        Me.ReturnToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.ReturnToolStripMenuItem.Text = "Return"
+        '
+        'DepositToolStripMenuItem
+        '
+        Me.DepositToolStripMenuItem.Name = "DepositToolStripMenuItem"
+        Me.DepositToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.DepositToolStripMenuItem.Text = "Deposit"
+        '
+        'CorrectionToolStripMenuItem
+        '
+        Me.CorrectionToolStripMenuItem.Name = "CorrectionToolStripMenuItem"
+        Me.CorrectionToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.CorrectionToolStripMenuItem.Text = "Correction"
+        '
+        'CODGUIToolStripMenuItem
+        '
+        Me.CODGUIToolStripMenuItem.Name = "CODGUIToolStripMenuItem"
+        Me.CODGUIToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.CODGUIToolStripMenuItem.Text = "CODGUI"
+        '
+        'AdviceNoteCreationToolStripMenuItem
+        '
+        Me.AdviceNoteCreationToolStripMenuItem.Name = "AdviceNoteCreationToolStripMenuItem"
+        Me.AdviceNoteCreationToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.AdviceNoteCreationToolStripMenuItem.Text = "AdviceNoteCreation"
         '
         'LinkLabel1
         '
@@ -715,7 +771,7 @@ Partial Class Main
         Me.LinkLabel1.Size = New System.Drawing.Size(143, 19)
         Me.LinkLabel1.TabIndex = 1
         Me.LinkLabel1.Text = "Metro.MPOS.Router.xml"
-        Me.LinkLabel1.UseSelectable = True
+        Me.LinkLabel1.UseSelectable = true
         '
         'folderlist
         '
@@ -724,33 +780,33 @@ Partial Class Main
         Me.folderlist.Name = "folderlist"
         Me.folderlist.Size = New System.Drawing.Size(154, 249)
         Me.folderlist.TabIndex = 0
-        Me.folderlist.UseCompatibleStateImageBehavior = False
+        Me.folderlist.UseCompatibleStateImageBehavior = false
         Me.folderlist.View = System.Windows.Forms.View.List
-        Me.folderlist.Visible = False
+        Me.folderlist.Visible = false
         '
         'operators
         '
         Me.operators.Controls.Add(Me.operatorlist)
-        Me.operators.Font = New System.Drawing.Font("Segoe UI Light", 10.0!)
+        Me.operators.Font = New System.Drawing.Font("Segoe UI Light", 10!)
         Me.operators.Location = New System.Drawing.Point(1011, 357)
         Me.operators.Name = "operators"
         Me.operators.Size = New System.Drawing.Size(166, 234)
         Me.operators.TabIndex = 5
-        Me.operators.TabStop = False
+        Me.operators.TabStop = false
         Me.operators.Text = "Operators"
-        Me.operators.Visible = False
+        Me.operators.Visible = false
         '
         'operatorlist
         '
         Me.operatorlist.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader4})
         Me.operatorlist.ContextMenuStrip = Me.ContextMenuStrip2
         Me.operatorlist.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.operatorlist.FullRowSelect = True
+        Me.operatorlist.FullRowSelect = true
         Me.operatorlist.Location = New System.Drawing.Point(6, 25)
         Me.operatorlist.Name = "operatorlist"
         Me.operatorlist.Size = New System.Drawing.Size(154, 203)
         Me.operatorlist.TabIndex = 2
-        Me.operatorlist.UseCompatibleStateImageBehavior = False
+        Me.operatorlist.UseCompatibleStateImageBehavior = false
         Me.operatorlist.View = System.Windows.Forms.View.Details
         '
         'ColumnHeader5
@@ -769,13 +825,13 @@ Partial Class Main
         '
         'ContextMenuStrip2
         '
-        Me.ContextMenuStrip2.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        Me.ContextMenuStrip2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer))
+        Me.ContextMenuStrip2.BackColor = System.Drawing.Color.FromArgb(CType(CType(17,Byte),Integer), CType(CType(17,Byte),Integer), CType(CType(17,Byte),Integer))
+        Me.ContextMenuStrip2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(204,Byte),Integer), CType(CType(204,Byte),Integer), CType(CType(204,Byte),Integer))
         Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ResetOperatorPassword123ToolStripMenuItem, Me.RefreshToolStripMenuItem2})
         Me.ContextMenuStrip2.Name = "ContextMenuStrip2"
         Me.ContextMenuStrip2.Size = New System.Drawing.Size(183, 48)
         Me.ContextMenuStrip2.Theme = MetroFramework.MetroThemeStyle.Dark
-        Me.ContextMenuStrip2.UseStyleColors = True
+        Me.ContextMenuStrip2.UseStyleColors = true
         '
         'ResetOperatorPassword123ToolStripMenuItem
         '
@@ -798,7 +854,7 @@ Partial Class Main
         '
         'MetroLabel1
         '
-        Me.MetroLabel1.AutoSize = True
+        Me.MetroLabel1.AutoSize = true
         Me.MetroLabel1.Location = New System.Drawing.Point(24, 573)
         Me.MetroLabel1.Name = "MetroLabel1"
         Me.MetroLabel1.Size = New System.Drawing.Size(100, 19)
@@ -808,15 +864,15 @@ Partial Class Main
         'serverlist
         '
         Me.serverlist.Activation = System.Windows.Forms.ItemActivation.OneClick
-        Me.serverlist.AutoArrange = False
+        Me.serverlist.AutoArrange = false
         Me.serverlist.BackColor = System.Drawing.Color.White
-        Me.serverlist.BackgroundImageTiled = True
+        Me.serverlist.BackgroundImageTiled = true
         Me.serverlist.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.country, Me.servername, Me.ip, Me.statuss, Me.vers})
         Me.serverlist.ContextMenuStrip = Me.ContextMenuStrip4
         Me.serverlist.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.serverlist.Font = New System.Drawing.Font("Arial Narrow", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.serverlist.FullRowSelect = True
-        Me.serverlist.GridLines = True
+        Me.serverlist.Font = New System.Drawing.Font("Arial Narrow", 9!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.serverlist.FullRowSelect = true
+        Me.serverlist.GridLines = true
         ListViewGroup1.Header = "QA"
         ListViewGroup1.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
         ListViewGroup1.Name = "ListViewGroup1"
@@ -830,15 +886,15 @@ Partial Class Main
         ListViewGroup4.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center
         ListViewGroup4.Name = "ListViewGroup4"
         Me.serverlist.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {ListViewGroup1, ListViewGroup2, ListViewGroup3, ListViewGroup4})
-        Me.serverlist.HideSelection = False
-        Me.serverlist.LabelWrap = False
+        Me.serverlist.HideSelection = false
+        Me.serverlist.LabelWrap = false
         Me.serverlist.Location = New System.Drawing.Point(24, 116)
-        Me.serverlist.MultiSelect = False
+        Me.serverlist.MultiSelect = false
         Me.serverlist.Name = "serverlist"
         Me.serverlist.Size = New System.Drawing.Size(467, 475)
         Me.serverlist.TabIndex = 1
         Me.serverlist.TileSize = New System.Drawing.Size(100, 100)
-        Me.serverlist.UseCompatibleStateImageBehavior = False
+        Me.serverlist.UseCompatibleStateImageBehavior = false
         Me.serverlist.View = System.Windows.Forms.View.Details
         '
         'country
@@ -868,14 +924,14 @@ Partial Class Main
         '
         'ContextMenuStrip4
         '
-        Me.ContextMenuStrip4.AllowMerge = False
-        Me.ContextMenuStrip4.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        Me.ContextMenuStrip4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(204, Byte), Integer))
+        Me.ContextMenuStrip4.AllowMerge = false
+        Me.ContextMenuStrip4.BackColor = System.Drawing.Color.FromArgb(CType(CType(17,Byte),Integer), CType(CType(17,Byte),Integer), CType(CType(17,Byte),Integer))
+        Me.ContextMenuStrip4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(204,Byte),Integer), CType(CType(204,Byte),Integer), CType(CType(204,Byte),Integer))
         Me.ContextMenuStrip4.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenInSCCMToolStripMenuItem, Me.MstscToolStripMenuItem, Me.GetServerLogsToolStripMenuItem, Me.RefreshStatusToolStripMenuItem})
         Me.ContextMenuStrip4.Name = "ContextMenuStrip4"
         Me.ContextMenuStrip4.Size = New System.Drawing.Size(156, 92)
         Me.ContextMenuStrip4.Theme = MetroFramework.MetroThemeStyle.Dark
-        Me.ContextMenuStrip4.UseStyleColors = True
+        Me.ContextMenuStrip4.UseStyleColors = true
         '
         'OpenInSCCMToolStripMenuItem
         '
@@ -903,7 +959,7 @@ Partial Class Main
         '
         'MetroLabel13
         '
-        Me.MetroLabel13.AutoSize = True
+        Me.MetroLabel13.AutoSize = true
         Me.MetroLabel13.FontSize = MetroFramework.MetroLabelSize.Small
         Me.MetroLabel13.FontWeight = MetroFramework.MetroLabelWeight.Regular
         Me.MetroLabel13.ForeColor = System.Drawing.Color.Orange
@@ -913,12 +969,12 @@ Partial Class Main
         Me.MetroLabel13.Style = MetroFramework.MetroColorStyle.Green
         Me.MetroLabel13.TabIndex = 16
         Me.MetroLabel13.Text = "Settings"
-        Me.MetroLabel13.UseStyleColors = True
-        Me.MetroLabel13.Visible = False
+        Me.MetroLabel13.UseStyleColors = true
+        Me.MetroLabel13.Visible = false
         '
         'MetroLabel14
         '
-        Me.MetroLabel14.AutoSize = True
+        Me.MetroLabel14.AutoSize = true
         Me.MetroLabel14.FontSize = MetroFramework.MetroLabelSize.Small
         Me.MetroLabel14.FontWeight = MetroFramework.MetroLabelWeight.Regular
         Me.MetroLabel14.ForeColor = System.Drawing.Color.Orange
@@ -928,20 +984,20 @@ Partial Class Main
         Me.MetroLabel14.Style = MetroFramework.MetroColorStyle.Red
         Me.MetroLabel14.TabIndex = 17
         Me.MetroLabel14.Text = "Quit"
-        Me.MetroLabel14.UseStyleColors = True
-        Me.MetroLabel14.Visible = False
+        Me.MetroLabel14.UseStyleColors = true
+        Me.MetroLabel14.Visible = false
         '
         'MetroContextMenu1
         '
         Me.MetroContextMenu1.AccessibleRole = System.Windows.Forms.AccessibleRole.Window
-        Me.MetroContextMenu1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.MetroContextMenu1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DBQueriesToolStripMenuItem, Me.BarcodeGeneratorToolStripMenuItem, Me.DiscountExtractToolStripMenuItem, Me.HotfixesToolStripMenuItem, Me.ToolStripSeparator1, Me.CheckForUpdatesToolStripMenuItem, Me.ToolStripMenuItem1})
+        Me.MetroContextMenu1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
+        Me.MetroContextMenu1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DBQueriesToolStripMenuItem, Me.BarcodeGeneratorToolStripMenuItem, Me.DiscountExtractToolStripMenuItem, Me.HotfixesToolStripMenuItem, Me.VMSnapshotToolStripMenuItem, Me.ToolStripSeparator1, Me.CheckForUpdatesToolStripMenuItem, Me.ToolStripMenuItem1})
         Me.MetroContextMenu1.Name = "MetroContextMenu1"
         Me.MetroContextMenu1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.MetroContextMenu1.Size = New System.Drawing.Size(173, 142)
+        Me.MetroContextMenu1.Size = New System.Drawing.Size(173, 186)
         Me.MetroContextMenu1.Style = MetroFramework.MetroColorStyle.Orange
         Me.MetroContextMenu1.Theme = MetroFramework.MetroThemeStyle.Light
-        Me.MetroContextMenu1.UseStyleColors = True
+        Me.MetroContextMenu1.UseStyleColors = true
         '
         'DBQueriesToolStripMenuItem
         '
@@ -1006,8 +1062,8 @@ Partial Class Main
         Me.MetroButton1.Style = MetroFramework.MetroColorStyle.Orange
         Me.MetroButton1.TabIndex = 18
         Me.MetroButton1.Text = "Main Menu"
-        Me.MetroButton1.UseSelectable = True
-        Me.MetroButton1.UseStyleColors = True
+        Me.MetroButton1.UseSelectable = true
+        Me.MetroButton1.UseStyleColors = true
         '
         'MetroStyleManager1
         '
@@ -1020,16 +1076,16 @@ Partial Class Main
         'NotifyIcon1
         '
         Me.NotifyIcon1.ContextMenuStrip = Me.ContextMenuStrip7
-        Me.NotifyIcon1.Icon = CType(resources.GetObject("NotifyIcon1.Icon"), System.Drawing.Icon)
+        Me.NotifyIcon1.Icon = CType(resources.GetObject("NotifyIcon1.Icon"),System.Drawing.Icon)
         Me.NotifyIcon1.Text = "MPOS Server Tool Application"
-        Me.NotifyIcon1.Visible = True
+        Me.NotifyIcon1.Visible = true
         '
         'ContextMenuStrip7
         '
         Me.ContextMenuStrip7.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenMPOSToolAppToolStripMenuItem, Me.ExitMPOSToolAppToolStripMenuItem})
         Me.ContextMenuStrip7.Name = "ContextMenuStrip7"
         Me.ContextMenuStrip7.Size = New System.Drawing.Size(125, 48)
-        Me.ContextMenuStrip7.UseStyleColors = True
+        Me.ContextMenuStrip7.UseStyleColors = true
         '
         'OpenMPOSToolAppToolStripMenuItem
         '
@@ -1045,7 +1101,7 @@ Partial Class Main
         '
         'MetroLabel17
         '
-        Me.MetroLabel17.AutoSize = True
+        Me.MetroLabel17.AutoSize = true
         Me.MetroLabel17.Location = New System.Drawing.Point(1011, 598)
         Me.MetroLabel17.Name = "MetroLabel17"
         Me.MetroLabel17.Size = New System.Drawing.Size(90, 19)
@@ -1058,7 +1114,7 @@ Partial Class Main
         Me.ContextMenuStrip6.Name = "ContextMenuStrip6"
         Me.ContextMenuStrip6.Size = New System.Drawing.Size(150, 48)
         Me.ContextMenuStrip6.Theme = MetroFramework.MetroThemeStyle.Dark
-        Me.ContextMenuStrip6.UseStyleColors = True
+        Me.ContextMenuStrip6.UseStyleColors = true
         '
         'RouterxmlToolStripMenuItem
         '
@@ -1087,7 +1143,7 @@ Partial Class Main
         '
         'MetroLabel18
         '
-        Me.MetroLabel18.AutoSize = True
+        Me.MetroLabel18.AutoSize = true
         Me.MetroLabel18.FontSize = MetroFramework.MetroLabelSize.Small
         Me.MetroLabel18.FontWeight = MetroFramework.MetroLabelWeight.Regular
         Me.MetroLabel18.ForeColor = System.Drawing.Color.Orange
@@ -1097,8 +1153,8 @@ Partial Class Main
         Me.MetroLabel18.Style = MetroFramework.MetroColorStyle.Yellow
         Me.MetroLabel18.TabIndex = 24
         Me.MetroLabel18.Text = "Minimize"
-        Me.MetroLabel18.UseStyleColors = True
-        Me.MetroLabel18.Visible = False
+        Me.MetroLabel18.UseStyleColors = true
+        Me.MetroLabel18.Visible = false
         '
         'folder
         '
@@ -1108,17 +1164,67 @@ Partial Class Main
         Me.folder.Name = "folder"
         Me.folder.Size = New System.Drawing.Size(166, 277)
         Me.folder.TabIndex = 34
-        Me.folder.TabStop = False
+        Me.folder.TabStop = false
         Me.folder.Text = "Folder"
-        Me.folder.Visible = False
+        Me.folder.Visible = false
         '
         'MetroToolTip1
         '
         Me.MetroToolTip1.Style = MetroFramework.MetroColorStyle.Blue
         Me.MetroToolTip1.StyleManager = Nothing
         Me.MetroToolTip1.Theme = MetroFramework.MetroThemeStyle.Light
-        Me.MetroToolTip1.UseAnimation = False
-        Me.MetroToolTip1.UseFading = False
+        Me.MetroToolTip1.UseAnimation = false
+        Me.MetroToolTip1.UseFading = false
+        '
+        'MetroGrid1
+        '
+        Me.MetroGrid1.AllowUserToAddRows = false
+        Me.MetroGrid1.AllowUserToDeleteRows = false
+        Me.MetroGrid1.AllowUserToResizeRows = false
+        Me.MetroGrid1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.MetroGrid1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.MetroGrid1.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(255,Byte),Integer), CType(CType(255,Byte),Integer), CType(CType(255,Byte),Integer))
+        Me.MetroGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.MetroGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.MetroGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0,Byte),Integer), CType(CType(174,Byte),Integer), CType(CType(219,Byte),Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 11!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255,Byte),Integer), CType(CType(255,Byte),Integer), CType(CType(255,Byte),Integer))
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0,Byte),Integer), CType(CType(198,Byte),Integer), CType(CType(247,Byte),Integer))
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17,Byte),Integer), CType(CType(17,Byte),Integer), CType(CType(17,Byte),Integer))
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.MetroGrid1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.MetroGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255,Byte),Integer), CType(CType(255,Byte),Integer), CType(CType(255,Byte),Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 11!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(136,Byte),Integer), CType(CType(136,Byte),Integer), CType(CType(136,Byte),Integer))
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0,Byte),Integer), CType(CType(198,Byte),Integer), CType(CType(247,Byte),Integer))
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17,Byte),Integer), CType(CType(17,Byte),Integer), CType(CType(17,Byte),Integer))
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.MetroGrid1.DefaultCellStyle = DataGridViewCellStyle2
+        Me.MetroGrid1.EnableHeadersVisualStyles = false
+        Me.MetroGrid1.Font = New System.Drawing.Font("Segoe UI", 11!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.MetroGrid1.GridColor = System.Drawing.Color.FromArgb(CType(CType(255,Byte),Integer), CType(CType(255,Byte),Integer), CType(CType(255,Byte),Integer))
+        Me.MetroGrid1.Location = New System.Drawing.Point(24, 165)
+        Me.MetroGrid1.MultiSelect = false
+        Me.MetroGrid1.Name = "MetroGrid1"
+        Me.MetroGrid1.ReadOnly = true
+        Me.MetroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(0,Byte),Integer), CType(CType(174,Byte),Integer), CType(CType(219,Byte),Integer))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 11!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255,Byte),Integer), CType(CType(255,Byte),Integer), CType(CType(255,Byte),Integer))
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0,Byte),Integer), CType(CType(198,Byte),Integer), CType(CType(247,Byte),Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17,Byte),Integer), CType(CType(17,Byte),Integer), CType(CType(17,Byte),Integer))
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.MetroGrid1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        Me.MetroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        Me.MetroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.MetroGrid1.Size = New System.Drawing.Size(467, 427)
+        Me.MetroGrid1.TabIndex = 35
+        Me.MetroGrid1.Visible = false
         '
         'PictureBox8
         '
@@ -1129,7 +1235,7 @@ Partial Class Main
         Me.PictureBox8.Size = New System.Drawing.Size(48, 36)
         Me.PictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.PictureBox8.TabIndex = 23
-        Me.PictureBox8.TabStop = False
+        Me.PictureBox8.TabStop = false
         '
         'PictureBox7
         '
@@ -1140,7 +1246,7 @@ Partial Class Main
         Me.PictureBox7.Size = New System.Drawing.Size(48, 36)
         Me.PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.PictureBox7.TabIndex = 22
-        Me.PictureBox7.TabStop = False
+        Me.PictureBox7.TabStop = false
         '
         'PictureBox5
         '
@@ -1151,65 +1257,30 @@ Partial Class Main
         Me.PictureBox5.Size = New System.Drawing.Size(48, 36)
         Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.PictureBox5.TabIndex = 20
-        Me.PictureBox5.TabStop = False
+        Me.PictureBox5.TabStop = false
         '
-        'MetroGrid1
+        'metro
         '
-        Me.MetroGrid1.AllowUserToAddRows = False
-        Me.MetroGrid1.AllowUserToDeleteRows = False
-        Me.MetroGrid1.AllowUserToResizeRows = False
-        Me.MetroGrid1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.MetroGrid1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        Me.MetroGrid1.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MetroGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.MetroGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
-        Me.MetroGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.MetroGrid1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.MetroGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(136, Byte), Integer))
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.MetroGrid1.DefaultCellStyle = DataGridViewCellStyle2
-        Me.MetroGrid1.EnableHeadersVisualStyles = False
-        Me.MetroGrid1.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.MetroGrid1.GridColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MetroGrid1.Location = New System.Drawing.Point(24, 165)
-        Me.MetroGrid1.MultiSelect = False
-        Me.MetroGrid1.Name = "MetroGrid1"
-        Me.MetroGrid1.ReadOnly = True
-        Me.MetroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(219, Byte), Integer))
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(247, Byte), Integer))
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.MetroGrid1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
-        Me.MetroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        Me.MetroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.MetroGrid1.Size = New System.Drawing.Size(467, 427)
-        Me.MetroGrid1.TabIndex = 35
-        Me.MetroGrid1.Visible = False
+        Me.metro.Location = New System.Drawing.Point(391, 57)
+        Me.metro.Name = "metro"
+        Me.metro.Size = New System.Drawing.Size(178, 50)
+        Me.metro.TabIndex = 15
+        Me.metro.TabStop = false
+        Me.metro.Visible = false
+        '
+        'VMSnapshotToolStripMenuItem
+        '
+        Me.VMSnapshotToolStripMenuItem.Name = "VMSnapshotToolStripMenuItem"
+        Me.VMSnapshotToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
+        Me.VMSnapshotToolStripMenuItem.Text = "VMSnapshot"
         '
         'Main
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
         Me.ClientSize = New System.Drawing.Size(1200, 659)
-        Me.ControlBox = False
+        Me.ControlBox = false
         Me.Controls.Add(Me.MetroGrid1)
         Me.Controls.Add(Me.folder)
         Me.Controls.Add(Me.MetroLabel18)
@@ -1227,41 +1298,41 @@ Partial Class Main
         Me.Controls.Add(Me.tills)
         Me.Controls.Add(Me.status)
         Me.Controls.Add(Me.GroupBox1)
-        Me.DisplayHeader = False
-        Me.DoubleBuffered = False
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
+        Me.DisplayHeader = false
+        Me.DoubleBuffered = false
+        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
+        Me.MaximizeBox = false
+        Me.MinimizeBox = false
         Me.Name = "Main"
         Me.Padding = New System.Windows.Forms.Padding(20, 30, 20, 20)
-        Me.Resizable = False
+        Me.Resizable = false
         Me.ShadowType = MetroFramework.Forms.MetroFormShadowType.AeroShadow
         Me.Style = MetroFramework.MetroColorStyle.Orange
         Me.Text = "MPOS Server"
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.status.ResumeLayout(False)
-        Me.status.PerformLayout()
-        Me.ContextMenuStrip3.ResumeLayout(False)
-        Me.tills.ResumeLayout(False)
-        Me.ContextMenuStrip1.ResumeLayout(False)
-        CType(Me.metro, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.operators.ResumeLayout(False)
-        Me.ContextMenuStrip2.ResumeLayout(False)
-        Me.ContextMenuStrip4.ResumeLayout(False)
-        Me.MetroContextMenu1.ResumeLayout(False)
-        CType(Me.MetroStyleManager1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ContextMenuStrip7.ResumeLayout(False)
-        Me.ContextMenuStrip6.ResumeLayout(False)
-        Me.folder.ResumeLayout(False)
-        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MetroGrid1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        Me.GroupBox1.ResumeLayout(false)
+        Me.GroupBox1.PerformLayout
+        Me.status.ResumeLayout(false)
+        Me.status.PerformLayout
+        Me.ContextMenuStrip3.ResumeLayout(false)
+        Me.tills.ResumeLayout(false)
+        Me.ContextMenuStrip1.ResumeLayout(false)
+        Me.operators.ResumeLayout(false)
+        Me.ContextMenuStrip2.ResumeLayout(false)
+        Me.ContextMenuStrip4.ResumeLayout(false)
+        Me.MetroContextMenu1.ResumeLayout(false)
+        CType(Me.MetroStyleManager1,System.ComponentModel.ISupportInitialize).EndInit
+        Me.ContextMenuStrip7.ResumeLayout(false)
+        Me.ContextMenuStrip6.ResumeLayout(false)
+        Me.folder.ResumeLayout(false)
+        CType(Me.MetroGrid1,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PictureBox8,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PictureBox7,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PictureBox5,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.metro,System.ComponentModel.ISupportInitialize).EndInit
+        Me.ResumeLayout(false)
+        Me.PerformLayout
 
-    End Sub
+End Sub
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents status As System.Windows.Forms.GroupBox
     Friend WithEvents tills As System.Windows.Forms.GroupBox
@@ -1376,4 +1447,14 @@ Partial Class Main
     Friend WithEvents CheckForUpdatesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents MetroTextBox1 As MetroFramework.Controls.MetroTextBox
     Friend WithEvents MetroGrid1 As MetroFramework.Controls.MetroGrid
+    Friend WithEvents ChangeTillModeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SalesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents WholeSalesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RegularSalesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ReturnToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DepositToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CorrectionToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CODGUIToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AdviceNoteCreationToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents VMSnapshotToolStripMenuItem As ToolStripMenuItem
 End Class

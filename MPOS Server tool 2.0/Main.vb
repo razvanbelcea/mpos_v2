@@ -561,15 +561,16 @@ Public Class Main
         ' tpb.Visible = False === causes application to freeze/ fix needed 
     End Sub
     Private Sub Loadcounts()
-        Dim readcounts As XmlTextReader = New XmlTextReader(Cfl)
-        Dim db As New SqldbManager(MetroLabel8.Text,,, 1)        
+        Dim readcounts As XmlTextReader = New XmlTextReader(Cfl)         
         _cnt = vbTab & vbTab & vbTab & vbTab & vbTab & vbCrLf
         Try
             If MetroLabel15.Text = "ONLINE" Then
+                 Dim db As New SqldbManager(MetroLabel8.Text,,, 1)     
                 Dim wksquery as string = "select lRetailStoreID from workstation where szWorkstationID='" & MetroLabel7.Text & "'"
                 Dim readworkstation as SqlDataReader = db.ReadSqlData(wksquery)
+                While readworkstation.Read()
                MetroLabel10.Text = readworkstation(0)
-                MsgBox("Store is " + readworkstation(0))
+                End While
                 For Each item As ListViewItem In serverlist.Items
                     If item.Selected = True Then
                         Try
@@ -809,6 +810,22 @@ Public Class Main
             Logger.WriteToErrorLog(ew.Message, ew.StackTrace, "error")
         End Try
     End Sub
+    Private sub Changetillmode(tilltype As string)
+        Dim con As New SqlConnection("Data Source=" & MetroLabel8.Text & ";Database=TPCentralDB;" & Cred & ";")
+        try
+            con.Open()
+            for each item as ListViewItem In tilllist.Items
+                If item.Selected = true andalso item.SubItems(6).Text <> "-" Then
+                    Dim cmd as SqlCommand = new SqlCommand("update Workstation set szWorkstationGroupID = '" + tilltype + "' where szWorkstationID = '" + item.SubItems(1).Text + "'", con)
+                    cmd.ExecuteNonQuery()
+                End If
+            Next            
+        Catch ex As Exception
+            miniTool.balon(ex.Message)
+            Logger.WriteToErrorLog(ex.Message, ex.StackTrace, "error")
+        End Try
+
+    End sub
     Private Sub ResetOperatorPassword123ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetOperatorPassword123ToolStripMenuItem.Click
         Resetoperator()
     End Sub
@@ -958,6 +975,7 @@ Public Class Main
         OpenInSCCMToolStripMenuItem1.Visible = False
         MstscToolStripMenuItem.Visible = False
         GetLogsToolStripMenuItem.Visible = False
+        ChangeTillModeToolStripMenuItem.Visible = False
     End Sub
     Private Sub ContextMenuStrip1_Opening(sender As Object, e As CancelEventArgs) Handles ContextMenuStrip1.Opening
         Try
@@ -970,6 +988,7 @@ Public Class Main
             OpenInSCCMToolStripMenuItem1.Visible = False
             MstscToolStripMenuItem1.Visible = False
             GetLogsToolStripMenuItem.Visible = False
+            ChangeTillModeToolStripMenuItem.Visible = False
             For Each item As ListViewItem In tilllist.Items
                 If item.Selected AndAlso MetroLabel15.Text = "ONLINE" Then
                     If item.SubItems(5).Text <> "-" AndAlso item.SubItems(6).Text = "ON" Then
@@ -977,6 +996,7 @@ Public Class Main
                         OpenInSCCMToolStripMenuItem1.Visible = True
                         MstscToolStripMenuItem1.Visible = True
                         GetLogsToolStripMenuItem.Visible = True
+                        ChangeTillModeToolStripMenuItem.Visible = True
                     ElseIf item.SubItems(5).Text <> "-" Then
                         RestartTillToolStripMenuItem.Visible = True
                         OpenInSCCMToolStripMenuItem1.Visible = True
@@ -1443,42 +1463,170 @@ Public Class Main
 
     Private Sub MetroTextBox1_TextChanged(sender As Object, e As EventArgs) Handles MetroTextBox1.TextChanged
 
-        Dim list As List(Of ListViewItem) = (From item In serverlist.Items.OfType(Of ListViewItem)()
-                                             Where item.SubItems(0).Text.Contains(MetroTextBox1.Text.ToUpper())
-                                             Select item).ToList
-        If list.Count = 0 Then
-            serverlist.Items.Add(New ListViewItem("Your search returned no results"))
-            'MsgBox("Your search returned no results")
-        Else
-            'MsgBox(list.Count)
-        End If
+        'Dim list As List(Of ListViewItem) = (From item In serverlist.Items.OfType(Of ListViewItem)()
+        '                                     Where item.SubItems(0).Text.Contains(MetroTextBox1.Text.ToUpper())
+        '                                     Select item).ToList
+        'If list.Count = 0 Then
+        '    serverlist.Items.Add(New ListViewItem("Your search returned no results"))
+        '    'MsgBox("Your search returned no results")
+        'Else
+        '    'MsgBox(list.Count)
+        'End If
 
+        'Dim i As Integer
+        'serverlist.Items.Clear()
+        'For Each item In list
+        '    If MetroRadioButton1.Checked = True Then
+        '        item.Group = serverlist.Groups("ListViewGroup1")
+        '        serverlist.Items.Add(item)
+        '    ElseIf MetroRadioButton2.Checked = True Then
+        '        item.Group = serverlist.Groups("ListViewGroup2")
+        '        serverlist.Items.Add(item)
+        '    ElseIf MetroRadioButton3.Checked = True Then
+        '        item.Group = serverlist.Groups("ListViewGroup4")
+        '        serverlist.Items.Add(item)
+        '    ElseIf MetroRadioButton4.Checked = True Then
+        '        item.Group = serverlist.Groups("ListViewGroup3")
+        '        serverlist.Items.Add(item)
+        '    End If
+        'Next
+
+        'If MetroTextBox1.Text = "" AndAlso MetroRadioButton1.Checked = True Then
+        '    Taskserver("QA", 0, False)
+        'ElseIf MetroTextBox1.Text = "" AndAlso MetroRadioButton2.Checked Then
+        '    Taskserver("UAT", 1, False)
+        'ElseIf MetroTextBox1.Text = "" AndAlso MetroRadioButton3.Checked Then
+        '    Taskserver("DEV", 3, False)
+        'ElseIf MetroTextBox1.Text = "" AndAlso MetroRadioButton4.Checked Then
+        '    Taskserver("PROD", 2, False)
+
+        'To find an item using text
+        'In my case, I use their to find product id.
+        'End If
+
+        Dim itm As ListViewItem
         Dim i As Integer
-        serverlist.Items.Clear()
-        For Each item In list
-            If MetroRadioButton1.Checked = True Then
-                item.Group = serverlist.Groups("ListViewGroup1")
-                serverlist.Items.Add(item)
-            ElseIf MetroRadioButton2.Checked = True Then
-                item.Group = serverlist.Groups("ListViewGroup2")
-                serverlist.Items.Add(item)
-            ElseIf MetroRadioButton3.Checked = True Then
-                item.Group = serverlist.Groups("ListViewGroup4")
-                serverlist.Items.Add(item)
-            ElseIf MetroRadioButton4.Checked = True Then
-                item.Group = serverlist.Groups("ListViewGroup3")
-                serverlist.Items.Add(item)
-            End If
+
+        For i = 0 To serverlist.Items.Count - 1
+            'itm = serverlist.SelectedItems(i)
+            'Console.WriteLine(ContactFirstColumnHeader = {1} ContactLastColumnHeader = {2},itm.SubItems(1),itm.SubItems(2))
+            serverlist.Items(i).Selected = False
+            serverlist.Items(i).BackColor = Color.White
         Next
 
-        If MetroTextBox1.Text = "" AndAlso MetroRadioButton1.Checked = True Then
-            Taskserver("QA", 0, False)
-        ElseIf MetroTextBox1.Text = "" AndAlso MetroRadioButton2.Checked Then
-            Taskserver("UAT", 1, False)
-        ElseIf MetroTextBox1.Text = "" AndAlso MetroRadioButton3.Checked Then
-            Taskserver("DEV", 3, False)
-        ElseIf MetroTextBox1.Text = "" AndAlso MetroRadioButton4.Checked Then
-            Taskserver("PROD", 2, False)
+        With serverlist
+            itm = .FindItemWithText(MetroTextBox1.Text, True, 0, True)
+
+
+            If Not itm Is Nothing Then
+                .Items.Item(itm.Index).BackColor = Color.LightGray
+                .Items.Item(itm.Index).EnsureVisible()
+            Else
+             '   MsgBox("No Record Found!")
+                For i = 0 To serverlist.Items.Count - 1
+                    serverlist.Items(i).Selected = False
+                    serverlist.Items(i).BackColor = Color.White
+                Next
+                .Items(0).EnsureVisible()
+                .Items.Item(0).BackColor = Color.LemonChiffon
+                MetroTextBox1.SelectionStart = 0
+                MetroTextBox1.Focus()
+            End If
+        End With
+        itm = Nothing
+    End Sub
+
+    Private Sub SalesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalesToolStripMenuItem.Click
+        Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
+        If item IsNot Nothing Then
+            Changetillmode(item.text)
+            Loaddatabase()
+            miniTool.balon("Till mode changed to " & item.Text)
         End If
     End Sub
+
+    Private Sub WholeSalesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles WholeSalesToolStripMenuItem.Click
+                Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
+        If item IsNot Nothing Then
+            Changetillmode(item.text)
+            Loaddatabase()
+            miniTool.balon("Till mode changed to " & item.Text)
+        End If
+    End Sub
+
+    Private Sub RegularSalesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RegularSalesToolStripMenuItem.Click
+                Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
+        If item IsNot Nothing Then
+            Changetillmode(item.text)
+            Loaddatabase()
+            miniTool.balon("Till mode changed to " & item.Text)
+        End If
+    End Sub
+
+    Private Sub ReturnToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReturnToolStripMenuItem.Click
+                Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
+        If item IsNot Nothing Then
+            Changetillmode(item.text)
+            Loaddatabase()
+            miniTool.balon("Till mode changed to " & item.Text)
+        End If
+    End Sub
+
+    Private Sub DepositToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DepositToolStripMenuItem.Click
+                Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
+        If item IsNot Nothing Then
+            Changetillmode(item.text)
+            Loaddatabase()
+            miniTool.balon("Till mode changed to " & item.Text)
+        End If
+    End Sub
+
+    Private Sub CorrectionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CorrectionToolStripMenuItem.Click
+                Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
+        If item IsNot Nothing Then
+            Changetillmode(item.text)
+            Loaddatabase()
+            miniTool.balon("Till mode changed to " & item.Text)
+        End If
+    End Sub
+
+    Private Sub CODGUIToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CODGUIToolStripMenuItem.Click
+                Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
+        If item IsNot Nothing Then
+            Changetillmode(item.text)
+            Loaddatabase()
+            miniTool.balon("Till mode changed to " & item.Text)
+        End If
+    End Sub
+
+    Private Sub AdviceNoteCreationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AdviceNoteCreationToolStripMenuItem.Click
+                        Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
+        If item IsNot Nothing Then
+            Changetillmode(item.text)
+            Loaddatabase()
+            miniTool.balon("Till mode changed to " & item.Text)
+        End If
+    End Sub
+
+    Private Sub VMSnapshotToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VMSnapshotToolStripMenuItem.Click
+        VMSnapshot.ShowDialog()
+    End Sub
+
+    'Private Sub MetroTextBox1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles MetroTextBox1.KeyPress
+    '    if e.KeyChar = ChrW(Keys.Enter) Then
+    '                Dim itm As ListViewItem
+    '    With serverlist
+    '        itm = .FindItemWithText(MetroTextBox1.Text, False, 0, True)
+    '        If Not itm Is Nothing Then
+    '            .Items.Item(itm.Index).Selected = True
+    '            .Items.Item(itm.index).EnsureVisible()
+    '            dim tmpColor as Color
+    '            tmpColor = Color.Coral
+    '            .Items.Item(itm.index).BackColor = tmpColor
+    '        End If
+    '    End With
+    '    itm = Nothing
+
+    '    End If
+    'End Sub
 End Class
