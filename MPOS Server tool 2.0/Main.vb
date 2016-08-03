@@ -584,9 +584,9 @@ Public Class Main
                                             Case "Sql"
                                                 readcounts.Read()
                                                 wksquery = readcounts.Value
-                                                dim readmeagain as SqlDataReader = db.ReadSqlData(wksquery)
-                                                _cnt = _cnt & readmeagain(0) & vbCrLf
-                                                readmeagain.Close()
+                                                'dim readmeagain as SqlDataReader = db.ReadSqlData(wksquery)
+                                                '_cnt = _cnt & readmeagain(0) & vbCrLf
+                                                'readmeagain.Close()
                                         End Select
                                 End Select
                             Loop
@@ -1423,7 +1423,7 @@ Public Class Main
     End Sub
 
     Private Sub MetroLabel12_MouseMove(sender As Object, e As MouseEventArgs) Handles MetroLabel12.MouseMove
-        MetroToolTip1.Show(_cnt, MetroLabel12)
+       ' MetroToolTip1.Show(_cnt, MetroLabel12)
     End Sub
 
     Private Shared Sub HotfixesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HotfixesToolStripMenuItem.Click

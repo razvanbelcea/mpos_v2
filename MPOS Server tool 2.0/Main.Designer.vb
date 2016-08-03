@@ -994,7 +994,7 @@ Partial Class Main
         Me.MetroContextMenu1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DBQueriesToolStripMenuItem, Me.BarcodeGeneratorToolStripMenuItem, Me.DiscountExtractToolStripMenuItem, Me.HotfixesToolStripMenuItem, Me.VMSnapshotToolStripMenuItem, Me.ToolStripSeparator1, Me.CheckForUpdatesToolStripMenuItem, Me.ToolStripMenuItem1})
         Me.MetroContextMenu1.Name = "MetroContextMenu1"
         Me.MetroContextMenu1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.MetroContextMenu1.Size = New System.Drawing.Size(173, 186)
+        Me.MetroContextMenu1.Size = New System.Drawing.Size(173, 164)
         Me.MetroContextMenu1.Style = MetroFramework.MetroColorStyle.Orange
         Me.MetroContextMenu1.Theme = MetroFramework.MetroThemeStyle.Light
         Me.MetroContextMenu1.UseStyleColors = true
