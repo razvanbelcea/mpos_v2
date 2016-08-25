@@ -1,4 +1,7 @@
-﻿Namespace My
+﻿Imports System.Data.SqlServerCe
+Imports System.IO
+
+Namespace My
 
     ' The following events are available for MyApplication:
     ' 
@@ -13,9 +16,34 @@
             MPOS.Main.ActualVersion()
             MPOS.Main.ShowInTaskbar = True
             MPOS.Settings.CheckSettings()
+            CreateDB()
         End Sub
-    End Class
 
+        Public Sub CreateDB()
+
+            If Not File.Exists("utils.sdf") Then
+                Dim connString As String = "Data Source='utils.sdf'; Password=123;"
+                Dim engine As New SqlCeEngine(connString)
+                engine.CreateDatabase()
+
+                Dim cmdstring As String = "CREATE TABLE cacheversion
+(
+	serverip nCHAR(15) NOT NULL PRIMARY KEY, 
+    version ntext NULL
+)
+"
+
+                Using con As New SqlCeConnection("Data Source=utils.sdf;Password=123")
+                    con.Open()
+                    Using cmd As New SqlCeCommand(cmdstring, con)
+                        cmd.ExecuteNonQuery()
+                    End Using
+                End Using
+            End If
+
+        End Sub
+
+    End Class
 
 End Namespace
 

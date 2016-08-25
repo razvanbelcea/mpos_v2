@@ -90,7 +90,7 @@ Public Class VMSnapshot
         Process.Start("powershell", "-noexit -ExecutionPolicy ByPass -file """ + type + """ -user r4\razvan.belcea -password Thinkpad11 ")
     End Sub
     Private Sub createsnap(argument As String, type As String)
-        Dim myValue As String = InputBox("Enter Value", "Enter Value", "Please Enter Value")
+        Dim myValue As String = InputBox("Hello, gorgeous", "Had a good day ?", "Please enter name for the snapshot")
         If myValue <> "" Then
             Dim filename As String = """" + argument + "_" + myValue + """"
             Process.Start("powershell", "-noexit -ExecutionPolicy ByPass -file """ + type + """ -user r4\razvan.belcea -password Thinkpad11 -server " + argument + " -name " + filename)
