@@ -1,13 +1,16 @@
 ﻿Imports System.Data.SqlClient
-Imports System.Data.SqlServerCe
+Imports System.Threading
+Imports System.Data.SQLite
+Imports System.IO
 
 Public Class utils
     Private ReadOnly _logger As New ErrorLogger
-    Public Sub WriteSDFdata(q As String)
+    Public Shared Filepath As String = System.Windows.Forms.Application.StartupPath + "\Resources\utils.db3"
+    Public Sub WriteSdFdata(q As String)
         Try
-            Using con As New SqlCeConnection("Data Source=utils.sdf")
+            Using con As New SQLiteConnection("Data Source=" + Filepath + ";")
                 con.Open()
-                Using cmd As New SqlCeCommand(q, con)
+                Using cmd As New SQLiteCommand(q, con)
                     cmd.ExecuteNonQuery()
                 End Using
             End Using
@@ -16,15 +19,15 @@ Public Class utils
         End Try
     End Sub
 
-    Public Function ReadSDFdata(q As String)
-        Dim reader As SqlCeDataReader = Nothing
-        Dim con As SqlCeConnection = Nothing
-        Dim cmd As SqlCeCommand = Nothing
+    Public Function ReadSdFdata(q As String)
+        Dim reader As SQLiteDataReader = Nothing
+        Dim con As SQLiteConnection = Nothing
+        Dim cmd As SQLiteCommand = Nothing
         Try
-            con = New SqlCeConnection("Data Source=utils.sdf")
+            con = New SQLiteConnection("Data Source=" + Filepath + ";")
             con.Open()
             If con.State = ConnectionState.Open Then
-                cmd = New SqlCeCommand(q, con)
+                cmd = New SQLiteCommand(q, con)
                 reader = cmd.ExecuteReader()
                 Return reader
             End If
@@ -34,7 +37,7 @@ Public Class utils
         Return Nothing
     End Function
 
-    Public Shared Function readusidb(type As String) As List(Of Tuple(Of String, String, String))
+    Public Shared Function Readusidb(type As String) As List(Of Tuple(Of String, String, String))
         Dim tuple As New List(Of Tuple(Of String, String, String))
         Dim sqlconnection As New SqlConnection
         Dim cmd As SqlCommand
@@ -65,24 +68,109 @@ Public Class utils
         End Try
         Return Nothing
     End Function
-    Public Shared Sub populateSDFdb()
-        Dim listQa = readusidb("MPSQ").ToList
-        Dim listDev = readusidb("MPSD").ToList
-        Dim listUat = readusidb("MPSU").ToList
-        Dim con As New utils
+    Public Shared Sub PopulateSdFdb()
 
-        For Each item In listQa
-            Dim cmdstring As String = "insert into qatab values ('" + item.Item3.ToString + "','" + item.Item2.ToString + "','" + item.Item1.ToString + "','' ,'""','""','""','" + DateTime.Now.ToString() + "')"
-            con.WriteSDFdata(cmdstring)
-        Next
-        For Each item In listDev
-            Dim cmdstring As String = "insert into devtab values ('" + item.Item3.ToString + "','" + item.Item2.ToString + "','" + item.Item1.ToString + "','' ,'""','""','""','" + DateTime.Now.ToString() + "')"
-            con.WriteSDFdata(cmdstring)
-        Next
-        For Each item In listUat
-            Dim cmdstring As String = "insert into uattab values ('" + item.Item3.ToString + "','" + item.Item2.ToString + "','" + item.Item1.ToString + "','' ,'""','""','""','" + DateTime.Now.ToString() + "')"
-            con.WriteSDFdata(cmdstring)
-        Next
+        Try
+            Dim listQa = Readusidb("MPSQ").ToList
+            Dim listDev = Readusidb("MPSD").ToList
+            Dim listUat = Readusidb("MPSU").ToList
+            Dim con As New utils
+
+            For Each item In listQa
+                Dim cmdstring As String = "insert into ServerInformation values ('" + item.Item3.ToString + "','" + item.Item2.ToString + "','" + item.Item1.ToString + "','' ,'""','""','""','QA','" + DateTime.Now.ToString() + "')"
+                con.WriteSdFdata(cmdstring)
+            Next
+            For Each item In listDev
+                Dim cmdstring As String = "insert into ServerInformation values ('" + item.Item3.ToString + "','" + item.Item2.ToString + "','" + item.Item1.ToString + "','' ,'""','""','""','DEV','" + DateTime.Now.ToString() + "')"
+                con.WriteSdFdata(cmdstring)
+            Next
+            For Each item In listUat
+                Dim cmdstring As String = "insert into ServerInformation values ('" + item.Item3.ToString + "','" + item.Item2.ToString + "','" + item.Item1.ToString + "','' ,'""','""','""','UAT','" + DateTime.Now.ToString() + "')"
+                con.WriteSdFdata(cmdstring)
+            Next
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+    Public Shared Sub Updateserverinfo()
+
+        Dim SQLstr As String = "select serverip from ServerInformation"
+        Dim iplist As New List(Of String)
+        Dim arr, arr1, arr2, arr3 As New ArrayList
+
+        Try
+            Dim sqLconnect As New SQLiteConnection()
+            Dim sqLcommand As SQLiteCommand
+            sqLconnect.ConnectionString = "Data Source=" + Filepath + ";"
+            sqLconnect.Open()
+            sqLcommand = New SQLiteCommand(SQLstr,sqLconnect)
+            
+            Dim sqlReader As SQLiteDataReader = sqLcommand.ExecuteReader()
+
+            While sqlReader.Read()
+                arr3.Add(sqlReader(0))
+            End While
+            iplist = arr3.Cast(Of String)().ToList()
+
+            Parallel.ForEach(iplist,
+                             Sub(item)
+                                 If My.Computer.Network.Ping(item) Then
+
+                                     Dim db As New SqldbManager(item,,, 1)
+                                     Dim szDatabaseVersionId As SqlDataReader = db.ReadSqlData("select top 1 szDatabaseVersionID from MGIDatabaseVersionUpdate order by szDatabaseInstallDate desc, szDatabaseInstallTime desc")
+
+                                     While szDatabaseVersionId.Read()
+                                         arr.Add(szDatabaseVersionId(0))
+                                     End While
+                                     szDatabaseVersionId.Close()
+
+                                     Dim euSoftwareVersionServer As SqlDataReader = db.ReadSqlData("select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%')=0")
+
+                                     While euSoftwareVersionServer.Read()
+                                         arr1.Add(euSoftwareVersionServer(0))
+                                     End While
+                                     euSoftwareVersionServer.Close()
+
+                                     Dim euSoftwareVersionTill As SqlDataReader = db.ReadSqlData("select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%')=0")
+
+                                     While euSoftwareVersionTill.Read()
+                                         arr2.Add(euSoftwareVersionTill(0))
+                                     End While
+                                     euSoftwareVersionTill.Close()
+
+                                     Dim serverhf As String
+                                     Dim shortshf As String = arr1(0).ToString.Substring(arr1(0).ToString.Length - 3)
+
+                                     If shortshf.StartsWith(".") Then
+                                         serverhf = "0" + shortshf.Substring(shortshf.Length - 2)
+                                     ElseIf shortshf.Contains(".") Then
+                                         serverhf = "00" + shortshf.Substring(shortshf.Length - 1)
+                                     Else
+                                         serverhf = shortshf
+                                     End If
+
+
+                                     Dim tillhf As String
+                                     Dim tillshf As String = arr2(0).ToString.Substring(arr2(0).ToString.Length - 3)
+
+                                     If tillshf.StartsWith(".") Then
+                                         tillhf = "0" + tillshf.Substring(tillshf.Length - 2)
+                                     ElseIf tillshf.Contains(".") Then
+                                         tillhf = "00" + tillshf.Substring(tillshf.Length - 1)
+                                     Else
+                                         tillhf = tillshf
+                                     End If
+
+                                     Dim querry As String = "update ServerInformation set serverstatus='ON',version=" + arr(0).ToString + ",hfserver=" + serverhf + ",hftill=" + tillhf + " where serverip=" + item + ""
+                                     Dim conn As New utils
+                                     conn.WriteSdFdata(querry)
+
+                                 End If
+                             End Sub)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
 
 
     End Sub

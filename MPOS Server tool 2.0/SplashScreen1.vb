@@ -1,4 +1,7 @@
-﻿Public NotInheritable Class SplashScreen1
+﻿Imports System.IO
+Imports System.Xml
+
+Public NotInheritable Class SplashScreen1
 
     'TODO: This form can easily be set as the splash screen for the application by going to the "Application" tab
     '  of the Project Designer ("Properties" under the "Project" menu).
@@ -30,6 +33,7 @@
 
         'Copyright info
         Copyright.Text = My.Application.Info.Copyright
+
     End Sub
 
     Private Sub ApplicationTitle_Click(sender As Object, e As EventArgs) Handles ApplicationTitle.Click

@@ -14,7 +14,6 @@ Imports Microsoft.VisualBasic
 Imports System.IO
 Imports System.Security.Permissions
 Imports MetroFramework
-Imports System.Data.SqlServerCe
 
 Public Class Main
 
@@ -632,7 +631,6 @@ Public Class Main
     Private Sub updateserverlist(tokenserver As CancellationToken)
         Dim i As Integer = 0
         Dim connString As String = "Data Source='utils.sdf';"
-        Dim DBcon As New SqlCeEngine(connString)
         Dim sList As New List(Of ListViewItem)
         For Each item As ListViewItem In serverlist.Items
             sList.Add(item)

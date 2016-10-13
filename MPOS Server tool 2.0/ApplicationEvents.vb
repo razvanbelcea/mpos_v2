@@ -1,4 +1,4 @@
-﻿Imports System.Data.SqlServerCe
+﻿Imports System.Data.SQLite
 Imports System.IO
 Imports System.Xml
 
@@ -17,46 +17,32 @@ Namespace My
             MPOS.Main.ActualVersion()
             MPOS.Main.ShowInTaskbar = True
             MPOS.Settings.CheckSettings()
-            CreateDB()
-            Task.Factory.StartNew(Sub() utils.populateSDFdb)
-          '  utils.populateSDFdb()
+           ' Task.Factory.StartNew(Sub() utils.populateSDFdb)
+           ' CreateDb()
+           ' utils.populateSDFdb()
+            utils.Updateserverinfo()
         End Sub
-
-        Public Sub CreateDB()
-            Dim doc As XmlDocument = New XmlDocument()
-            Dim svl As String = "sqllist.xml"
-            doc.Load(svl)
-            Try
-                If Not File.Exists("utils.sdf") Then
-                    Dim connString As String = "Data Source='utils.sdf';"
-                    Dim engine As New SqlCeEngine(connString)
-                    engine.CreateDatabase()
-                    Dim qatab As String = doc.SelectSingleNode("List/DBqueries/qatab").InnerText
-                    Dim devtab As String = doc.SelectSingleNode("List/DBqueries/devtab").InnerText
-                    Dim uattab As String = doc.SelectSingleNode("List/DBqueries/uattab").InnerText
-                    Dim prodtab As String = doc.SelectSingleNode("List/DBqueries/prodtab").InnerText
-                    Using con As New SqlCeConnection("Data Source=utils.sdf")
-                        con.Open()
-                        Using cmd As New SqlCeCommand(qatab, con)
-                            cmd.ExecuteNonQuery()
-                        End Using
-                        Using cmd1 As New SqlCeCommand(devtab, con)
-                            cmd1.ExecuteNonQuery()
-                        End Using
-                        Using cmd2 As New SqlCeCommand(uattab, con)
-                            cmd2.ExecuteNonQuery()
-                        End Using
-                        Using cmd3 As New SqlCeCommand(prodtab, con)
-                            cmd3.ExecuteNonQuery()
-                        End Using
+           Public Sub CreateDb()
+        Dim doc = New XmlDocument()
+        Dim svl = "sqllist.xml"
+        Dim filepath As String = System.Windows.Forms.Application.StartupPath + "\Resources\utils.db3"
+        doc.Load(svl)
+        Try
+            If Not File.Exists(filepath) Then
+                Dim connString = "Data Source="+filepath+";"
+                SQLiteConnection.CreateFile(filepath)
+                Dim serverinfo As String = doc.SelectSingleNode("List/DBqueries/ServerInformation").InnerText
+                Using con As New SQLiteConnection(connString)
+                    con.Open()
+                    Using cmd As New SQLiteCommand(serverinfo, con)
+                        cmd.ExecuteNonQuery()
                     End Using
-                End If
-            Catch ex As Exception
-
-            End Try
-        End Sub
-
+                End Using
+            End If
+        Catch ex As Exception
+                MessageBox.Show(ex.Message)
+        End Try
+    End Sub
     End Class
-
 End Namespace
 
