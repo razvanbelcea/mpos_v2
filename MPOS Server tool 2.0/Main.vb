@@ -14,6 +14,7 @@ Imports Microsoft.VisualBasic
 Imports System.IO
 Imports System.Security.Permissions
 Imports MetroFramework
+Imports System.Data.SqlServerCe
 
 Public Class Main
 
@@ -23,8 +24,8 @@ Public Class Main
 
     Private Sub DBQueriesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DBQueriesToolStripMenuItem.Click
         If MetroLabel15.Text = "ONLINE" Then
-            DBQueries.ShowDialog()
-            DBQueries.Dispose()
+            DbQueries.ShowDialog()
+            DbQueries.Dispose()
         Else
             miniTool.balon("Please select a server!")
         End If
@@ -561,15 +562,15 @@ Public Class Main
         ' tpb.Visible = False === causes application to freeze/ fix needed 
     End Sub
     Private Sub Loadcounts()
-        Dim readcounts As XmlTextReader = New XmlTextReader(Cfl)         
+        Dim readcounts As XmlTextReader = New XmlTextReader(Cfl)
         _cnt = vbTab & vbTab & vbTab & vbTab & vbTab & vbCrLf
         Try
             If MetroLabel15.Text = "ONLINE" Then
-                 Dim db As New SqldbManager(MetroLabel8.Text,,, 1)     
-                Dim wksquery as string = "select lRetailStoreID from workstation where szWorkstationID='" & MetroLabel7.Text & "'"
-                Dim readworkstation as SqlDataReader = db.ReadSqlData(wksquery)
+                Dim db As New SqldbManager(MetroLabel8.Text,,, 1)
+                Dim wksquery As String = "select lRetailStoreID from workstation where szWorkstationID='" & MetroLabel7.Text & "'"
+                Dim readworkstation As SqlDataReader = db.ReadSqlData(wksquery)
                 While readworkstation.Read()
-               MetroLabel10.Text = readworkstation(0)
+                    MetroLabel10.Text = readworkstation(0)
                 End While
                 For Each item As ListViewItem In serverlist.Items
                     If item.Selected = True Then
@@ -627,89 +628,94 @@ Public Class Main
             '   Label6.Visible = False
         End If
     End Sub
-    Private Sub Loadping(tokenserver As CancellationToken)
+
+    Private Sub updateserverlist(tokenserver As CancellationToken)
         Dim i As Integer = 0
+        Dim connString As String = "Data Source='utils.sdf';"
+        Dim DBcon As New SqlCeEngine(connString)
+        Dim sList As New List(Of ListViewItem)
+        For Each item As ListViewItem In serverlist.Items
+            sList.Add(item)
+        Next
         Try
-            For Each item As ListViewItem In serverlist.Items
-                tokenserver.ThrowIfCancellationRequested()
-                If My.Computer.Network.Ping(item.SubItems(2).Text) Then
-                    item.ForeColor = Color.Green
-                    item.SubItems.Add("ON")
-                    Try
-            Dim arr, arr1, arr2 As New ArrayList
+            Parallel.ForEach(sList,
+                        Sub(item)
+                            If My.Computer.Network.Ping(item.SubItems(2).Text) Then
+                                item.ForeColor = Color.Green
+                                item.SubItems.Add("ON")
+                                Try
+                                    Dim arr, arr1, arr2 As New ArrayList
 
-            Dim db As New SqldbManager(item.SubItems(2).Text,,, 1)
-            Dim szDatabaseVersionId As SqlDataReader = db.ReadSqlData("select top 1 szDatabaseVersionID from MGIDatabaseVersionUpdate order by szDatabaseInstallDate desc, szDatabaseInstallTime desc")
+                                    Dim db As New SqldbManager(item.SubItems(2).Text,,, 1)
+                                    Dim szDatabaseVersionId As SqlDataReader = db.ReadSqlData("select top 1 szDatabaseVersionID from MGIDatabaseVersionUpdate order by szDatabaseInstallDate desc, szDatabaseInstallTime desc")
 
-            While szDatabaseVersionId.Read()
-                arr.Add(szDatabaseVersionId(0))
-            End While
-            szDatabaseVersionId.Close()
+                                    While szDatabaseVersionId.Read()
+                                        arr.Add(szDatabaseVersionId(0))
+                                    End While
+                                    szDatabaseVersionId.Close()
 
-            Dim euSoftwareVersionServer As SqlDataReader = db.ReadSqlData("select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%')=0")
+                                    Dim euSoftwareVersionServer As SqlDataReader = db.ReadSqlData("select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%')=0")
 
-            While euSoftwareVersionServer.Read()
-                arr1.Add(euSoftwareVersionServer(0))
-            End While
-            euSoftwareVersionServer.Close()
+                                    While euSoftwareVersionServer.Read()
+                                        arr1.Add(euSoftwareVersionServer(0))
+                                    End While
+                                    euSoftwareVersionServer.Close()
 
-            Dim euSoftwareVersionTill As SqlDataReader = db.ReadSqlData("select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%')=0")
+                                    Dim euSoftwareVersionTill As SqlDataReader = db.ReadSqlData("select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%')=0")
 
-            While euSoftwareVersionTill.Read()
-                arr2.Add(euSoftwareVersionTill(0))
-            End While
-            euSoftwareVersionTill.Close()
+                                    While euSoftwareVersionTill.Read()
+                                        arr2.Add(euSoftwareVersionTill(0))
+                                    End While
+                                    euSoftwareVersionTill.Close()
 
-                        Dim serverhf As String
-                        Dim shortshf As String = arr1(0).ToString.Substring(arr1(0).ToString.Length - 3)
+                                    Dim serverhf As String
+                                    Dim shortshf As String = arr1(0).ToString.Substring(arr1(0).ToString.Length - 3)
 
-                        If shortshf.StartsWith(".") Then
-                            serverhf = "0" + shortshf.Substring(shortshf.Length - 2)
-                        ElseIf shortshf.Contains(".") Then
-                            serverhf = "00" + shortshf.Substring(shortshf.Length - 1)
-                        Else
-                            serverhf = shortshf
-                        End If
-
-
-                        Dim tillhf As String
-                        Dim tillshf As String = arr2(0).ToString.Substring(arr2(0).ToString.Length - 3)
-
-                        If tillshf.StartsWith(".") Then
-                            tillhf = "0" + tillshf.Substring(tillshf.Length - 2)
-                        ElseIf tillshf.Contains(".") Then
-                            tillhf = "00" + tillshf.Substring(tillshf.Length - 1)
-                        Else
-                            tillhf = tillshf
-                        End If
+                                    If shortshf.StartsWith(".") Then
+                                        serverhf = "0" + shortshf.Substring(shortshf.Length - 2)
+                                    ElseIf shortshf.Contains(".") Then
+                                        serverhf = "00" + shortshf.Substring(shortshf.Length - 1)
+                                    Else
+                                        serverhf = shortshf
+                                    End If
 
 
-                        item.SubItems.Add(arr(0).ToString + " " + "HF: " + serverhf + "/" + tillhf)
-                    Catch a As Exception
+                                    Dim tillhf As String
+                                    Dim tillshf As String = arr2(0).ToString.Substring(arr2(0).ToString.Length - 3)
+
+                                    If tillshf.StartsWith(".") Then
+                                        tillhf = "0" + tillshf.Substring(tillshf.Length - 2)
+                                    ElseIf tillshf.Contains(".") Then
+                                        tillhf = "00" + tillshf.Substring(tillshf.Length - 1)
+                                    Else
+                                        tillhf = tillshf
+                                    End If
+
+                                    item.SubItems.Add(arr(0).ToString + " " + "HF: " + serverhf + "/" + tillhf)
+
+                                Catch a As Exception
                         'Form7.balon(a.Message)
                         Logger.WriteToErrorLog(a.Message, a.StackTrace, "error")
-                    End Try
-                    item.SubItems.Add("-")
-                    item.SubItems.Add("-")
-                    item.SubItems.Add("-")
-                Else
-                    item.ForeColor = Color.Red
-                    item.SubItems.Add("OFF")
-                    item.SubItems.Add("-")
-                    item.SubItems.Add("-")
-                    item.SubItems.Add("-")
-                    item.SubItems.Add("-")
-                End If
-                i = i + 1
-                ToolStripProgressBar1.Value = i
-            Next
-            ToolStripProgressBar1.Value = 0
-            'sss.Visible = False
+                                End Try
+                                item.SubItems.Add("-")
+                                item.SubItems.Add("-")
+                                item.SubItems.Add("-")
+                            Else
+                                item.ForeColor = Color.Red
+                                item.SubItems.Add("OFF")
+                                item.SubItems.Add("-")
+                                item.SubItems.Add("-")
+                                item.SubItems.Add("-")
+                                item.SubItems.Add("-")
+                            End If
+                            i = i + 1
+                            ToolStripProgressBar1.Value = i
+                        End Sub)
         Catch ex As Exception
+
         End Try
+
     End Sub
-    '-----------------------------------------------------------------------------------------------------------------------------------------END load stuff
-    '-----------------------------------------------------------------------------------------------------------------------------------------BEGIN tasks 
 
     Private Sub Taskserver(ByVal type As String, ByVal group As Integer, ByVal refresh As Boolean)
         If _anulareserver IsNot Nothing Then
@@ -719,7 +725,7 @@ Public Class Main
         getServer.populate(type, group)
         _anulareserver = New CancellationTokenSource
         Dim tokenserver = _anulareserver.Token
-        Task.Factory.StartNew(Sub() Loadping(tokenserver), tokenserver)
+        Task.Factory.StartNew(Sub() updateserverlist(tokenserver), tokenserver)
     End Sub
     Private Sub Taskservice()
         If _anulareservice IsNot Nothing Then
@@ -810,22 +816,22 @@ Public Class Main
             Logger.WriteToErrorLog(ew.Message, ew.StackTrace, "error")
         End Try
     End Sub
-    Private sub Changetillmode(tilltype As string)
+    Private Sub Changetillmode(tilltype As String)
         Dim con As New SqlConnection("Data Source=" & MetroLabel8.Text & ";Database=TPCentralDB;" & Cred & ";")
-        try
+        Try
             con.Open()
-            for each item as ListViewItem In tilllist.Items
-                If item.Selected = true andalso item.SubItems(6).Text <> "-" Then
-                    Dim cmd as SqlCommand = new SqlCommand("update Workstation set szWorkstationGroupID = '" + tilltype + "' where szWorkstationID = '" + item.SubItems(1).Text + "'", con)
+            For Each item As ListViewItem In tilllist.Items
+                If item.Selected = True AndAlso item.SubItems(6).Text <> "-" Then
+                    Dim cmd As SqlCommand = New SqlCommand("update Workstation set szWorkstationGroupID = '" + tilltype + "' where szWorkstationID = '" + item.SubItems(1).Text + "'", con)
                     cmd.ExecuteNonQuery()
                 End If
-            Next            
+            Next
         Catch ex As Exception
             miniTool.balon(ex.Message)
             Logger.WriteToErrorLog(ex.Message, ex.StackTrace, "error")
         End Try
 
-    End sub
+    End Sub
     Private Sub ResetOperatorPassword123ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetOperatorPassword123ToolStripMenuItem.Click
         Resetoperator()
     End Sub
@@ -1386,19 +1392,39 @@ Public Class Main
     End Sub
 
     Private Sub MetroRadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles MetroRadioButton1.CheckedChanged
-        Taskserver("QA", 0, False)
+        Dim tokenserver As CancellationToken
+        If MetroRadioButton1.Checked Then
+            Taskserver("QA", 0, False)
+        Else
+            tokenserver.ThrowIfCancellationRequested()
+        End If
     End Sub
 
     Private Sub MetroRadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles MetroRadioButton2.CheckedChanged
-        Taskserver("UAT", 1, False)
+        Dim tokenserver As CancellationToken
+        If MetroRadioButton2.Checked Then
+            Taskserver("UAT", 1, False)
+        Else
+            tokenserver.ThrowIfCancellationRequested()
+        End If
     End Sub
 
     Private Sub MetroRadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles MetroRadioButton3.CheckedChanged
-        Taskserver("DEV", 3, False)
+        Dim tokenserver As CancellationToken
+        If MetroRadioButton3.Checked Then
+            Taskserver("DEV", 3, False)
+        Else
+            tokenserver.ThrowIfCancellationRequested()
+        End If
     End Sub
 
     Private Sub MetroRadioButton4_CheckedChanged(sender As Object, e As EventArgs) Handles MetroRadioButton4.CheckedChanged
-        Taskserver("PROD", 2, False)
+        Dim tokenserver As CancellationToken
+        If MetroRadioButton4.Checked Then
+            Taskserver("PROD", 2, False)
+        Else
+            tokenserver.ThrowIfCancellationRequested()
+        End If
     End Sub
 
     Private Sub BarcodeGeneratorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarcodeGeneratorToolStripMenuItem.Click
@@ -1423,7 +1449,7 @@ Public Class Main
     End Sub
 
     Private Sub MetroLabel12_MouseMove(sender As Object, e As MouseEventArgs) Handles MetroLabel12.MouseMove
-       ' MetroToolTip1.Show(_cnt, MetroLabel12)
+        ' MetroToolTip1.Show(_cnt, MetroLabel12)
     End Sub
 
     Private Shared Sub HotfixesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HotfixesToolStripMenuItem.Click
@@ -1522,7 +1548,7 @@ Public Class Main
                 .Items.Item(itm.Index).BackColor = Color.LightGray
                 .Items.Item(itm.Index).EnsureVisible()
             Else
-             '   MsgBox("No Record Found!")
+                '   MsgBox("No Record Found!")
                 For i = 0 To serverlist.Items.Count - 1
                     serverlist.Items(i).Selected = False
                     serverlist.Items(i).BackColor = Color.White
@@ -1539,70 +1565,70 @@ Public Class Main
     Private Sub SalesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalesToolStripMenuItem.Click
         Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         If item IsNot Nothing Then
-            Changetillmode(item.text)
+            Changetillmode(item.Text)
             Loaddatabase()
             miniTool.balon("Till mode changed to " & item.Text)
         End If
     End Sub
 
     Private Sub WholeSalesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles WholeSalesToolStripMenuItem.Click
-                Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
+        Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         If item IsNot Nothing Then
-            Changetillmode(item.text)
+            Changetillmode(item.Text)
             Loaddatabase()
             miniTool.balon("Till mode changed to " & item.Text)
         End If
     End Sub
 
     Private Sub RegularSalesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RegularSalesToolStripMenuItem.Click
-                Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
+        Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         If item IsNot Nothing Then
-            Changetillmode(item.text)
+            Changetillmode(item.Text)
             Loaddatabase()
             miniTool.balon("Till mode changed to " & item.Text)
         End If
     End Sub
 
     Private Sub ReturnToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReturnToolStripMenuItem.Click
-                Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
+        Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         If item IsNot Nothing Then
-            Changetillmode(item.text)
+            Changetillmode(item.Text)
             Loaddatabase()
             miniTool.balon("Till mode changed to " & item.Text)
         End If
     End Sub
 
     Private Sub DepositToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DepositToolStripMenuItem.Click
-                Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
+        Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         If item IsNot Nothing Then
-            Changetillmode(item.text)
+            Changetillmode(item.Text)
             Loaddatabase()
             miniTool.balon("Till mode changed to " & item.Text)
         End If
     End Sub
 
     Private Sub CorrectionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CorrectionToolStripMenuItem.Click
-                Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
+        Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         If item IsNot Nothing Then
-            Changetillmode(item.text)
+            Changetillmode(item.Text)
             Loaddatabase()
             miniTool.balon("Till mode changed to " & item.Text)
         End If
     End Sub
 
     Private Sub CODGUIToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CODGUIToolStripMenuItem.Click
-                Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
+        Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         If item IsNot Nothing Then
-            Changetillmode(item.text)
+            Changetillmode(item.Text)
             Loaddatabase()
             miniTool.balon("Till mode changed to " & item.Text)
         End If
     End Sub
 
     Private Sub AdviceNoteCreationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AdviceNoteCreationToolStripMenuItem.Click
-                        Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
+        Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         If item IsNot Nothing Then
-            Changetillmode(item.text)
+            Changetillmode(item.Text)
             Loaddatabase()
             miniTool.balon("Till mode changed to " & item.Text)
         End If
@@ -1629,4 +1655,6 @@ Public Class Main
 
     '    End If
     'End Sub
+
+
 End Class
