@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <StartupObject>MPOS.My.MyApplication</StartupObject>
     <RootNamespace>MPOS</RootNamespace>
-    <AssemblyName>MPOS Server tool 2.0</AssemblyName>
+    <AssemblyName>MPOS Server tool</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -37,7 +37,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>MPOS Server tool 2.0.xml</DocumentationFile>
+    <DocumentationFile>MPOS Server tool.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -47,7 +47,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>MPOS Server tool 2.0.xml</DocumentationFile>
+    <DocumentationFile>MPOS Server tool.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -166,10 +166,10 @@
     <Compile Include="DBQueries.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SplashScreen1.Designer.vb">
-      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    <Compile Include="Splash.Designer.vb">
+      <DependentUpon>Splash.vb</DependentUpon>
     </Compile>
-    <Compile Include="SplashScreen1.vb">
+    <Compile Include="Splash.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VMSnapshot.Designer.vb">
@@ -252,8 +252,8 @@
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SplashScreen1.resx">
-      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    <EmbeddedResource Include="Splash.resx">
+      <DependentUpon>Splash.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VMSnapshot.resx">
       <DependentUpon>VMSnapshot.vb</DependentUpon>
