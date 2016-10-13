@@ -140,6 +140,12 @@
     <Compile Include="DBQueries.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SplashScreen1.Designer.vb">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen1.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="VMSnapshot.Designer.vb">
       <DependentUpon>VMSnapshot.vb</DependentUpon>
     </Compile>
@@ -219,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen1.resx">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VMSnapshot.resx">
       <DependentUpon>VMSnapshot.vb</DependentUpon>
