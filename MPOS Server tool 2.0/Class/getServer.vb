@@ -2,6 +2,7 @@
 Imports System
 Imports System.Threading
 Imports System.Collections.Generic
+Imports System.Data.SqlClient
 
 Public Class getServer
 
@@ -27,7 +28,7 @@ Public Class getServer
                             s = readserver.Value & " "
                         Case "Name"
                             readserver.Read()
-                            Main.serverlist.Items(i).SubItems.Add(readserver.Value)                            
+                            Main.serverlist.Items(i).SubItems.Add(readserver.Value)
                             s = s & readserver.Value & " IP-"
                         Case "Ip"
                             readserver.Read()
@@ -45,4 +46,5 @@ Public Class getServer
         readserver.Dispose()
         Main.ToolStripProgressBar1.Maximum = i
     End Sub
+
 End Class

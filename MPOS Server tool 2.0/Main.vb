@@ -628,115 +628,94 @@ Public Class Main
             '   Label6.Visible = False
         End If
     End Sub
-    Private Sub Loadping(tokenserver As CancellationToken)
+
+    Private Sub updateserverlist(tokenserver As CancellationToken)
         Dim i As Integer = 0
-       ' Dim listTOSerialize As List(Of Models.ListViewItem) = New List(Of Models.ListViewItem)
+        Dim connString As String = "Data Source='utils.sdf';"
+        Dim DBcon As New SqlCeEngine(connString)
+        Dim sList As New List(Of ListViewItem)
+        For Each item As ListViewItem In serverlist.Items
+            sList.Add(item)
+        Next
         Try
-            Using sw As New StreamWriter(File.Open(strFile, FileMode.Append))
-                For Each item As ListViewItem In serverlist.Items
-                    tokenserver.ThrowIfCancellationRequested()
-                    If My.Computer.Network.Ping(item.SubItems(2).Text) Then
-                        item.ForeColor = Color.Green
-                        item.SubItems.Add("ON")
-                        Try
-                            Dim arr, arr1, arr2 As New ArrayList
+            Parallel.ForEach(sList,
+                        Sub(item)
+                            If My.Computer.Network.Ping(item.SubItems(2).Text) Then
+                                item.ForeColor = Color.Green
+                                item.SubItems.Add("ON")
+                                Try
+                                    Dim arr, arr1, arr2 As New ArrayList
 
-                            Dim db As New SqldbManager(item.SubItems(2).Text,,, 1)
-                            Dim szDatabaseVersionId As SqlDataReader = db.ReadSqlData("select top 1 szDatabaseVersionID from MGIDatabaseVersionUpdate order by szDatabaseInstallDate desc, szDatabaseInstallTime desc")
+                                    Dim db As New SqldbManager(item.SubItems(2).Text,,, 1)
+                                    Dim szDatabaseVersionId As SqlDataReader = db.ReadSqlData("select top 1 szDatabaseVersionID from MGIDatabaseVersionUpdate order by szDatabaseInstallDate desc, szDatabaseInstallTime desc")
 
-                            While szDatabaseVersionId.Read()
-                                arr.Add(szDatabaseVersionId(0))
-                            End While
-                            szDatabaseVersionId.Close()
+                                    While szDatabaseVersionId.Read()
+                                        arr.Add(szDatabaseVersionId(0))
+                                    End While
+                                    szDatabaseVersionId.Close()
 
-                            Dim euSoftwareVersionServer As SqlDataReader = db.ReadSqlData("select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%')=0")
+                                    Dim euSoftwareVersionServer As SqlDataReader = db.ReadSqlData("select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%')=0")
 
-                            While euSoftwareVersionServer.Read()
-                                arr1.Add(euSoftwareVersionServer(0))
-                            End While
-                            euSoftwareVersionServer.Close()
+                                    While euSoftwareVersionServer.Read()
+                                        arr1.Add(euSoftwareVersionServer(0))
+                                    End While
+                                    euSoftwareVersionServer.Close()
 
-                            Dim euSoftwareVersionTill As SqlDataReader = db.ReadSqlData("select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%')=0")
+                                    Dim euSoftwareVersionTill As SqlDataReader = db.ReadSqlData("select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%')=0")
 
-                            While euSoftwareVersionTill.Read()
-                                arr2.Add(euSoftwareVersionTill(0))
-                            End While
-                            euSoftwareVersionTill.Close()
+                                    While euSoftwareVersionTill.Read()
+                                        arr2.Add(euSoftwareVersionTill(0))
+                                    End While
+                                    euSoftwareVersionTill.Close()
 
-                            Dim serverhf As String
-                            Dim shortshf As String = arr1(0).ToString.Substring(arr1(0).ToString.Length - 3)
+                                    Dim serverhf As String
+                                    Dim shortshf As String = arr1(0).ToString.Substring(arr1(0).ToString.Length - 3)
 
-                            If shortshf.StartsWith(".") Then
-                                serverhf = "0" + shortshf.Substring(shortshf.Length - 2)
-                            ElseIf shortshf.Contains(".") Then
-                                serverhf = "00" + shortshf.Substring(shortshf.Length - 1)
+                                    If shortshf.StartsWith(".") Then
+                                        serverhf = "0" + shortshf.Substring(shortshf.Length - 2)
+                                    ElseIf shortshf.Contains(".") Then
+                                        serverhf = "00" + shortshf.Substring(shortshf.Length - 1)
+                                    Else
+                                        serverhf = shortshf
+                                    End If
+
+
+                                    Dim tillhf As String
+                                    Dim tillshf As String = arr2(0).ToString.Substring(arr2(0).ToString.Length - 3)
+
+                                    If tillshf.StartsWith(".") Then
+                                        tillhf = "0" + tillshf.Substring(tillshf.Length - 2)
+                                    ElseIf tillshf.Contains(".") Then
+                                        tillhf = "00" + tillshf.Substring(tillshf.Length - 1)
+                                    Else
+                                        tillhf = tillshf
+                                    End If
+
+                                    item.SubItems.Add(arr(0).ToString + " " + "HF: " + serverhf + "/" + tillhf)
+
+                                Catch a As Exception
+                        'Form7.balon(a.Message)
+                        Logger.WriteToErrorLog(a.Message, a.StackTrace, "error")
+                                End Try
+                                item.SubItems.Add("-")
+                                item.SubItems.Add("-")
+                                item.SubItems.Add("-")
                             Else
-                                serverhf = shortshf
+                                item.ForeColor = Color.Red
+                                item.SubItems.Add("OFF")
+                                item.SubItems.Add("-")
+                                item.SubItems.Add("-")
+                                item.SubItems.Add("-")
+                                item.SubItems.Add("-")
                             End If
-
-
-                            Dim tillhf As String
-                            Dim tillshf As String = arr2(0).ToString.Substring(arr2(0).ToString.Length - 3)
-
-                            If tillshf.StartsWith(".") Then
-                                tillhf = "0" + tillshf.Substring(tillshf.Length - 2)
-                            ElseIf tillshf.Contains(".") Then
-                                tillhf = "00" + tillshf.Substring(tillshf.Length - 1)
-                            Else
-                                tillhf = tillshf
-                            End If
-
-                            item.SubItems.Add(arr(0).ToString + " " + "HF: " + serverhf + "/" + tillhf)
-
-                            'JSON TEST
-                            'sw.WriteLine(item.SubItems(2).Text + " " + arr(0).ToString + " " + "HF: " + serverhf + "/" + tillhf)
-                            'Dim lItem As Models.ListViewItem = New Models.ListViewItem()
-                            'lItem.IP = item.SubItems(2).Text
-                            'lItem.Version = arr(0).ToString()
-                            'lItem.Hotfix = "HF: " + serverhf + "/" + tillhf
-                            'listTOSerialize.Add(lItem)
-
-                        Catch a As Exception
-                            'Form7.balon(a.Message)
-                            Logger.WriteToErrorLog(a.Message, a.StackTrace, "error")
-                        End Try
-                        item.SubItems.Add("-")
-                        item.SubItems.Add("-")
-                        item.SubItems.Add("-")
-                    Else
-                        item.ForeColor = Color.Red
-                        item.SubItems.Add("OFF")
-                        item.SubItems.Add("-")
-                        item.SubItems.Add("-")
-                        item.SubItems.Add("-")
-                        item.SubItems.Add("-")
-                    End If
-                    i = i + 1
-                    ToolStripProgressBar1.Value = i
-
-                Next
-            End Using
-
-
-            ToolStripProgressBar1.Value = 0
-            'sss.Visible = False
+                            i = i + 1
+                            ToolStripProgressBar1.Value = i
+                        End Sub)
         Catch ex As Exception
+
         End Try
 
-        'SerializeList(listTOSerialize)
-
     End Sub
-
-    'JSON TEST
-    'Private Sub SerializeList(li As List(Of Models.ListViewItem))
-
-    '    Dim serializedString As String = Newtonsoft.Json.JsonConvert.SerializeObject(li)
-    '    Dim serializedList As String = serializedString
-    '    Dim serializedObject As Models.ListViewItem() = Newtonsoft.Json.JsonConvert.DeserializeObject(serializedList)
-
-    'End Sub
-    '-----------------------------------------------------------------------------------------------------------------------------------------END load stuff
-    '-----------------------------------------------------------------------------------------------------------------------------------------BEGIN tasks 
 
     Private Sub Taskserver(ByVal type As String, ByVal group As Integer, ByVal refresh As Boolean)
         If _anulareserver IsNot Nothing Then
@@ -746,7 +725,7 @@ Public Class Main
         getServer.populate(type, group)
         _anulareserver = New CancellationTokenSource
         Dim tokenserver = _anulareserver.Token
-        Task.Factory.StartNew(Sub() Loadping(tokenserver), tokenserver)
+        Task.Factory.StartNew(Sub() updateserverlist(tokenserver), tokenserver)
     End Sub
     Private Sub Taskservice()
         If _anulareservice IsNot Nothing Then
@@ -1413,19 +1392,39 @@ Public Class Main
     End Sub
 
     Private Sub MetroRadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles MetroRadioButton1.CheckedChanged
-        Taskserver("QA", 0, False)
+        Dim tokenserver As CancellationToken
+        If MetroRadioButton1.Checked Then
+            Taskserver("QA", 0, False)
+        Else
+            tokenserver.ThrowIfCancellationRequested()
+        End If
     End Sub
 
     Private Sub MetroRadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles MetroRadioButton2.CheckedChanged
-        Taskserver("UAT", 1, False)
+        Dim tokenserver As CancellationToken
+        If MetroRadioButton2.Checked Then
+            Taskserver("UAT", 1, False)
+        Else
+            tokenserver.ThrowIfCancellationRequested()
+        End If
     End Sub
 
     Private Sub MetroRadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles MetroRadioButton3.CheckedChanged
-        Taskserver("DEV", 3, False)
+        Dim tokenserver As CancellationToken
+        If MetroRadioButton3.Checked Then
+            Taskserver("DEV", 3, False)
+        Else
+            tokenserver.ThrowIfCancellationRequested()
+        End If
     End Sub
 
     Private Sub MetroRadioButton4_CheckedChanged(sender As Object, e As EventArgs) Handles MetroRadioButton4.CheckedChanged
-        Taskserver("PROD", 2, False)
+        Dim tokenserver As CancellationToken
+        If MetroRadioButton4.Checked Then
+            Taskserver("PROD", 2, False)
+        Else
+            tokenserver.ThrowIfCancellationRequested()
+        End If
     End Sub
 
     Private Sub BarcodeGeneratorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarcodeGeneratorToolStripMenuItem.Click

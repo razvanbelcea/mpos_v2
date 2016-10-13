@@ -192,7 +192,7 @@ Public Class barcodeG
         Dim i As Integer = 0
         Dim sql As String = Nothing
         connetionString = "Data Source=" & Main.MetroLabel8.Text & ";Database=TPCentralDB;" & Main.cred & ";"
-        sql = "select szCountryCode,szNumericCountryCode from MGICountryCode where szCountryCode in ('IND','MDA','BGR','CHN','DEU','ESP','FRA','GRC','HRV','HUN','IND','ITA','JPN','KAZ','MLD','NLD','POL','PRT','ROU','RUS','SRB','SVK','TUR','UKR','VNM')"
+        sql = "select szCountryCode,szNumericCountryCode from MGICountryCode where szCountryCode in ('IND','MDA','BGR','CHN','DEU','ESP','FRA','GRC','HRV','HUN','IND','ITA','JPN','KAZ','MLD','NLD','POL','PRT','ROU','RUS','SRB','SVK','TUR','UKR','VNM','CZE')"
         connection = New SqlConnection(connetionString)
         Try
             connection.Open()

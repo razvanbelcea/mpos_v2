@@ -139,6 +139,7 @@
     <Compile Include="Class\Logger.vb" />
     <Compile Include="Class\sqldbManager.vb" />
     <Compile Include="Class\update.vb" />
+    <Compile Include="Class\utils.vb" />
     <Compile Include="DBQueries.Designer.vb">
       <DependentUpon>DBQueries.vb</DependentUpon>
     </Compile>
