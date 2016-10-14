@@ -32,12 +32,30 @@ Public NotInheritable Class Splash
 
         Version.Text = System.String.Format(Version.Text, My.Application.Info.Version.Major, My.Application.Info.Version.Minor)
 
-        utils.CreateDb()
-        utils.PopulateSdFdb()
-        utils.Updateserverinfo()
+        'utils.CreateDb()
+        'utils.PopulateSdFdb()
+        'utils.Updateserverinfo()
+
+        Dim c = Task.Run(SUb()
+                             Me.Invoke(Sub()
+                             utils.CreateDb()
+                         End Sub)
+                         End Sub)
+        Dim p = c.ContinueWith(Sub()
+                                   Me.Invoke(Sub()
+                                   utils.PopulateSdFdb()
+                               End Sub)
+                               End Sub)
+        Dim u = p.ContinueWith(Sub()
+                                   Me.Invoke(Sub()
+                                   utils.Updateserverinfo()
+                               End Sub)
+                               End Sub)
+
 
         If loading = 3 Then
-            me.Hide()
+            Me.Close()
+            Me.Dispose()
             Main.Show()
         End If
 

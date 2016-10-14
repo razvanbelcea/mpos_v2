@@ -112,7 +112,7 @@ Public Class utils
                 Dim cmdstring As String = "insert into ServerInformation values ('" + item.Item3.ToString + "','" + item.Item2.ToString + "','" + item.Item1.ToString + "','' ,'""','""','""','UAT','" + DateTime.Now.ToString() + "')"
                 con.WriteSdFdata(cmdstring)
             Next
-            Splash.loading = Splash.loading+1
+            Splash.loading = Splash.loading + 1
         Catch ex As Exception
 
         End Try
@@ -122,8 +122,7 @@ Public Class utils
         Splash.Copyright.Text = "Gathering information from all servers..."
         Dim SQLstr As String = "select serverip from ServerInformation"
         Dim iplist As New List(Of String)
-        Dim arr, arr1, arr2, arr3 As New ArrayList
-
+        Dim listasql As New ArrayList()
         Try
             Dim sqLconnect As New SQLiteConnection()
             Dim sqLcommand As SQLiteCommand
@@ -134,66 +133,84 @@ Public Class utils
             Dim sqlReader As SQLiteDataReader = sqLcommand.ExecuteReader()
 
             While sqlReader.Read()
-                arr3.Add(sqlReader(0))
+                listasql.Add(sqlReader(0))
             End While
-            iplist = arr3.Cast(Of String)().ToList()
+            iplist = listasql.Cast(Of String)().ToList()
 
             Parallel.ForEach(iplist,
                              Sub(item)
+                                 Dim arr, arr1, arr2 As New ArrayList
                                  If My.Computer.Network.Ping(item) Then
 
-                                     Dim db As New SqldbManager(item,,, 1)
+                                     Dim db As New SqldbManager(item,,, 10)
                                      Dim szDatabaseVersionId As SqlDataReader = db.ReadSqlData("select top 1 szDatabaseVersionID from MGIDatabaseVersionUpdate order by szDatabaseInstallDate desc, szDatabaseInstallTime desc")
-
-                                     While szDatabaseVersionId.Read()
-                                         arr.Add(szDatabaseVersionId(0))
-                                     End While
-                                     szDatabaseVersionId.Close()
+                                     arr.Add("DB Offline")
+                                     If szDatabaseVersionId IsNot Nothing Then
+                                         While szDatabaseVersionId.Read()
+                                             arr(0) = (szDatabaseVersionId(0))
+                                         End While
+                                         szDatabaseVersionId.Close()
+                                     End If
 
                                      Dim euSoftwareVersionServer As SqlDataReader = db.ReadSqlData("select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPS%')=0")
 
-                                     While euSoftwareVersionServer.Read()
-                                         arr1.Add(euSoftwareVersionServer(0))
-                                     End While
-                                     euSoftwareVersionServer.Close()
+                                     If euSoftwareVersionServer IsNot Nothing Then
+                                         While euSoftwareVersionServer.Read()
+                                             arr1.Add(euSoftwareVersionServer(0))
+                                         End While
+                                         euSoftwareVersionServer.Close()
+                                     End If
 
                                      Dim euSoftwareVersionTill As SqlDataReader = db.ReadSqlData("select * from (select top 1 szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%' order by szTimestamp desc) a union select '000' where (select count(*) szVersion from EUSoftwareVersion where szPackageName like 'Hotfix%' and szWorkstationID like '%MPC%')=0")
 
-                                     While euSoftwareVersionTill.Read()
-                                         arr2.Add(euSoftwareVersionTill(0))
-                                     End While
-                                     euSoftwareVersionTill.Close()
-
-                                     Dim serverhf As String
-                                     Dim shortshf As String = arr1(0).ToString.Substring(arr1(0).ToString.Length - 3)
-
-                                     If shortshf.StartsWith(".") Then
-                                         serverhf = "0" + shortshf.Substring(shortshf.Length - 2)
-                                     ElseIf shortshf.Contains(".") Then
-                                         serverhf = "00" + shortshf.Substring(shortshf.Length - 1)
-                                     Else
-                                         serverhf = shortshf
+                                     If euSoftwareVersionTill IsNot Nothing Then
+                                         While euSoftwareVersionTill.Read()
+                                             arr2.Add(euSoftwareVersionTill(0))
+                                         End While
+                                         euSoftwareVersionTill.Close()
                                      End If
+                                     Dim serverhf As String
+                                     serverhf = "-"
+                                     If arr1.Count > 0 Then
 
+                                         Dim shortshf As String = arr1(0).ToString.Substring(arr1(0).ToString.Length - 3)
+
+                                         If shortshf.StartsWith(".") Then
+                                             serverhf = "0" + shortshf.Substring(shortshf.Length - 2)
+                                         ElseIf shortshf.Contains(".") Then
+                                             serverhf = "00" + shortshf.Substring(shortshf.Length - 1)
+                                         Else
+                                             serverhf = shortshf
+                                         End If
+                                     End If
 
                                      Dim tillhf As String
-                                     Dim tillshf As String = arr2(0).ToString.Substring(arr2(0).ToString.Length - 3)
+                                     Dim tillshf As String
+                                     tillhf = "-"
+                                     'If arr2.Count > 0 Then
+                                     If arr2.Count > 0 Then
 
-                                     If tillshf.StartsWith(".") Then
-                                         tillhf = "0" + tillshf.Substring(tillshf.Length - 2)
-                                     ElseIf tillshf.Contains(".") Then
-                                         tillhf = "00" + tillshf.Substring(tillshf.Length - 1)
-                                     Else
-                                         tillhf = tillshf
+                                         tillshf = arr2(0).ToString.Substring(arr2(0).ToString.Length - 3)
+
+                                         If tillshf.StartsWith(".") Then
+                                             tillhf = "0" + tillshf.Substring(tillshf.Length - 2)
+                                         ElseIf tillshf.Contains(".") Then
+                                             tillhf = "00" + tillshf.Substring(tillshf.Length - 1)
+                                         Else
+                                             tillhf = tillshf
+                                         End If
                                      End If
 
-                                     Dim querry As String = "update ServerInformation set serverstatus='ON',version=" + arr(0).ToString + ",hfserver=" + serverhf + ",hftill=" + tillhf + " where serverip=" + item + ""
+                                     Dim querry As String = "update ServerInformation set serverstatus='ON',version='" + arr(0).ToString + "',hfserver='" + serverhf + "',hftill='" + tillhf + "' where serverip='" + item + "'"
                                      Dim conn As New utils
                                      conn.WriteSdFdata(querry)
-
+                                 Else
+                                     Dim querry As String = "update ServerInformation set serverstatus='OFF',version='-',hfserver='-',hftill='-' where serverip='" + item + "'"
+                                     Dim conn As New utils
+                                     conn.WriteSdFdata(querry)
                                  End If
                              End Sub)
-            Splash.loading = Splash.loading+1
+            Splash.loading = Splash.loading + 1
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
