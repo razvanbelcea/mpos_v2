@@ -17,32 +17,7 @@ Namespace My
             MPOS.Main.ActualVersion()
             MPOS.Main.ShowInTaskbar = True
             MPOS.Settings.CheckSettings()
-           ' Task.Factory.StartNew(Sub() utils.populateSDFdb)
-           ' CreateDb()
-           ' utils.populateSDFdb()
-            utils.Updateserverinfo()
         End Sub
-           Public Sub CreateDb()
-        Dim doc = New XmlDocument()
-        Dim svl = "sqllist.xml"
-        Dim filepath As String = System.Windows.Forms.Application.StartupPath + "\Resources\utils.db3"
-        doc.Load(svl)
-        Try
-            If Not File.Exists(filepath) Then
-                Dim connString = "Data Source="+filepath+";"
-                SQLiteConnection.CreateFile(filepath)
-                Dim serverinfo As String = doc.SelectSingleNode("List/DBqueries/ServerInformation").InnerText
-                Using con As New SQLiteConnection(connString)
-                    con.Open()
-                    Using cmd As New SQLiteCommand(serverinfo, con)
-                        cmd.ExecuteNonQuery()
-                    End Using
-                End Using
-            End If
-        Catch ex As Exception
-                MessageBox.Show(ex.Message)
-        End Try
-    End Sub
     End Class
 End Namespace
 

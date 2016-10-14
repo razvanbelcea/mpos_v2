@@ -2,10 +2,34 @@
 Imports System.Threading
 Imports System.Data.SQLite
 Imports System.IO
+Imports System.Xml
 
 Public Class utils
     Private ReadOnly _logger As New ErrorLogger
     Public Shared Filepath As String = System.Windows.Forms.Application.StartupPath + "\Resources\utils.db3"
+    Public Shared Sub CreateDb()
+        Splash.Copyright.Text = "Creating local database..."
+        Dim doc = New XmlDocument()
+        Dim svl = "sqllist.xml"
+        Dim filepath As String = System.Windows.Forms.Application.StartupPath + "\Resources\utils.db3"
+        doc.Load(svl)
+        Try
+            If Not File.Exists(filepath) Then
+                Dim connString = "Data Source=" + filepath + ";"
+                SQLiteConnection.CreateFile(filepath)
+                Dim serverinfo As String = doc.SelectSingleNode("List/DBqueries/ServerInformation").InnerText
+                Using con As New SQLiteConnection(connString)
+                    con.Open()
+                    Using cmd As New SQLiteCommand(serverinfo, con)
+                        cmd.ExecuteNonQuery()
+                    End Using
+                End Using
+            End If
+            Splash.loading = 1
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+    End Sub
     Public Sub WriteSdFdata(q As String)
         Try
             Using con As New SQLiteConnection("Data Source=" + Filepath + ";")
@@ -69,7 +93,7 @@ Public Class utils
         Return Nothing
     End Function
     Public Shared Sub PopulateSdFdb()
-
+        Splash.Copyright.Text = "Preparing the server list..."
         Try
             Dim listQa = Readusidb("MPSQ").ToList
             Dim listDev = Readusidb("MPSD").ToList
@@ -88,13 +112,14 @@ Public Class utils
                 Dim cmdstring As String = "insert into ServerInformation values ('" + item.Item3.ToString + "','" + item.Item2.ToString + "','" + item.Item1.ToString + "','' ,'""','""','""','UAT','" + DateTime.Now.ToString() + "')"
                 con.WriteSdFdata(cmdstring)
             Next
+            Splash.loading = Splash.loading+1
         Catch ex As Exception
 
         End Try
 
     End Sub
     Public Shared Sub Updateserverinfo()
-
+        Splash.Copyright.Text = "Gathering information from all servers..."
         Dim SQLstr As String = "select serverip from ServerInformation"
         Dim iplist As New List(Of String)
         Dim arr, arr1, arr2, arr3 As New ArrayList
@@ -104,8 +129,8 @@ Public Class utils
             Dim sqLcommand As SQLiteCommand
             sqLconnect.ConnectionString = "Data Source=" + Filepath + ";"
             sqLconnect.Open()
-            sqLcommand = New SQLiteCommand(SQLstr,sqLconnect)
-            
+            sqLcommand = New SQLiteCommand(SQLstr, sqLconnect)
+
             Dim sqlReader As SQLiteDataReader = sqLcommand.ExecuteReader()
 
             While sqlReader.Read()
@@ -168,6 +193,7 @@ Public Class utils
 
                                  End If
                              End Sub)
+            Splash.loading = Splash.loading+1
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try

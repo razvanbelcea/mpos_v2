@@ -720,10 +720,11 @@ Public Class Main
             _anulareserver.Cancel()
         End If
         ' readserverlist()
-        getServer.populate(type, group)
+        'getServer.populate(type, group)
+        getServer.populatefromdb(type,group)
         _anulareserver = New CancellationTokenSource
         Dim tokenserver = _anulareserver.Token
-        Task.Factory.StartNew(Sub() updateserverlist(tokenserver), tokenserver)
+       ' Task.Factory.StartNew(Sub() updateserverlist(tokenserver), tokenserver)
     End Sub
     Private Sub Taskservice()
         If _anulareservice IsNot Nothing Then
@@ -1486,47 +1487,6 @@ Public Class Main
     End Sub
 
     Private Sub MetroTextBox1_TextChanged(sender As Object, e As EventArgs) Handles MetroTextBox1.TextChanged
-
-        'Dim list As List(Of ListViewItem) = (From item In serverlist.Items.OfType(Of ListViewItem)()
-        '                                     Where item.SubItems(0).Text.Contains(MetroTextBox1.Text.ToUpper())
-        '                                     Select item).ToList
-        'If list.Count = 0 Then
-        '    serverlist.Items.Add(New ListViewItem("Your search returned no results"))
-        '    'MsgBox("Your search returned no results")
-        'Else
-        '    'MsgBox(list.Count)
-        'End If
-
-        'Dim i As Integer
-        'serverlist.Items.Clear()
-        'For Each item In list
-        '    If MetroRadioButton1.Checked = True Then
-        '        item.Group = serverlist.Groups("ListViewGroup1")
-        '        serverlist.Items.Add(item)
-        '    ElseIf MetroRadioButton2.Checked = True Then
-        '        item.Group = serverlist.Groups("ListViewGroup2")
-        '        serverlist.Items.Add(item)
-        '    ElseIf MetroRadioButton3.Checked = True Then
-        '        item.Group = serverlist.Groups("ListViewGroup4")
-        '        serverlist.Items.Add(item)
-        '    ElseIf MetroRadioButton4.Checked = True Then
-        '        item.Group = serverlist.Groups("ListViewGroup3")
-        '        serverlist.Items.Add(item)
-        '    End If
-        'Next
-
-        'If MetroTextBox1.Text = "" AndAlso MetroRadioButton1.Checked = True Then
-        '    Taskserver("QA", 0, False)
-        'ElseIf MetroTextBox1.Text = "" AndAlso MetroRadioButton2.Checked Then
-        '    Taskserver("UAT", 1, False)
-        'ElseIf MetroTextBox1.Text = "" AndAlso MetroRadioButton3.Checked Then
-        '    Taskserver("DEV", 3, False)
-        'ElseIf MetroTextBox1.Text = "" AndAlso MetroRadioButton4.Checked Then
-        '    Taskserver("PROD", 2, False)
-
-        'To find an item using text
-        'In my case, I use their to find product id.
-        'End If
 
         Dim itm As ListViewItem
         Dim i As Integer
